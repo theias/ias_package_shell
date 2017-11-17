@@ -1,0 +1,6 @@
+Requires: perl-Template-Toolkit
+AutoReqProv: no 
+Summary: Deploys package templates
+Group: Generic Group
+License: Generic License
+Vendor: Generic Vendor

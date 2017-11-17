@@ -1,0 +1,3 @@
+Ticket URL: [% package.ticket_url %]
+Wiki Page: [% package.wiki_page %]
+[% package.description %]

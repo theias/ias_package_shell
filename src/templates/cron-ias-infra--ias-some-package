@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+# 50 6 * * * root /opt/IAS/bin/ias-some-package/some_ias_scrpt.pl 

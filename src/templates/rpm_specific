@@ -1,0 +1,7 @@
+#Requires: 
+AutoReqProv: no 
+Summary: [% package.summary %]
+Group: Generic Group
+License: Generic License
+Vendor: Generic Vendor
+BuildArch: noarch

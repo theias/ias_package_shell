@@ -1,0 +1,53 @@
+ias-package-shell 2.4.0-0 noarch; urgency=low
+
+	* More features.
+	* Migrating to github.
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Fri, 17 Nov 2017 14:47:09 -0500
+
+ias-package-shell 2.3.1-0 noarch; urgency=low
+
+	* make file was failing when run_scripts didn't exist.  fixed
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Tue, 10 Oct 2017 20:08:48 -0400
+
+ias-package-shell 2.3.0-0 noarch; urgency=low
+
+	* Actually fixed default permissions on configuration files
+	* Fixed default permissons on other files as well
+	* No longer need to modify Makefile for pre-defined things.
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Mon, 02 Oct 2017 14:18:33 -0400
+
+ias-package-shell 2.2.1-0 noarch; urgency=low
+
+	* Fixed default permissions on configuration files
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Thu, 28 Sep 2017 10:12:53 -0400
+
+ias-package-shell 2.2.0-0 noarch; urgency=low
+
+	* Puts a copy of its source tree under the documentation directory
+	* Includes instructions for building debs in README files nos
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Mon, 26 Jun 2017 20:44:15 -0400
+
+
+ias-package-shell 2.1.1-0 noarch; urgency=low
+
+	* Fixed etc bug that prevented packages from building immediately
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Tue, 06 Jun 2017 10:17:19 -0400
+
+ias-package-shell 2.1.0-0 noarch; urgency=low
+
+	* Support for building Debian packages
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Tue, 23 May 2017 21:36:04 -0400
+
+ias-package-shell 2.0.0-0 noarch; urgency=low
+
+	* initial packaging stuff
+
+ -- Martin VanWinkle  (mvanwinkle@ias.edu)  Tue, 23 May 2017 08:11:56 -0400
+
