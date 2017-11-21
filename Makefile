@@ -102,7 +102,7 @@ install: builddir
 	cp $(PROJECT_NAME)/changelog $(DOC_INST_DIR)/
 	cp $(PROJECT_NAME)/description $(DOC_INST_DIR)/
 	cp README* $(DOC_INST_DIR)
-	cp -r run_scripts $(DOC_INST_DIR)
+	-cp -r run_scripts $(DOC_INST_DIR)
 	find $(DOC_INST_DIR) -type f | xargs chmod 644
 
 	# Directories for FullProjectPath type apps:
