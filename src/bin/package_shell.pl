@@ -146,7 +146,7 @@ sub make_stuff
 	
 	chdir $project_dir;
 	write_template_file('Makefile', 'Makefile', { package => $package_info});
-	write_template_file('README','README',{ package => $package_info});
+	write_template_file('README.md','README.md',{ package => $package_info});
 	
 	make_path('src')
 		or die "Can't make src dir.";
@@ -159,6 +159,15 @@ sub make_stuff
 
 	make_path('run_scripts')
 		or die "Can't make etc dir.";
+		
+	make_path('tests')
+		or die "Can't make tests path.";
+	
+	make_path('doc')
+		or die "Can't make doc path.";
+	write_template_file('doc/index.md','index.md'{ package => $package_info});
+	
+		
 	
 	# Project Directory / Package info directory	
 	make_path($package_info->{name})
