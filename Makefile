@@ -38,12 +38,15 @@ LIB_INST_DIR=$(ROOT_DIR)/$(LIB_DIR)
 DOC_DIR=$(BASE_DIR)/doc/$(PROJECT_NAME)
 DOC_INST_DIR=$(ROOT_DIR)$(DOC_DIR)
 
+TEMPLATE_DIR=$(BASE_DIR)/templates/$(PROJECT_NAME)
+TEMPLATE_INST_DIR=$(ROOT_DIR)/$(TEMPLATE_DIR)
+
 # Directories for FullProjectPath type apps:
 INPUT_DIR=$(BASE_DIR)/input/$(PROJECT_NAME)
 OUTPUT_DIR=$(BASE_DIR)/output/$(PROJECT_NAME)
 CONF_DIR=$(BASE_DIR)/etc/$(PROJECT_NAME)
 LOG_DIR=$(BASE_DIR)/log/$(PROJECT_NAME)
-TEMPLATE_DIR=$(BASE_DIR)/templates/$(PROJECT_NAME)
+
 
 DEB_DIR=$(ROOT_DIR)/DEBIAN
 DEB_CONTROL_FILE=$(DEB_DIR)/control
@@ -130,10 +133,10 @@ install: builddir
 # Conditional additions
 
 # Additional Documentation
-ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
-	mkdir -p $(ROOT_DIR)/$(BASE_DIR)/templates
-	cp -r $(SRC_DIR)/templates $(ROOT_DIR)/$(TEMPLATE_DIR)
-	find $(ROOT_DIR)/$(TEMPLATE_DIR) -type f | xargs -r chmod 644
+ifneq ("$(wildcard $(SRC_DIR)/doc/*)","") 
+	mkdir -p $(DOC_INST_DIR)
+	cp -r $(PROJECT_DIR)/doc $(DOC_INST_DIR)/doc
+	find $(DOC_INST_DIR) -type f | xargs -r chmod 644
 endif
 
 
@@ -153,9 +156,9 @@ endif
 	
 # Templates
 ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
-	mkdir -p $(ROOT_DIR)/$(BASE_DIR)/templates
-	cp -r $(SRC_DIR)/templates $(ROOT_DIR)/$(TEMPLATE_DIR)
-	find $(ROOT_DIR)/$(TEMPLATE_DIR) -type f | xargs -r chmod 644
+	mkdir -p $(TEMPLATE_INST_DIR)
+	cp -r $(SRC_DIR)/templates $TEMPLATE_INST_DIR)
+	find $(TEMPLATE_INST_DIR) -type f | xargs -r chmod 644
 endif
 
 

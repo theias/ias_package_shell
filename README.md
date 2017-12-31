@@ -9,6 +9,12 @@ Then answer questions.
 
 It will produce a directory for your project.
 
+# Supplemental Documentation
+
+Supplemental documentation for this project can be found here:
+
+* [Supplemental Documentation](./doc/index.md)
+
 # Installation
 
 The script should run just fine if you check it out.
