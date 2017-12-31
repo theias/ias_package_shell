@@ -101,22 +101,7 @@ debug:
 builddir:
 	if [ ! -d build ]; then mkdir build; fi;
 
-install: builddir
-
-# Docs by default are added.
-	mkdir -p $(DOC_INST_DIR)
-	cp $(PROJECT_NAME)/changelog $(DOC_INST_DIR)/
-	cp $(PROJECT_NAME)/description $(DOC_INST_DIR)/
-	cp README* $(DOC_INST_DIR)
-	-cp -r run_scripts $(DOC_INST_DIR)
-	find $(DOC_INST_DIR) -type f | xargs chmod 644
-
-	# Directories for FullProjectPath type apps:
-
-	mkdir -p $(ROOT_DIR)/$(INPUT_DIR)
-	mkdir -p $(ROOT_DIR)/$(OUTPUT_DIR)
-	mkdir -p $(ROOT_DIR)/$(LOG_DIR)
-
+self-replicate: install
 	# Self Replicating
 	# This will put a copy of the source tree in a tar.gz file
 	# in the doc dir.
@@ -128,57 +113,78 @@ install: builddir
 		$(PROJECT_NAME)-$(RELEASE_VERSION)
 	
 	mv build/$(PROJECT_NAME)-$(RELEASE_VERSION).tar.gz $(DOC_INST_DIR)/
+
+
+install: builddir
+
+	# META-Docs by default are added.
 	
+	mkdir -p $(DOC_INST_DIR)
+	cp $(PROJECT_NAME)/changelog $(DOC_INST_DIR)/
+	cp $(PROJECT_NAME)/description $(DOC_INST_DIR)/
+	cp README* $(DOC_INST_DIR)
+	find $(DOC_INST_DIR) -type f | xargs chmod 644
+
+	# Directories for FullProjectPath type apps:
+
+	mkdir -p $(ROOT_DIR)/$(INPUT_DIR)
+	mkdir -p $(ROOT_DIR)/$(OUTPUT_DIR)
+	mkdir -p $(ROOT_DIR)/$(LOG_DIR)
+
 
 # Conditional additions
 
-# Additional Documentation
-ifneq ("$(wildcard $(SRC_DIR)/doc/*)","") 
+ifneq ("$(wildcard $(SRC_DIR)/run_scripts/*)","")
+	# Installing run scripts
+	cp -r $(SRC_DIR)/run_scripts $(DOC_INST_DIR)/run_scripts
+
+endif
+
+ifneq ("$(wildcard $(PROJECT_DIR)/doc/*)","") 
+	# Installing more documentation
 	mkdir -p $(DOC_INST_DIR)
 	cp -r $(PROJECT_DIR)/doc $(DOC_INST_DIR)/doc
 	find $(DOC_INST_DIR) -type f | xargs -r chmod 644
 endif
 
-
-# Bin
 ifneq ("$(wildcard $(SRC_DIR)/bin/*)","") 
-		mkdir -p $(ROOT_DIR)/$(BIN_DIR)
-		-cp -r $(SRC_DIR)/bin/* $(ROOT_DIR)/$(BIN_DIR)
-		-find $(BIN_INST_DIR) -type f | xargs -r chmod 755
+	# Installing binaries.
+	mkdir -p $(ROOT_DIR)/$(BIN_DIR)
+	cp -r $(SRC_DIR)/bin/* $(ROOT_DIR)/$(BIN_DIR)
+	find $(BIN_INST_DIR) -type f | xargs -r chmod 755
 endif
 
-# cgi-bin
 ifneq ("$(wildcard $(SRC_DIR)/cgi-bin/*)","") 
-		mkdir -p $(ROOT_DIR)/$(CGI_BIN_DIR)
-		-cp -r $(SRC_DIR)/cgi-bin/* $(ROOT_DIR)/$(CGI_BIN_DIR)
-		-find $(CGI_BIN_INST_DIR) -type f | xargs -r chmod 755
+	# Installing CGI-BIN files
+	mkdir -p $(ROOT_DIR)/$(CGI_BIN_DIR)
+	-cp -r $(SRC_DIR)/cgi-bin/* $(ROOT_DIR)/$(CGI_BIN_DIR)
+	-find $(CGI_BIN_INST_DIR) -type f | xargs -r chmod 755
 endif
 	
-# Templates
 ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
+	# Installing Templates
 	mkdir -p $(TEMPLATE_INST_DIR)
 	cp -r $(SRC_DIR)/templates $(TEMPLATE_INST_DIR)
 	find $(TEMPLATE_INST_DIR) -type f | xargs -r chmod 644
 endif
 
-
 # lib
 ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")	
+	# Installing libraries
 	mkdir -p $(LIB_INST_DIR)
 	cp -r $(SRC_DIR)/lib/* $(LIB_INST_DIR)
 	find $(SRC_DIR)/lib/ | xargs -r chmod 644
 endif
 
-
-# /opt/IAS/(something)/etc
 ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
+	# Installing project directory configuration
 	mkdir -p $(ROOT_DIR)/$(CONF_DIR)
 	cp -r $(SRC_DIR)/etc/* $(ROOT_DIR)/$(CONF_DIR)/
 	chmod 0644 $(ROOT_DIR)/$(CONF_DIR)
 endif
 
-# /etc/
 ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")
+	# Installing things to /etc
 	cp -r $(SRC_DIR)/root_etc $(ROOT_DIR)/etc
 	chmod -R 0644 $(ROOT_DIR)/etc
 endif
