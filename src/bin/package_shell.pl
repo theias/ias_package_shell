@@ -74,7 +74,17 @@ my $prompts = {
 	ticket_url => {display => "Ticket URL",},
 };
 
-get_stuff($package_info, $prompts, 'name');
+while (! defined $package_info->{name}
+	|| $package_info->{name} =~ m/^\d/
+	|| $package_info->{name} =~ m/\s+/
+	|| $package_info->{name} =~ m/_/
+)
+{
+	print "Package names must not begin with numbers.\n";
+	print "Package names must not contain whitespace or underscores.\n";
+	print "Example: some-package-name\n";
+	get_stuff($package_info, $prompts, 'name');
+}
 # $prompts->{install_dir}->{default} = $default_install_dir.'/'.$package_info->{name};
 get_stuff($package_info, $prompts, 'summary');
 
@@ -165,7 +175,7 @@ sub make_stuff
 	
 	make_path('doc')
 		or die "Can't make doc path.";
-	write_template_file('doc/index.md','index.md'{ package => $package_info});
+	write_template_file('doc/index.md','index.md',{ package => $package_info});
 	
 		
 	

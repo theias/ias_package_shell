@@ -24,6 +24,12 @@ See
 
 * some_script.sh - does something.
 
+# Supplemental Documentation
+
+Supplemental documentation for this project can be found here:
+
+* [Supplemental Documentation](./doc/index.md)
+
 # Installation
 
 Ideally stuff should run if you clone the git repo, and install the deps specified
