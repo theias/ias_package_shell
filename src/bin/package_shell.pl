@@ -155,6 +155,7 @@ sub make_stuff
 		or die "Cant mkdir: $package_info->{name} : $!";
 	
 	chdir $project_dir;
+	write_template_file('.gitignore','gitignore',{ package => $package_info});
 	write_template_file('Makefile', 'Makefile', { package => $package_info});
 	write_template_file('README.md','README.md',{ package => $package_info});
 	
