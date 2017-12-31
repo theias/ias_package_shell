@@ -157,7 +157,7 @@ endif
 # Templates
 ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
 	mkdir -p $(TEMPLATE_INST_DIR)
-	cp -r $(SRC_DIR)/templates $TEMPLATE_INST_DIR)
+	cp -r $(SRC_DIR)/templates $(TEMPLATE_INST_DIR)
 	find $(TEMPLATE_INST_DIR) -type f | xargs -r chmod 644
 endif
 
