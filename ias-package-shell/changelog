@@ -1,3 +1,11 @@
+ias-package-shell 2.4.1-0 noarch; urgency=low
+
+	* Documentation options added
+	* Abstraction of make variables
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Sun, 31 Dec 2017 14:17:59 -0500
+
+
 ias-package-shell 2.4.0-0 noarch; urgency=low
 
 	* More features.
