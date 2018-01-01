@@ -61,7 +61,7 @@ OUTPUT_DIR
 	
 ROOT_CONF_DIR
 	src/root_etc - ROOT_CONF_SRC_DIR
-	/etc - ROOT_CONF_INST_DIR
+	/etc/IAS/project-name - ROOT_CONF_INST_DIR
 	
 CONF_DIR
 	src/etc - CONF_SRC_DIR
@@ -70,6 +70,10 @@ CONF_DIR
 LIB_DIR
 	src/lib - LIB_SRC_DIR
 	/opt/IAS/lib - LIB_INST_DIR
+
+TEMPLATE_DIR
+	src/templates
+	/opt/IAS/bin/templates/project-name
 	
 BIN_DIR
 	src/bin - BIN_SRC_DIR

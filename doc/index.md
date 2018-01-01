@@ -14,3 +14,5 @@ To serve as a root document for the Guided Packaging documentation.
 * [A Walkthrough](./ias-guided-packaging-introduction.md)
 * [The Release Process](./ias-guided-packaging-introduction-release-process.md)
 * [Project Layout](./ias-guided-packaging-directory-allocations.md)
+* [Full Project Path Mappings](./ias-guided-packaging-full-project-path-mappings.md)
+
