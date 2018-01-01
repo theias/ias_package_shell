@@ -17,7 +17,15 @@ Supplemental documentation for this project can be found here:
 
 # Installation
 
-The script should run just fine if you check it out.
+The script should run just fine if you check it out and run it:
+
+<pre>
+./src/bin/package_shell.pl
+</pre>
+
+You can build a package and install it, which will install into:
+
+* /opt/IAS/bin/ias-package-shell/package_shell.pl
 
 # Building a Package
 

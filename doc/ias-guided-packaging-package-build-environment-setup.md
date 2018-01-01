@@ -22,11 +22,13 @@ This is what's in my ~/.rpmmacros file. It's not required, but the packaging env
 %_missing_doc_files_terminate_build 0
 %define debug_package %{nil}
 %debug_package %{nil}
-Package Shell Software
-The software can be obtained from here:
 </pre>
 
-https://github.com/theias/ias_package_shell/
+# Package Shell Software
+
+The software can be obtained from here:
+
+* https://github.com/theias/ias_package_shell/
 
 The README has "generic" building instructions that ship with all packages and needs to be modified, but all you should have to do is:
 
