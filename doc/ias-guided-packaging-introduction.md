@@ -7,7 +7,7 @@ This document is meant to be a straight-forward presentation of creating a proje
 If you don't work at IAS, you will want to change your package names, as well as the variable
 that corresponds to BASE_DIR in your Makefile .
 
-To describe the "How" of the guided packaging process.
+This document describes the "How" of the guided packaging process.
 
 The Guided Packaging Process has been developed so that a series of well-defined steps can be used in order to create, package, and deploy software.
 
@@ -61,11 +61,13 @@ Required:
 Short summary: This is the first package I've built at IAS.
 Wiki page: https://www.net.ias.edu
 Ticket URL: https://rt.ias.edu/Display.html?290290
-
-Your package template has been created.
 </pre>
 
+Your package template has been created.
+
+
 ## Check it into Revison Control
+
 <pre>cd my_first_package</pre>
 
 Note how the hyphens have been replaced with underscores. The package template maker creates "project directories" under which packages can be built.
@@ -174,7 +176,7 @@ git commit -m 'bumped changelog'
 # Tag and (optionally) sign the tag
 git tag -s -a 'v1.0.0-0' -m 'tagging for release'
 # Merge back with master
-get checkout master
+git checkout master
 git merge release-2017-12-05-a_mvanwinkle 
 # Show the tag
 git tag

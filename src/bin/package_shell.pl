@@ -1,10 +1,30 @@
 #!/usr/bin/perl
 
 # $Id$
+=pod
+
+=head1 NAME
+
+package_shell.pl - Creates a project directory that generates an installable package
+
+=head1 SYNOPSIS
+
+  package_shell.pl
+  
+=head1 DESCRIPTION
+
+
+=head1 OPTIONS
+
+  [ --project-path ] - optionally specify where to drop the project files. 
+
+=cut
+
 
 use strict;
 use warnings;
 
+use Pod::Usage;
 use FindBin qw($RealBin $Script);
 use Data::Dumper;
 use Template;
@@ -14,8 +34,22 @@ use File::Spec;
 use Template;
 use Data::Dumper;
 
-my $OPTIONS = {};
+use Getopt::Long;
 
+my $OPTIONS_VALUES = {};
+my $OPTIONS=[
+	'project-path=s',
+];
+
+GetOptions(
+	$OPTIONS_VALUES,
+	@$OPTIONS,
+)
+or pod2usage(
+	-message => "Invalid options specified.\n"
+		. "Please perldoc this file for more information.",
+	-exitval => 1
+);
 
 
 our @UP_PATH_COMPONENTS;
@@ -35,7 +69,7 @@ $PROJECT_NAME = $SCRIPT_PATH_PARTS[-1];
 
 if($SCRIPT_PATH_PARTS[-2] eq 'src')
 {
-	$OPTIONS->{'auto-dev-mode'} = 1;
+	$OPTIONS_VALUES->{'auto-dev-mode'} = 1;
 	$PROJECT_NAME = $SCRIPT_PATH_PARTS[-3];
 	@UP_PATH_COMPONENTS=($CHOSEN_BIN,'..');
 	$PROJECT_NAME = $SCRIPT_PATH_PARTS[-3];
@@ -48,7 +82,7 @@ our $TEMPLATE_DIR;
 our $TEMPLATE_CONFIG = {};
 
 
-if ($OPTIONS->{'auto-dev-mode'})
+if ($OPTIONS_VALUES->{'auto-dev-mode'})
 {
 	$TEMPLATE_CONFIG->{INCLUDE_PATH} = "$RealBin/../templates";
 	#print "HAR\n";
@@ -148,13 +182,22 @@ sub make_stuff
 	use File::Copy;
 	
 	my $project_dir = $package_info->{name};
-	
 	$project_dir =~ s/-/_/g;
-
-	make_path($project_dir)
-		or die "Cant mkdir: $package_info->{name} : $!";
 	
-	chdir $project_dir;
+	if (defined $OPTIONS_VALUES->{'project-path'})
+	{
+		$project_dir = $OPTIONS_VALUES->{'project-path'}
+	}		
+	
+	if (! -d $project_dir)
+	{
+		make_path($project_dir)
+		or die "Cant mkdir: $package_info->{name} : $!";
+	}
+	
+	chdir $project_dir
+		or die "Couldn't chdir to $project_dir";
+	
 	write_template_file('.gitignore','gitignore',{ package => $package_info});
 	write_template_file('Makefile', 'Makefile', { package => $package_info});
 	write_template_file('README.md','README.md',{ package => $package_info});
@@ -169,7 +212,7 @@ sub make_stuff
 	#	or die "Can't make etc dir.";
 
 	make_path('run_scripts')
-		or die "Can't make etc dir.";
+		or die "Can't make run_scripts dir.";
 		
 	make_path('tests')
 		or die "Can't make tests path.";
