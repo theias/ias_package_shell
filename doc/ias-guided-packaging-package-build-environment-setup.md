@@ -37,7 +37,7 @@ sudo yum install rpmbuild make
 # svn export (url from above)
 git clone (url from above)
 cd ias_package_shell*
-make clean install cp-rpmspec rpmbuild
+make clean install rpmspec rpmbuild
 # Then install the RPM.
 yum localinstall -y (rpm)
 </pre>
