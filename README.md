@@ -55,13 +55,15 @@ I, personally, recommend following a release process (which is documented in the
 
 ## Check Out the Source
 
-The script should run just fine if you check it out and run it.
+The script should run just fine if you check it out, install the dependencies in
+rpm_specific (rpm systems), or deb_control (deb systems) and run it.
 
-You can build a package and install it, which will install into:
+## Building a Package
+
+You can build a package and install it, which will take care of the dependencies and install into:
 
 * /opt/IAS/bin/ias-package-shell/package_shell.pl
 
-## Building a Package
 
 ### Requirements
 
