@@ -48,7 +48,7 @@ ALIAS
 	installation destination
 </pre>
 
-The "Full Project" layout installs things thusly:
+The "Full Project" layout installs things thus:
 
 <pre>
 INPUT_DIR
