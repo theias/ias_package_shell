@@ -43,7 +43,7 @@ Your script you put into bin will be installed to
 
 ## Side Note
 
-If you don't care about tags, or releases, this might be good enough for you.
+If you don't care about tags, or releases, this _simplified_ might be good enough for you.
 
 Just remember to commit the changelog, and increase the version numbers correctly
 so your package management system knows how to handle upgrades.
