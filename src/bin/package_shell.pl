@@ -119,6 +119,10 @@ while (! defined $package_info->{name}
 	print "Example: some-package-name\n";
 	get_stuff($package_info, $prompts, 'name');
 }
+
+my @package_name_parts = split('-', $package_info->{name});
+$package_info->{aspell_name_parts} = join("\n", @package_name_parts);
+
 # $prompts->{install_dir}->{default} = $default_install_dir.'/'.$package_info->{name};
 get_stuff($package_info, $prompts, 'summary');
 

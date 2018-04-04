@@ -1,5 +1,5 @@
 personal_ws-1.1 en 11
-[% package.name %]
+[% package.aspell_name_parts %]
 rpmspec
 debsetup
 debbuild
