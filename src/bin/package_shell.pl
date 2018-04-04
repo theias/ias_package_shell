@@ -202,6 +202,11 @@ sub make_stuff
 	write_template_file('Makefile', 'Makefile', { package => $package_info});
 	write_template_file('README.md','README.md',{ package => $package_info});
 	
+	# spell checking
+	write_template_file('spell_check.sh','spell_check.sh',{ package => $package_info});
+	chmod 0755, 'spell_check.sh';
+	write_template_file('aspell_project.pws','aspell_project.pws',{ package => $package_info});
+	
 	make_path('src')
 		or die "Can't make src dir.";
 
