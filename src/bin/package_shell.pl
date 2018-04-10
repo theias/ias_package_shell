@@ -119,6 +119,10 @@ while (! defined $package_info->{name}
 	print "Example: some-package-name\n";
 	get_stuff($package_info, $prompts, 'name');
 }
+
+my @package_name_parts = split('-', $package_info->{name});
+$package_info->{aspell_name_parts} = join("\n", @package_name_parts);
+
 # $prompts->{install_dir}->{default} = $default_install_dir.'/'.$package_info->{name};
 get_stuff($package_info, $prompts, 'summary');
 
@@ -201,6 +205,11 @@ sub make_stuff
 	write_template_file('.gitignore','gitignore',{ package => $package_info});
 	write_template_file('Makefile', 'Makefile', { package => $package_info});
 	write_template_file('README.md','README.md',{ package => $package_info});
+	
+	# spell checking
+	write_template_file('spell_check.sh','spell_check.sh',{ package => $package_info});
+	chmod 0755, 'spell_check.sh';
+	write_template_file('aspell_project.pws','aspell_project.pws',{ package => $package_info});
 	
 	make_path('src')
 		or die "Can't make src dir.";
