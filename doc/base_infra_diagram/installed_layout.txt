@@ -1,0 +1,12 @@
+INSTALLED
+/opt/IAS/
++----bin/package-dir/        bin_dir()
++    +----myapp.py
++----input/package-dir/      input_dir()
++----output/package-dir/     output_dir()
++----etc/package-dir/        conf_dir()
++
++----lib/python3/IAS/SomePackage
++
++----doc/package-dir/
+     +----changelog

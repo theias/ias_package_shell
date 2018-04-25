@@ -1,0 +1,16 @@
+SOURCE TREE
+project_dir/
++---src/
++   +----bin/           bin_dir()
++   +	+---- myapp.py
++   +----input/         input_dir()
++   +----output/        output_dir()
++   +----etc/           conf_dir()
++   +
++   +----lib/
++       +----python3/IAS/SomePackage
++
++---package-dir/
++   +----changelog	
++
++---Makefile
