@@ -230,7 +230,7 @@ What you have learned to do is good for initial releases.
 
 Subsequent releases have different steps, and the process is described here:
 
-[Subsequent releases](./ias-guided-packaging-introduction-release-process.md)
+[Subsequent releases](./ias-guided-packaging-release-process-annotated.md)
 
 # Troubleshooting
 Emphasis was placed on being as compatable with a "standard" .rpmmacros  file.  Having NO rpmmacros file should always work.
