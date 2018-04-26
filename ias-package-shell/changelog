@@ -1,3 +1,9 @@
+ias-package-shell 2.5.1-0 noarch; urgency=low
+
+	* Mostly documentation changes
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Thu, 26 Apr 2018 09:35:24 -0400
+
 ias-package-shell 2.5.0-0 noarch; urgency=low
 
 	* Some python related ignore things
