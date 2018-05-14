@@ -1,3 +1,9 @@
+ias-package-shell 2.5.2-0 noarch; urgency=low
+
+	* Fixed default perms for files under /etc/
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Mon, 14 May 2018 11:03:18 -0400
+
 ias-package-shell 2.5.1-0 noarch; urgency=low
 
 	* Mostly documentation changes
