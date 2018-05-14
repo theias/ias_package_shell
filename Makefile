@@ -280,6 +280,7 @@ endif
 
 ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")
 	# /etc/ config files
+	echo "%defattr(644, root, root,755) " >> $(SPEC_FILE)
 	-find $(ROOT_DIR)/etc -type f |  sed -r "s|$(ROOT_DIR)|%config(noreplace) |" >> $(SPEC_FILE)
 endif
 
