@@ -69,7 +69,7 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
 	# Running Perl Tests
 	find $(SRC_DIR/bin) -type f \
 		-name '*.pl' \
-	| xargs perl -c 
+	| xargs -r perl -c 
 	
 endif
 
@@ -77,7 +77,7 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.sh)","")
 	# Running Bash Tests
 	find $(SRC_DIR/bin) -type f \
 		-name '*.sh' \
-	| xargs -n1 bash -n 
+	| xargs -r -n1 bash -n 
 	
 endif
 
@@ -85,22 +85,22 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.py)","")
 	# Running Python Tests
 	find $(SRC_DIR/bin) -type f \
 		-name '*.py' \
-	| xargs -n1 python -m py_compile
+	| xargs -r -n1 python -m py_compile
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.rb)","")
 	# Running Ruby Tests
 	find $(SRC_DIR/bin) -type f \
 		-name '*.rb' \
-	| xargs -n1 ruby -c
+	| xargs -r -n1 ruby -c
 endif
 
 test-doc:
 	find $(SRC_DIR) -type f \
 		-name '*.pl' \
 		-o -name '*.pm' \
-	| xargs podchecker
-
+	| xargs -r podchecker
+	
 all:
 
 clean:
