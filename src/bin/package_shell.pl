@@ -10,9 +10,12 @@ package_shell.pl - Creates a project directory that generates an installable pac
 =head1 SYNOPSIS
 
   package_shell.pl
-  
+
 =head1 DESCRIPTION
 
+A set of libraries and packaging routines have been set up to automate the process
+of creating projects and installing them.  This creates the base project
+directories.
 
 =head1 OPTIONS
 

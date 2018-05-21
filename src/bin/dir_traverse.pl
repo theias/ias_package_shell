@@ -1,5 +1,12 @@
 #!/usr/bin/perl
 
+=pod
+
+This scrpt is currently deprecated.  It was an experiment that might have
+future value.
+
+=cut
+
 use strict;
 use warnings;
 
