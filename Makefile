@@ -67,7 +67,7 @@ test:
 	# Sytax checking routines.
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
 	# Running Perl Tests
-	find $(SRC_DIR/bin) -type f \
+	find $(SRC_DIR)/bin -type f \
 		-name '*.pl' \
 	| xargs -r perl -c 
 	
@@ -75,7 +75,7 @@ endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.sh)","")
 	# Running Bash Tests
-	find $(SRC_DIR/bin) -type f \
+	find $(SRC_DIR)/bin -type f \
 		-name '*.sh' \
 	| xargs -r -n1 bash -n 
 	
@@ -83,14 +83,14 @@ endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.py)","") 
 	# Running Python Tests
-	find $(SRC_DIR/bin) -type f \
+	find $(SRC_DIR)/bin -type f \
 		-name '*.py' \
 	| xargs -r -n1 python -m py_compile
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.rb)","")
 	# Running Ruby Tests
-	find $(SRC_DIR/bin) -type f \
+	find $(SRC_DIR)/bin -type f \
 		-name '*.rb' \
 	| xargs -r -n1 ruby -c
 endif
