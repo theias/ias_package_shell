@@ -215,7 +215,6 @@ ifneq ("$(wildcard $(SRC_DIR)/templates/*)","")
 	find $(TEMPLATE_INST_DIR) -type f | xargs -r chmod 644
 endif
 
-# lib
 ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")	
 	# Installing libraries
 	mkdir -p $(LIB_INST_DIR)
