@@ -8,9 +8,9 @@ Supplemental documentation for this project can be found here:
 
 # Synopsis (a _very_ short example)
 
-<pre>
+```
 package_shell.pl
-</pre>
+```
 
 And answer questions.  It will create a project tree for you.
 
@@ -21,21 +21,27 @@ and the version of the package you want to release:
 
 ## RPM
 
-<pre>
+```
 fakeroot make clean install rpmspec rpmbuild
-</pre>
+```
 
 ## DEB
 
-<pre>
+```
 fakeroot make clean install debsetup debbuild
-</pre>
+```
 
 ## Install the Generated Package
 
-<pre>yum localinstall -y ...</pre>
+```
+yum localinstall -y ...
+```
+
 or
-<pre>dpkg -i ...</pre>
+
+```
+dpkg -i ...
+```
 
 Your script you put into bin will be installed to
 
@@ -83,9 +89,9 @@ All of the requisite things can be installed via packages.
 
 ### Building a Debian package
 
-<pre>
+```
   fakeroot make clean install debsetup debbuild
-</pre>
+```
 
 ### Building an RPM
 
@@ -93,24 +99,28 @@ If you're building from a tag, and the spec file has been put
 into the tag, then you can build this on any system that has
 rpm building utilities installed, without fakeroot:
 
-<pre>
+```
 make clean install cp-rpmspec rpmbuild
-</pre>
+```
 
 Sometimes the spec file might not be checked in with the tag.
 
 This will generate a new spec file every time:
 
-<pre>
+```
 fakeroot make clean install rpmspec rpmbuild
-</pre>
+```
 
 # TODO
 
 1.  Make the RPM building portion "behave" with fakeroot.  Currently
 everything is owned by root and will have to manually be changed in the make file.
 dir_traverse.pl can easily be modified to add the appropriate
-<pre>echo "%defattr(644, root, root,755) " >> $(SPEC_FILE)</pre> entries, and this is on my list
+```
+echo "%defattr(644, root, root,755) " >> $(SPEC_FILE)
+```
+entries, and this is on my list
 of things to do.
+
 1.  Better abstraction so as to include more packaging systems.
 
