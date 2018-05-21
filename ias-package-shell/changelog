@@ -1,3 +1,10 @@
+ias-package-shell 2.5.3-0 noarch; urgency=low
+
+	* Simple documentation and syntax checking.
+	* Doc updates.
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Mon, 21 May 2018 10:54:39 -0400
+
 ias-package-shell 2.5.2-0 noarch; urgency=low
 
 	* Fixed default perms for files under /etc/
