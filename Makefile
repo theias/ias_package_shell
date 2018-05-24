@@ -219,7 +219,7 @@ ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")
 	# Installing libraries
 	mkdir -p $(LIB_INST_DIR)
 	cp -r $(SRC_DIR)/lib/* $(LIB_INST_DIR)
-	find $(LIB_INST_DIR) | xargs -r chmod 644
+	find $(LIB_INST_DIR) -type f | xargs -r chmod 644
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
