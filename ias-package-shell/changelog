@@ -1,3 +1,9 @@
+ias-package-shell 2.5.4-0 noarch; urgency=low
+
+	* Fixed a bug with installing libraries and permissions during build
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)
+
 ias-package-shell 2.5.3-0 noarch; urgency=low
 
 	* Simple documentation and syntax checking.
