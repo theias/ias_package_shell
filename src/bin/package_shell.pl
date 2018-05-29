@@ -98,43 +98,40 @@ else
 	
 }
 
-my $package_info = {};
+my $project_info = {};
 
-$package_info->{dater} = `date -R`;
-chomp($package_info->{dater});
+$project_info->{dater} = `date -R`;
+chomp($project_info->{dater});
 
 my $prompts = {
-	name => {display => "Package name", required => 1},
+	project_name => {display => "Project name", required => 1},
 	summary => {display => "Short summary", required => 1},
 #	install_dir => {display => "Installation dir", required => 1},
 	wiki_page => {display => "Wiki page",},
 	ticket_url => {display => "Ticket URL",},
 };
 
-while (! defined $package_info->{name}
-	|| $package_info->{name} =~ m/^\d/
-	|| $package_info->{name} =~ m/\s+/
-	|| $package_info->{name} =~ m/_/
+while (! defined $project_info->{project_name}
+	|| $project_info->{project_name} =~ m/^\d/
+	|| $project_info->{project_name} =~ m/\s+/
+	|| $project_info->{project_name} =~ m/-/
 )
 {
-	print "Package names must not begin with numbers.\n";
-	print "Package names must not contain whitespace or underscores.\n";
-	print "Example: some-package-name\n";
-	get_stuff($package_info, $prompts, 'name');
+	print "Project names must not begin with numbers.\n";
+	print "Project names must not contain whitespace or dashes.\n";
+	print "Example: some_project_name\n";
+	get_stuff($project_info, $prompts, 'project_name');
 }
 
-my @package_name_parts = split('-', $package_info->{name});
-$package_info->{aspell_name_parts} = join("\n", @package_name_parts);
+my @project_name_parts = split('_', $project_info->{project_name});
+$project_info->{aspell_name_parts} = join("\n", @project_name_parts);
 
-# $prompts->{install_dir}->{default} = $default_install_dir.'/'.$package_info->{name};
-get_stuff($package_info, $prompts, 'summary');
+get_stuff($project_info, $prompts, 'summary');
 
-# get_stuff($package_info, $prompts, 'install_dir');
-get_stuff($package_info, $prompts, 'wiki_page');
-get_stuff($package_info, $prompts, 'ticket_url');
+get_stuff($project_info, $prompts, 'wiki_page');
+get_stuff($project_info, $prompts, 'ticket_url');
 
-#print Dumper($package_info);
-make_stuff($package_info);
+make_stuff($project_info);
 exit;
 
 sub get_stuff
@@ -184,12 +181,16 @@ sub write_template_file
 
 sub make_stuff
 {
-	my ($package_info) = @_;
+	my ($project_info) = @_;
 	use File::Path qw(make_path);
 	use File::Copy;
 	
-	my $project_dir = $package_info->{name};
-	$project_dir =~ s/-/_/g;
+	# This all needs to be redone in a more consistent way
+	
+	my $project_dir = $project_info->{project_name};
+	
+	$project_info->{package_name} = $project_info->{project_name};
+	$project_info->{package_name} =~ s/_/-/g;
 	
 	if (defined $OPTIONS_VALUES->{'project-path'})
 	{
@@ -199,20 +200,20 @@ sub make_stuff
 	if (! -d $project_dir)
 	{
 		make_path($project_dir)
-		or die "Cant mkdir: $package_info->{name} : $!";
+		or die "Cant mkdir: $project_info->{project_name} : $!";
 	}
 	
 	chdir $project_dir
 		or die "Couldn't chdir to $project_dir";
 	
-	write_template_file('.gitignore','gitignore',{ package => $package_info});
-	write_template_file('Makefile', 'Makefile', { package => $package_info});
-	write_template_file('README.md','README.md',{ package => $package_info});
+	write_template_file('.gitignore','gitignore',{ project => $project_info});
+	write_template_file('Makefile', 'Makefile', { project => $project_info});
+	write_template_file('README.md','README.md',{ project => $project_info});
 	
 	# spell checking
-	write_template_file('spell_check.sh','spell_check.sh',{ package => $package_info});
+	write_template_file('spell_check.sh','spell_check.sh',{ project => $project_info});
 	chmod 0755, 'spell_check.sh';
-	write_template_file('aspell_project.pws','aspell_project.pws',{ package => $package_info});
+	write_template_file('aspell_project.pws','aspell_project.pws',{ project => $project_info});
 	
 	make_path('src')
 		or die "Can't make src dir.";
@@ -231,22 +232,36 @@ sub make_stuff
 	
 	make_path('doc')
 		or die "Can't make doc path.";
-	write_template_file('doc/index.md','index.md',{ package => $package_info});
+	write_template_file('doc/index.md','index.md',{ project => $project_info});
 	
 		
 	
 	# Project Directory / Package info directory	
-	make_path($package_info->{name})
+	make_path($project_info->{package_name})
 		or die "Can't make package info directory: $!";
-	chdir $package_info->{name};
-	write_template_file('changelog','changelog',{ package => $package_info});
-	write_template_file('description','description',{ package => $package_info});
-	write_template_file('rpm_specific','rpm_specific',{ package => $package_info});
-	write_template_file('deb_control','deb_control', { package => $package_info});
+
+	use Data::Dumper;
+	print Dumper($project_info),$/;
+
+	chdir $project_info->{package_name};
+	write_template_file('changelog','changelog',{ project => $project_info});
+	write_template_file('description','description',{ project => $project_info});
+	write_template_file('rpm_specific','rpm_specific',{ project => $project_info});
+	write_template_file('deb_control','deb_control', { project => $project_info});
 
 	my $install_script_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'install_scripts';
 	make_path('install_scripts');
 		chdir('install_scripts');
 		`cp $install_script_dir/* .`;
 		chdir ('..');
+	
+
+	
+	my $package_shell_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'package_shell';
+	make_path('package_shell');
+		chdir('package_shell');
+		`cp -r $package_shell_dir/* .`;
+		chdir ('..');
+	
+	
 }

@@ -1,6 +1,6 @@
-[% package.name %] 1.0.0-0 noarch; urgency=low
+[% project.package_name %] 1.0.0-0 noarch; urgency=low
 
 	* initial packaging stuff
 
- -- YOUR NAME HERE YOUR@EMAIL.HERE  [% package.dater %]
+ -- YOUR NAME HERE YOUR@EMAIL.HERE  [% project.dater %]
 

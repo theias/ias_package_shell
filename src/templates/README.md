@@ -1,4 +1,4 @@
-# [% package.name %]
+# [% project.project_name %]
 
 Here is an introduction to this project.
 
@@ -37,7 +37,7 @@ in either "deb_control" or "rpm_specific"
 
 Optionally, you can build a package which will install the binaries in
 
-* /opt/IAS/bin/[% package.name %]/.
+* /opt/IAS/bin/[% project.package_name %]/.
 
 # Building a Package
 
