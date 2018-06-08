@@ -255,9 +255,9 @@ sub make_stuff
 		chdir ('../../');
 	
 	
-	debug("Adding package shell stuff.",$/);
+	# debug("Adding package shell stuff.",$/);
 	my $package_shell_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'package_shell';
-	debug("Package shell dir: ", $package_shell_dir,$/);
+	# debug("Package shell dir: ", $package_shell_dir,$/);
 	make_path('package_shell');
 		chdir('package_shell');
 		`cp -r $package_shell_dir/* .`;
