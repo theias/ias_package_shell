@@ -1,3 +1,9 @@
+ias-package-shell 2.6.0-0 noarch; urgency=low
+
+	* Revamped make files
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Fri, 08 Jun 2018 16:06:05 -0400
+
 ias-package-shell 2.5.4-0 noarch; urgency=low
 
 	* Fixed a bug with installing libraries and permissions during build
