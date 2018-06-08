@@ -13,3 +13,9 @@ package_install-final_cleanup:
 	# fakeroot installed and working):
 	# touch $(ROOT_DIR)/drop
 	# chown somegroup:somegroup $(ROOT_DIR)/drop
+	
+.PHONY: debug-package_install-final_cleanup
+
+debug-package_install-final_cleanup:
+	# package_install-final_cleanup - debug variables
+	#   (no variables defined)

@@ -1,6 +1,5 @@
 SHELL_PWD = $(shell echo `pwd`)
 
-
 PROJECT_DIR = $(MAKEFILE_PATH)
 SCRATCH_AREA = $(SHELL_PWD)
 
@@ -17,3 +16,25 @@ BUILD_DIR = $(SCRATCH_AREA)/build
 ROOT_DIR = $(BUILD_DIR)/root
 
 BASE_DIR = /opt/IAS
+
+.PHONY: debug-project-base_variables
+
+debug-project-base_variables:
+	# project-base_variables - debug variables
+	#   SHELL_PWD: '$(SHELL_PWD)'
+	#
+	#   PROJECT_DIR: '$(PROJECT_DIR)'
+	#   SCRATCH_AREA: '$(SCRATCH_AREA)'
+	#
+	#   CHANGELOG_FILE: '$(CHANGELOG_FILE)'
+	#   RELEASE_VERSION: '$(RELEASE_VERSION)'
+	#   ARCH: '$(ARCH)'
+	#   SRC_VERSION: '$(SRC_VERSION)'
+	#   PKG_VERSION: '$(PKG_VERSION)'
+	#   SUMMARY: '$(SUMMARY)'
+	#
+	#   SRC_DIR: '$(SRC_DIR)'
+	#   DROP_DIR: '$(DROP_DIR)'
+	#   BUILD_DIR: '$(BUILD_DIR)'
+	#   ROOT_DIR: '$(ROOT_DIR)'
+	#   BASE_DIR: '$(BASE_DIR)'

@@ -30,3 +30,11 @@ endif
 	
 debbuild:
 	dpkg-deb --build $(ROOT_DIR) $(BUILD_DIR)
+	
+.PHONY: debug-package_build-deb
+
+debug-package_build-deb:
+	# package_build-deb - debug variables
+	#   DEB_DIR: '$(DEB_DIR)'
+	#   DEB_CONTROL_FILE: '$(DEB_CONTROL_FILE)'
+	#   DEB_CONF_FILES_FILE: '$(DEB_CONF_FILES_FILE)'

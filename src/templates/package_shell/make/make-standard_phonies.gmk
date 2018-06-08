@@ -14,3 +14,8 @@ install: \
 	package_install-conditional_additions \
 	package_install-final_cleanup
 
+.PHONY: debug-make-standard_phonies
+
+debug-make-standard_phonies:
+	# make-standard_phonies - debug variables
+	#   (no variables defined)

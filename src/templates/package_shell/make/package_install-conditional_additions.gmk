@@ -69,3 +69,9 @@ ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")
 	find $(ROOT_DIR)/etc -type d | xargs -r chmod 755
 	find $(ROOT_DIR)/etc -type f | xargs -r chmod 644
 endif
+
+.PHONY: debug-package_install-conditional_additions
+
+debug-package_install-conditional_additions:
+	# package_install-conditional_additions - debug variables
+	#   (no variables defined)

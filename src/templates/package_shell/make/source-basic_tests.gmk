@@ -40,3 +40,9 @@ test-doc:
 		-name '*.pl' \
 		-o -name '*.pm' \
 	| xargs -r podchecker
+
+.PHONY: debug-source-basic_tests
+
+debug-source-basic_tests:
+	# source-basic_tests - debug variables
+	#   (no variables defined)
