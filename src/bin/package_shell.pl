@@ -35,10 +35,9 @@ use File::Basename;
 use IO::File;
 use File::Spec;
 use Template;
-use Data::Dumper;
 
 use Getopt::Long;
-
+my $DEBUG=1;
 my $OPTIONS_VALUES = {};
 my $OPTIONS=[
 	'project-path=s',
@@ -241,7 +240,7 @@ sub make_stuff
 		or die "Can't make package info directory: $!";
 
 	use Data::Dumper;
-	print Dumper($project_info),$/;
+	# print Dumper($project_info),$/;
 
 	chdir $project_info->{package_name};
 	write_template_file('changelog','changelog',{ project => $project_info});
@@ -253,15 +252,21 @@ sub make_stuff
 	make_path('install_scripts');
 		chdir('install_scripts');
 		`cp $install_script_dir/* .`;
-		chdir ('..');
+		chdir ('../../');
 	
-
 	
+	debug("Adding package shell stuff.",$/);
 	my $package_shell_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'package_shell';
+	debug("Package shell dir: ", $package_shell_dir,$/);
 	make_path('package_shell');
 		chdir('package_shell');
 		`cp -r $package_shell_dir/* .`;
 		chdir ('..');
 	
 	
+}
+
+sub debug
+{
+	print @_ if ($DEBUG);
 }
