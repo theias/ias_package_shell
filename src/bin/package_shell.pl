@@ -247,6 +247,7 @@ sub make_stuff
 	write_template_file('description','description',{ project => $project_info});
 	write_template_file('rpm_specific','rpm_specific',{ project => $project_info});
 	write_template_file('deb_control','deb_control', { project => $project_info});
+	write_template_file('artifact_variables.gmk','artifact_variables.gmk', { project => $project_info});
 
 	my $install_script_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'install_scripts';
 	make_path('install_scripts');
