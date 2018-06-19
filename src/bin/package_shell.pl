@@ -200,6 +200,9 @@ sub process_project_dir
 	rcopy($PROJECT_TEMPLATE_DIR, $project_dir)
 		or die ("Unable to rcopy $PROJECT_TEMPLATE_DIR to $project_dir: $!");
 
+	use File::Find;
+	
+
 	rename(
 		"$project_dir/gitignore",
 		"$project_dir/.gitignore"
