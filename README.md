@@ -113,14 +113,5 @@ fakeroot make clean install rpmspec rpmbuild
 
 # TODO
 
-1.  Make the RPM building portion "behave" with fakeroot.  Currently
-everything is owned by root and will have to manually be changed in the make file.
-dir_traverse.pl can easily be modified to add the appropriate
-```
-echo "%defattr(644, root, root,755) " >> $(SPEC_FILE)
-```
-entries, and this is on my list
-of things to do.
-
 1.  Better abstraction so as to include more packaging systems.
 
