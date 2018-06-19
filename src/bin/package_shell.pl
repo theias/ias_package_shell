@@ -88,15 +88,15 @@ our $TEMPLATE_CONFIG = {};
 if ($OPTIONS_VALUES->{'auto-dev-mode'})
 {
 	$PROJECT_TEMPLATE_DIR="$RealBin/../templates/project_dir";
-	$TEMPLATE_CONFIG->{INCLUDE_PATH} = "$RealBin/../templates";
+	# $TEMPLATE_CONFIG->{INCLUDE_PATH} = "$RealBin/../templates";
 	#print "HAR\n";
-	print $TEMPLATE_CONFIG->{INCLUDE_PATH},$/;
+	# print $TEMPLATE_CONFIG->{INCLUDE_PATH},$/;
 	#exit;
 }
 else
 {
 	$PROJECT_TEMPLATE_DIR="/opt/IAS/templates/ias-package-shell/project_dir";
-	$TEMPLATE_CONFIG->{INCLUDE_PATH} = '/opt/IAS/templates/ias-package-shell';
+	# $TEMPLATE_CONFIG->{INCLUDE_PATH} = '/opt/IAS/templates/ias-package-shell';
 	
 }
 
@@ -168,6 +168,8 @@ sub prompt_and_get
 sub write_template_file
 {
 	my ($output_file_name, $input_file_name, $template_hr) = @_;
+	
+	# print "Template HR:", Dumper($template_hr),$/;
 
 	my $template = new Template($TEMPLATE_CONFIG)
 		|| die "$Template::ERROR\n";
@@ -201,7 +203,16 @@ sub process_project_dir
 		or die ("Unable to rcopy $PROJECT_TEMPLATE_DIR to $project_dir: $!");
 
 	use File::Find;
-	
+
+	find(
+		{
+			no_chdir => 1, 
+			wanted => sub {
+				process_file_template($_, $project_info)
+			},
+		},
+		$project_dir
+	);
 
 	rename(
 		"$project_dir/gitignore",
@@ -216,93 +227,34 @@ sub process_project_dir
 
 }
 
-sub make_stuff
+sub process_file_template
 {
-	my ($project_info) = @_;
-	use File::Path qw(make_path);
+	
+	my ($source_file_name, $project_info) = @_;
+	my $temp_file_name = File::Temp::tmpnam();
+	
+	# use Cwd;
+	# print "Cwd: ", getcwd,$/;
+	# print "Exists!$/" if (-e $source_file_name);
+	
+	return if (! -f $source_file_name);
+	# print "Source file: $source_file_name\n";
+	# print "Temp file: $temp_file_name\n";
+
+	use File::Temp;
 	use File::Copy;
 	
-	# This all needs to be redone in a more consistent way
-	
-	my $project_dir = $project_info->{project_name};
-	
-
-	
-	if (defined $OPTIONS_VALUES->{'project-path'})
-	{
-		$project_dir = $OPTIONS_VALUES->{'project-path'}
-	}		
-	
-	if (! -d $project_dir)
-	{
-		make_path($project_dir)
-		or die "Cant mkdir: $project_info->{project_name} : $!";
-	}
-	
-	chdir $project_dir
-		or die "Couldn't chdir to $project_dir";
-	
-	write_template_file('.gitignore','gitignore',{ project => $project_info});
-	write_template_file('Makefile', 'Makefile', { project => $project_info});
-	write_template_file('README.md','README.md',{ project => $project_info});
-	
-	# spell checking
-	write_template_file('spell_check.sh','spell_check.sh',{ project => $project_info});
-	chmod 0755, 'spell_check.sh';
-	write_template_file('aspell_project.pws','aspell_project.pws',{ project => $project_info});
-	
-	make_path('src')
-		or die "Can't make src dir.";
-
-	make_path('src/bin')
-		or die "Can't make bin dir.";
-	
-	# make_path('src/etc')
-	#	or die "Can't make etc dir.";
-
-	make_path('run_scripts')
-		or die "Can't make run_scripts dir.";
-		
-	make_path('tests')
-		or die "Can't make tests path.";
-	
-	make_path('doc')
-		or die "Can't make doc path.";
-	write_template_file('doc/index.md','index.md',{ project => $project_info});
-	
-		
-	
-	# Project Directory / Package info directory	
-	make_path($project_info->{package_name})
-		or die "Can't make package info directory: $!";
-
-	use Data::Dumper;
-	# print Dumper($project_info),$/;
-
-	chdir $project_info->{package_name};
-	write_template_file('changelog','changelog',{ project => $project_info});
-	write_template_file('description','description',{ project => $project_info});
-	write_template_file('rpm_specific','rpm_specific',{ project => $project_info});
-	write_template_file('deb_control','deb_control', { project => $project_info});
-	write_template_file('artifact_variables.gmk','artifact_variables.gmk', { project => $project_info});
-
-	my $install_script_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'install_scripts';
-	make_path('install_scripts');
-		chdir('install_scripts');
-		`cp $install_script_dir/* .`;
-		chdir ('../../');
-	
-	
-	# debug("Adding package shell stuff.",$/);
-	my $package_shell_dir = $TEMPLATE_CONFIG->{INCLUDE_PATH}.'/'.'package_shell';
-	# debug("Package shell dir: ", $package_shell_dir,$/);
-	make_path('package_shell');
-		chdir('package_shell');
-		`cp -r $package_shell_dir/* .`;
-		chdir ('..');
-	
-	
+	write_template_file(
+		$temp_file_name, 
+		$source_file_name,
+		{
+			project => $project_info,
+		}
+	);
+	copy($temp_file_name, $source_file_name);
+	unlink($temp_file_name);
 }
+
 
 sub debug
 {
