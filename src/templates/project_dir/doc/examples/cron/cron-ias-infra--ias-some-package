@@ -1,4 +1,5 @@
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root@localhost
 
-# 50 6 * * * root /opt/IAS/bin/ias-some-package/some_ias_scrpt.pl 
+# 50 6 * * * root /opt/IAS/bin/[% project.package_name %]/hello.sh 
