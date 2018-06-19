@@ -80,12 +80,14 @@ if($SCRIPT_PATH_PARTS[-2] eq 'src')
 }
 
 our $TEMPLATE_DIR;
+our $PROJECT_TEMPLATE_DIR;
 
 our $TEMPLATE_CONFIG = {};
 
 
 if ($OPTIONS_VALUES->{'auto-dev-mode'})
 {
+	$PROJECT_TEMPLATE_DIR="$RealBin/../templates/project_dir";
 	$TEMPLATE_CONFIG->{INCLUDE_PATH} = "$RealBin/../templates";
 	#print "HAR\n";
 	print $TEMPLATE_CONFIG->{INCLUDE_PATH},$/;
@@ -93,6 +95,7 @@ if ($OPTIONS_VALUES->{'auto-dev-mode'})
 }
 else
 {
+	$PROJECT_TEMPLATE_DIR="/opt/IAS/templates/ias-package-shell/project_dir";
 	$TEMPLATE_CONFIG->{INCLUDE_PATH} = '/opt/IAS/templates/ias-package-shell';
 	
 }
@@ -130,7 +133,12 @@ get_stuff($project_info, $prompts, 'summary');
 get_stuff($project_info, $prompts, 'wiki_page');
 get_stuff($project_info, $prompts, 'ticket_url');
 
-make_stuff($project_info);
+$project_info->{package_name} = $project_info->{project_name};
+$project_info->{package_name} =~ s/_/-/g;
+
+process_project_dir($project_info);
+
+# make_stuff($project_info);
 exit;
 
 sub get_stuff
@@ -178,6 +186,33 @@ sub write_template_file
 	$fh->close();
 }
 
+sub process_project_dir
+{
+	use File::Copy::Recursive qw(rcopy);
+	my ($project_info) = @_;
+
+	my $project_dir = $project_info->{project_name};
+	if (defined $OPTIONS_VALUES->{'project-path'})
+	{
+		$project_dir = $OPTIONS_VALUES->{'project-path'}
+	}
+
+	rcopy($PROJECT_TEMPLATE_DIR, $project_dir)
+		or die ("Unable to rcopy $PROJECT_TEMPLATE_DIR to $project_dir: $!");
+
+	rename(
+		"$project_dir/gitignore",
+		"$project_dir/.gitignore"
+	);
+		
+	rename(
+		"$project_dir/artifact-dir",
+		"$project_dir/".$project_info->{package_name}
+	);
+
+
+}
+
 sub make_stuff
 {
 	my ($project_info) = @_;
@@ -188,8 +223,7 @@ sub make_stuff
 	
 	my $project_dir = $project_info->{project_name};
 	
-	$project_info->{package_name} = $project_info->{project_name};
-	$project_info->{package_name} =~ s/_/-/g;
+
 	
 	if (defined $OPTIONS_VALUES->{'project-path'})
 	{
