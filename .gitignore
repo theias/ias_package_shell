@@ -1,1 +1,3 @@
 build
+tests/ias_test_package
+.nfs*
