@@ -100,10 +100,6 @@ else
 	
 }
 
-my $project_info = {};
-
-$project_info->{dater} = `date -R`;
-chomp($project_info->{dater});
 
 my $prompts = {
 	project_name => {display => "Project name", required => 1},
@@ -113,30 +109,45 @@ my $prompts = {
 	ticket_url => {display => "Ticket URL",},
 };
 
-while (! defined $project_info->{project_name}
-	|| $project_info->{project_name} =~ m/^\d/
-	|| $project_info->{project_name} =~ m/\s+/
-	|| $project_info->{project_name} =~ m/-/
-)
-{
-	print "Project names must not begin with numbers.\n";
-	print "Project names must not contain whitespace or dashes.\n";
-	print "Example: some_project_name\n";
-	get_stuff($project_info, $prompts, 'project_name');
-}
-
-my @project_name_parts = split('_', $project_info->{project_name});
-$project_info->{aspell_name_parts} = join("\n", @project_name_parts);
-
-get_stuff($project_info, $prompts, 'summary');
-
-get_stuff($project_info, $prompts, 'wiki_page');
-get_stuff($project_info, $prompts, 'ticket_url');
-
-$project_info->{package_name} = $project_info->{project_name};
-$project_info->{package_name} =~ s/_/-/g;
+my $project_info = get_project_info($prompts);
 
 process_project_dir($project_info);
+
+
+sub get_project_info
+{
+	my ($prompts) = @_;
+	
+	my $project_info = {};
+
+	$project_info->{dater} = `date -R`;
+	chomp($project_info->{dater});
+
+	while (! defined $project_info->{project_name}
+		|| $project_info->{project_name} =~ m/^\d/
+		|| $project_info->{project_name} =~ m/\s+/
+		|| $project_info->{project_name} =~ m/-/
+	)
+	{
+		print "Project names must not begin with numbers.\n";
+		print "Project names must not contain whitespace or dashes.\n";
+		print "Example: some_project_name\n";
+		get_stuff($project_info, $prompts, 'project_name');
+	}
+
+	my @project_name_parts = split('_', $project_info->{project_name});
+	$project_info->{aspell_name_parts} = join("\n", @project_name_parts);
+
+	get_stuff($project_info, $prompts, 'summary');
+
+	get_stuff($project_info, $prompts, 'wiki_page');
+	get_stuff($project_info, $prompts, 'ticket_url');
+
+	$project_info->{package_name} = $project_info->{project_name};
+	$project_info->{package_name} =~ s/_/-/g;
+	return $project_info;
+}
+
 
 # make_stuff($project_info);
 exit;
