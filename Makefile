@@ -190,28 +190,28 @@ ifneq ("$(wildcard $(PROJECT_DIR)/doc/*)","")
 	# Installing more documentation
 	mkdir -p $(DOC_INST_DIR)
 	cp -r $(PROJECT_DIR)/doc $(DOC_INST_DIR)/doc
-	find $(DOC_INST_DIR) -type f | xargs -r chmod 644
+	find $(DOC_INST_DIR) -type f -print0 | xargs -0 -r chmod 644
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*)","") 
 	# Installing binaries.
 	mkdir -p $(ROOT_DIR)/$(BIN_DIR)
 	cp -r $(SRC_DIR)/bin/* $(ROOT_DIR)/$(BIN_DIR)
-	find $(BIN_INST_DIR) -type f | xargs -r chmod 755
+	find $(BIN_INST_DIR) -type f -print0  | xargs -0 -r chmod 755
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/cgi-bin/*)","") 
 	# Installing CGI-BIN files
 	mkdir -p $(ROOT_DIR)/$(CGI_BIN_DIR)
 	-cp -r $(SRC_DIR)/cgi-bin/* $(ROOT_DIR)/$(CGI_BIN_DIR)
-	-find $(CGI_BIN_INST_DIR) -type f | xargs -r chmod 755
+	-find $(CGI_BIN_INST_DIR) -type f -print0  | xargs -0 -r chmod 755
 endif
 	
 ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
 	# Installing Templates
 	mkdir -p $(TEMPLATE_INST_DIR)
 	cp -r $(SRC_DIR)/templates/* $(TEMPLATE_INST_DIR)
-	find $(TEMPLATE_INST_DIR) -type f | xargs -r chmod 644
+	find $(TEMPLATE_INST_DIR) -type f -print0  | xargs -0 -r chmod 644
 endif
 
 # lib
@@ -219,7 +219,7 @@ ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")
 	# Installing libraries
 	mkdir -p $(LIB_INST_DIR)
 	cp -r $(SRC_DIR)/lib/* $(LIB_INST_DIR)
-	find $(LIB_INST_DIR) -type f | xargs -r chmod 644
+	find $(LIB_INST_DIR) -type f -print0  | xargs -0 -r chmod 644
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
