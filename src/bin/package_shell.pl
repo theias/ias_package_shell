@@ -192,6 +192,9 @@ sub write_template_file
 sub process_project_dir
 {
 	use File::Copy::Recursive qw(rcopy);
+	
+	local $File::Copy::Recursive::KeepMode = 0;
+	
 	my ($project_info) = @_;
 
 	my $project_dir = $project_info->{project_name};
