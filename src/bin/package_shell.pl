@@ -203,6 +203,14 @@ sub process_project_dir
 	rcopy($PROJECT_TEMPLATE_DIR, $project_dir)
 		or die ("Unable to rcopy $PROJECT_TEMPLATE_DIR to $project_dir: $!");
 
+	finddepth(
+		{
+			wanted => sub { rename_path_template($_, $project_info); },
+			no_chdir => 1,
+		},
+		$project_dir,
+	);
+
 	use File::Find;
 
 	finddepth(
@@ -220,10 +228,10 @@ sub process_project_dir
 		"$project_dir/.gitignore"
 	);
 		
-	rename(
-		"$project_dir/artifact-dir",
-		"$project_dir/".$project_info->{package_name}
-	);
+	# rename(
+	# 	"$project_dir/artifact-dir",
+	# 	"$project_dir/".$project_info->{package_name}
+	# );
 
 
 }
@@ -255,6 +263,34 @@ sub process_file_template
 	);
 	copy($temp_file_name, $source_file_name);
 	unlink($temp_file_name);
+}
+
+sub rename_path_template
+{
+	my ($path, $template_data) = @_;
+
+	use File::Basename;
+	# print "$path",$/;
+	
+	my $template = new Template()
+		|| die $Template::ERROR,$/;
+	
+	my $basename = basename($path);
+	my $dirname = dirname($path);
+	debug("Basename: ", $basename,$/);
+	debug("Dirname: ", $dirname,$/);
+	
+	my $new_basename;
+	$template->process(
+		\$basename,
+		$template_data,
+		\$new_basename,
+	);
+	my $new_file_name = join('/', $dirname, $new_basename);
+
+	debug("New file name: $new_file_name",$/);
+	
+	rename($path, $new_file_name);
 }
 
 
