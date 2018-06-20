@@ -205,7 +205,7 @@ sub process_project_dir
 
 	finddepth(
 		{
-			wanted => sub { rename_path_template($_, $project_info); },
+			wanted => sub { rename_path_template($_, { project => $project_info}); },
 			no_chdir => 1,
 		},
 		$project_dir,
@@ -222,17 +222,6 @@ sub process_project_dir
 		},
 		$project_dir
 	);
-
-	rename(
-		"$project_dir/gitignore",
-		"$project_dir/.gitignore"
-	);
-		
-	# rename(
-	# 	"$project_dir/artifact-dir",
-	# 	"$project_dir/".$project_info->{package_name}
-	# );
-
 
 }
 
