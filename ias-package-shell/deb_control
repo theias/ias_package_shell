@@ -1,4 +1,4 @@
 Architecture: all
 Maintainer: CHANGEME
-Depends: libtemplate-perl
+Depends: libtemplate-perl , libfile-copy-recursive-perl
 Priority: optional
