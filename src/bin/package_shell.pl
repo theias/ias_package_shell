@@ -37,7 +37,7 @@ use File::Spec;
 use Template;
 
 use Getopt::Long;
-my $DEBUG=1;
+my $DEBUG=0;
 my $OPTIONS_VALUES = {};
 my $OPTIONS=[
 	'project-path=s',
@@ -112,6 +112,7 @@ my $prompts = {
 my $project_info = get_project_info($prompts);
 
 process_project_dir($project_info);
+exit;
 
 
 sub get_project_info
@@ -148,10 +149,6 @@ sub get_project_info
 	return $project_info;
 }
 
-
-# make_stuff($project_info);
-exit;
-
 sub get_stuff
 {
 	my ($hr, $prompts, $field) = @_;
@@ -178,25 +175,18 @@ sub prompt_and_get
 
 sub write_template_file
 {
-	my ($output_file_name, $input_file_name, $template_hr) = @_;
+	my ($output_file_name, $input_file_name, $template_vars_hr) = @_;
 	
 	# print "Template HR:", Dumper($template_hr),$/;
 
 	my $template = new Template($TEMPLATE_CONFIG)
 		|| die "$Template::ERROR\n";
 
-	my $output = '';
 	$template->process($input_file_name,
-		$template_hr,
-		\$output,
+		$template_vars_hr,
+		$output_file_name,
 	) or die $template->error();
 
-	my $fh = new IO::File ">$output_file_name"
-		or die "Can't open $output_file_name for writing: $!";
-	
-	print $fh $output;
-	
-	$fh->close();
 }
 
 sub process_project_dir
@@ -215,7 +205,7 @@ sub process_project_dir
 
 	use File::Find;
 
-	find(
+	finddepth(
 		{
 			no_chdir => 1, 
 			wanted => sub {
@@ -240,17 +230,18 @@ sub process_project_dir
 
 sub process_file_template
 {
-	
 	my ($source_file_name, $project_info) = @_;
 	my $temp_file_name = File::Temp::tmpnam();
+
+	debug("Processing file template: $source_file_name",$/);
 	
 	# use Cwd;
 	# print "Cwd: ", getcwd,$/;
 	# print "Exists!$/" if (-e $source_file_name);
 	
 	return if (! -f $source_file_name);
-	# print "Source file: $source_file_name\n";
-	# print "Temp file: $temp_file_name\n";
+	debug("Source file: $source_file_name\n");
+	debug("Temp file: $temp_file_name\n");
 
 	use File::Temp;
 	use File::Copy;
