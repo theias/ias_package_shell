@@ -62,22 +62,12 @@ Optionally, you can build a package which will install the binaries in
 ### Debian packages
 
 ```
-  fakeroot make clean install debsetup debbuild
+  fakeroot make package-deb
 ```
 
 ### RHEL Based Systems
 
-If you're building from a tag, and the spec file has been put
-into the tag, then you can build this on any system that has
-rpm building utilities installed, without fakeroot:
-
 ```
-make clean install cp-rpmspec rpmbuild
-```
-
-This will generate a new spec file every time:
-
-```
-fakeroot make clean install rpmspec rpmbuild
+fakeroot make package-rpm
 ```
 
