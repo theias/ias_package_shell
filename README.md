@@ -22,25 +22,27 @@ and the version of the package you want to release:
 ## RPM
 
 ```
-fakeroot make clean install rpmspec rpmbuild
+fakeroot make package-rpm
 ```
 
 ## DEB
 
 ```
-fakeroot make clean install debsetup debbuild
+fakeroot make package-deb
 ```
 
 ## Install the Generated Package
+
+RHEL based:
 
 ```
 yum localinstall -y ...
 ```
 
-or
+Debian based:
 
 ```
-dpkg -i ...
+gdebi ...
 ```
 
 Your script you put into bin will be installed to
@@ -90,28 +92,15 @@ All of the requisite things can be installed via packages.
 ### Building a Debian package
 
 ```
-  fakeroot make clean install debsetup debbuild
+  fakeroot make package-deb
 ```
 
 ### Building an RPM
 
-If you're building from a tag, and the spec file has been put
-into the tag, then you can build this on any system that has
-rpm building utilities installed, without fakeroot:
-
 ```
-make clean install cp-rpmspec rpmbuild
-```
-
-Sometimes the spec file might not be checked in with the tag.
-
-This will generate a new spec file every time:
-
-```
-fakeroot make clean install rpmspec rpmbuild
+fakeroot make package-rpm
 ```
 
 # TODO
 
-1.  Better abstraction so as to include more packaging systems.
 

@@ -230,7 +230,7 @@ These are hard-and-fast rules to the system.  The "Why?" can be answered, but wi
 
 * Tags are never modified (unless you're adding the resultant spec file to them)
 * Tags are never deleted (unless they've never been deployed to production)
-* ./build/ directories are never checked in .  Don't check those in.
+* ./build/ directories are never checked in.  Don't check those in.
 
 # Next Steps
 
