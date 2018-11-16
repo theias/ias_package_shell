@@ -56,7 +56,7 @@ Run this:
 You will be asked questions:
 
 <pre>Required:
-Package name: my-first-ias-package
+Package name: my_first_ias_package
 Required:
 Short summary: This is the first package I've built at IAS.
 Wiki page: https://www.net.ias.edu
