@@ -168,6 +168,8 @@ https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-
 
 ### git
 
+For large, and busy projects, or just for practice, here's how you'd branch to make a release in git, and merge it back:
+
 ```
 git
 # Get the most recent version of the tree.
