@@ -6,19 +6,19 @@ Make sure all of your changes have been committed.  Then follow these steps.
 
 Edit the changelog file:
 
-<pre>
+'''
 vi my-first-ias-package/changelog
-</pre>
+'''
 As of now, its contents should look like this:
 
-<pre>
+'''
   1 my-first-ias-package 1.0.0-0 noarch; urgency=low
   2 
   3     * initial packaging stuff
   4 
   5  -- YOUR NAME HERE YOUR@EMAIL.HERE  Wed, 24 May 2017 13:59:41 -0400
   6 
-</pre>
+'''
 
 You will copy, paste, and change the following things to the top of the file.  An example of an updated changelog is at the end of this document.
 
@@ -73,12 +73,12 @@ Self Explanatory.
 This is the date after which no changes to the tag / package will be made. There are few exceptions; mainly the automatically generated RPM spec file can be checked in after this date.
 
 This date format can be obtained (on a GNU system) with:
-<pre>
+'''
 date -R
-</pre>
+'''
 
 ## Updated changelog Example
-<pre>
+'''
   1 my-first-ias-package 1.1.0-0 noarch; urgency=low
   2 
   3     * Better verification of user input.
@@ -92,21 +92,21 @@ date -R
  11 
  12  -- Martin VanWinkle mvanwinkle@ias.edu  Wed, 24 May 2017 13:59:41 -0400
  13 
-</pre>
+'''
 
 # Build the Package (test)
 Go to your project directory (the one with the Makefile)
 
-<pre>
-fakeroot make clean install rpmspec rpmbuild
-</pre>
+'''
+fakeroot make package-rpm
+'''
 
 # Tagging for Release
 In our example, the newly released version is 1.1.0-0 , so that's what we use in our tagging command:
 
 ## git
 
-<pre>
+'''
 # Get the most recent version of the tree.
 # be careful though that this is, in fact, what you want to tag
 git pull
@@ -127,14 +127,14 @@ git tag
 push origin master
 # Push the tag
 git push origin v1.1.0-0
-</pre>
+'''
 
 ## svn
 
-<pre>
+'''
 svn cp https://svn.ias.edu/repos/network/applications/my_first_ias_package \
 https://svn.ias.edu/repos/network/tags/applications/my_first_ias_package/my_first_package-1.1.0-0
-</pre>
+'''
 
 # Post Process
 
@@ -142,7 +142,7 @@ Once tagged, you can proceed with the rest of the deployment process, including 
 
 * Checking out / exporting the source tree at the tag.
 * Building the package
-  * RPM <pre>fakeroot make clean install rpmspec rpmbuild</pre>
-  * deb <pre>fakeroot make clean install debsetup debbuild</pre>
+  * RPM '''fakeroot make package-rpm'''
+  * deb '''fakeroot make package-deb'''
 * Testing the package installs correctly
 * Importing the package into a package repository

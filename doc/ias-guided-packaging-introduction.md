@@ -17,25 +17,25 @@ The process documented here "should always work" given that you have chosen a un
 
 # Requirements
 
-## Package Name
+## Project Name
 
-You will require a name for your package. In this example we use **my-first-ias-package** as the name.
+You will require a name for your project. In this example we use **my_first_ias_package** as the name.
 
-I suggest using a different package name. The format I've chosen for "more official" packages at IAS 
-is: **ias-(package-name)**.
+I suggest using a different project name. The format I've chosen for "more official" packages at IAS 
+is: **ias_(project_name)**.
 
 Examples:
 
-* ias-package-shell
-* ias-snmp-titan
-* ias-perl-script-infra
+* ias_package_shell
+* ias_snmp_titan
+* ias_perl_script_infra
 
 In the following steps you will be asked to give a package name to the package template generator.
 
 Valid names:
 
-* Don't use spaces, underscores, or any other special charactor
-* Separate words with dashes
+* Don't use spaces, dashes, or any other special charactor
+* Separate words with underscores
 
 ## Packaging Host
 
@@ -49,36 +49,39 @@ Please follow the instructions in README.md to get that set up.
 
 Run this:
 
-<pre>
+'''
 /opt/IAS/bin/ias-package-shell/package_shell.pl
-</pre>
+'''
 
 You will be asked questions:
 
-<pre>Required:
-Package name: my-first-ias-package
+'''$ /opt/IAS/bin/ias-package-shell/package_shell.pl
+Project names must not begin with numbers.
+Project names must not contain whitespace or dashes.
+Example: some_project_name
+Required:
+Project name: my_first_ias_package
 Required:
 Short summary: This is the first package I've built at IAS.
 Wiki page: https://www.net.ias.edu
 Ticket URL: https://rt.ias.edu/Display.html?290290
-</pre>
+
+'''
 
 Your package template has been created.
 
 
 ## Check it into Revison Control
 
-<pre>cd my_first_package</pre>
-
-Note how the hyphens have been replaced with underscores. The package template maker creates "project directories" under which packages can be built.
+'''cd my_first_package'''
 
 ### SVN example
-<pre>
+'''
 svn mkdir https://example.com/repos/applications/my_first_ias_package
 svn co https://example.com/repos/applications/my_first_ias_package .
 svn add *
 svn commit -m 'Checking in the package template.'
-</pre>
+'''
 
 You're ready to start adding files.
 
@@ -86,46 +89,46 @@ You're ready to start adding files.
 ## Develop
 Let's put a script in.
 
-<pre>
+'''
 touch src/bin/a-script-file.sh
 vi src/bin/a-script-file.sh
-</pre>
+'''
 
 Put these contents in that file:
 
-<pre>
+'''
 #!/bin/bash
 echo 'Hello, world!'
-</pre>
+'''
 
 Add the file: (svn / git)
 
-<pre>
+'''
 svn add src/bin/a-script-file.sh
 svn commit -m 'Checking it in.'
-</pre>
+'''
 
 ## Package
 
 ### RPM
 
-<pre>
-fakeroot make clean install rpmspec rpmbuild
-</pre>
+'''
+fakeroot make package-rpm
+'''
 
 The final messages will be from rpm-build spitting out your new RPM.
 
-<pre>Wrote: stuff/build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm</pre>
+'''Wrote: stuff/build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm'''
 
 You can examine the contents of the RPM with:
 
-<pre>less ./build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm</pre>
+'''less ./build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm'''
 
 ### DEB
 
-<pre>
-fakeroot make clean debsetup debbuild
-</pre>
+'''
+fakeroot make package-deb
+'''
 
 The final message(s) will contain the name of the deb that was built.
 
@@ -133,14 +136,14 @@ The final message(s) will contain the name of the deb that was built.
 
 Your package is ready to be installed.
 
-<pre>
+'''
 sudo rpm -ivh ./build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm
-</pre>
+'''
 You can also run your shiny new script:
 
-<pre>
+'''
 /opt/IAS/bin/my-first-ias-package/a-script-file.sh
-</pre>
+'''
 
 ## Tagging
 
@@ -155,14 +158,14 @@ svn mkdir https://svn.example.com//tags/applications/my_first_ias_package
 
 #### Making Tags
 
-<pre>
+'''
 svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
 https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
-</pre>
+'''
 
 ### git
 
-<pre>
+'''
 git
 # Get the most recent version of the tree.
 # be careful though that this is, in fact, what you want to tag
@@ -184,13 +187,13 @@ git tag
 push origin master
 # Push the tag
 git push origin v1.0.0-0
-</pre>
+'''
 
 ## Package the Tagged Version
 
 This process checks out the tagged version of your software and builds a package out of it.
 
-<pre>
+'''
 mkdir ~/build
 cd ~/build
 # SVN:
@@ -198,17 +201,17 @@ svn co https://svn.example.com/tags/applications/my_first_ias_package/my_first_p
 # GIT:
 git clone ...
 cd my_first_package-1.0.0-0
-fakeroot make clean install rpmspec rpmbuild
-</pre>
+fakeroot make package-rpm
+'''
 
 Copy the spec file under ./build/ to ./my-first-package/ , add it, and commit.
 
-<pre>
+'''
 cp ./build/my-first-ias-package-1.0.0-0--pkginfo.spec ./my-first-package/
 # SVN , GIT
 svn add ./my-first-package/my-first-ias-package-1.0.0-0--pkginfo.spec
 svn commit
-</pre>
+'''
 
 ## Deploy to Production
 
