@@ -137,8 +137,11 @@ The final message(s) will contain the name of the deb that was built.
 Your package is ready to be installed.
 
 ```
-sudo rpm -ivh ./build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm
+sudo yum install ./build/noarch/my-first-ias-package-1.0.0-0.noarch.rpm
 ```
+
+For Debian based systems, I recommend using "gdebi" to install the package.
+
 You can also run your shiny new script:
 
 ```
