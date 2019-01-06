@@ -1,0 +1,2 @@
+ARTIFACT_NAME = [% project.package_name %]
+

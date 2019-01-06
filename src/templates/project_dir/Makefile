@@ -1,6 +1,9 @@
+MAKEFILE_PATH = $(strip $(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
+
 ARTIFACT_NAME = [% project.package_name %]
 
-MAKEFILE_PATH = $(strip $(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
+include $(MAKEFILE_PATH)/base.gmk
+
 
 PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 
