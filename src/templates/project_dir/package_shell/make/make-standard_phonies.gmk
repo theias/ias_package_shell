@@ -12,6 +12,7 @@ install: \
 	builddir \
 	package_install-base_directories \
 	package_install-conditional_additions \
+	package_install-mapped_symbolic_links \
 	package_install-final_cleanup
 
 .PHONY: debug-make-standard_phonies

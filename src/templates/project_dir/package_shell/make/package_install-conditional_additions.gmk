@@ -57,10 +57,10 @@ endif
 
 ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
 	# Installing project directory configuration
-	mkdir -p $(ROOT_DIR)/$(CONF_DIR)
-	cp -r $(SRC_DIR)/etc/* $(ROOT_DIR)/$(CONF_DIR)/
-	find $(ROOT_DIR)/$(CONF_DIR)/ -type d -exec chmod 755 {} \;
-	find $(ROOT_DIR)/$(CONF_DIR)/ -type f -exec chmod 644 {} \;
+	mkdir -p $(CONF_INST_DIR)
+	cp -r $(SRC_DIR)/etc/* $(CONF_INST_DIR)/
+	find $(CONF_INST_DIR)/ -type d -exec chmod 755 {} \;
+	find $(CONF_INST_DIR)/ -type f -exec chmod 644 {} \;
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")

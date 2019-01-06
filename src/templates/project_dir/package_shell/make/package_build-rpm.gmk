@@ -9,7 +9,7 @@ SPEC_FILE = $(BUILD_DIR)/$(SPEC_FILE_NAME)
 
 package-rpm: clean all install rpmspec rpmbuild
 
-rpmspec: install
+rpmspec: 
 	echo "" > $(SPEC_FILE)
 	echo "Name: $(ARTIFACT_NAME)" >> $(SPEC_FILE)
 	echo "Version: $(SRC_VERSION)" >> $(SPEC_FILE)
@@ -33,37 +33,50 @@ rpmspec: install
 	echo "$(OUTPUT_DIR)" >> $(SPEC_FILE)
 	echo "$(LOG_DIR)" >> $(SPEC_FILE)
 
-# Binaries
-ifneq ("$(wildcard $(SRC_DIR)/bin/*)","")
-	echo "$(BIN_DIR)" >> $(SPEC_FILE)
-endif
+        # Binaries
+	if [ -e "$(BIN_INST_DIR)" ]; then \
+		echo "$(BIN_DIR)" >> "$(SPEC_FILE)" ; \
+	fi
 
-# cgi-bin
-ifneq ("$(wildcard $(SRC_DIR)/cgi-bin/*)","")
-	echo "$(CGI_BIN_DIR)" >> $(SPEC_FILE)
-endif
+        # cgi-bin
+	if [ -e "$(CGI_BIN_INST_DIR)" ]; then \
+		echo "$(CGI_BIN_DIR)" >> "$(SPEC_FILE)" ; \
+        fi
+	
+	# Templates
+	if [ -e "$(TEMPLATE_INST_DIR)" ]; then \
+		echo "$(TEMPLATE_DIR)" >> "$(SPEC_FILE)" ; \
+        fi
 
-# Templates
-ifneq ("$(wildcard $(SRC_DIR)/templates/*)","")	
-	echo "$(TEMPLATE_DIR)" >> $(SPEC_FILE)
-endif
+	# Libraries
+	if [ -e "$(LIB_INST_DIR)" ]; then \
+		echo "$(LIB_DIR)" >> "$(SPEC_FILE)" ; \
+        fi
 
-# Libraries
-ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")
-	echo "$(LIB_DIR)" >> $(SPEC_FILE)
-endif
+	# Project Config
+	if [ -e "$(CONF_INST_DIR)" ]; then \
+		echo "%dir $(CONF_DIR)" >> "$(SPEC_FILE)" ; \
+		find "$(CONF_INST_DIR)" -type f \
+		|  sed -r "s|$(ROOT_DIR)|%config(noreplace) |" \
+		 >> "$(SPEC_FILE)" ; \
+        fi
 
-# Project Config, example /opt/IAS/etc/(project-name)
-ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
-	echo "%dir $(CONF_DIR)" >> $(SPEC_FILE)
-	-find $(ROOT_DIR)/$(CONF_DIR) -type f | sed -r "s|$(ROOT_DIR)|%config |"  >> $(SPEC_FILE)
-endif
 
-ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")
-	# /etc/ config files
-	-find $(ROOT_DIR)/etc -type f |  sed -r "s|$(ROOT_DIR)|%config(noreplace) |" >> $(SPEC_FILE)
-endif
+	# /usr/bin
 
+	-for file in $$( find -P "$(ROOT_DIR)/usr/bin/" -type f,l ); do \
+		echo "$$file" | sed -r "s|$(ROOT_DIR)||" >> "$(SPEC_FILE)" ; \
+	done
+
+	# end /usr/bin/
+
+	# /etc
+
+	if [ -e "$(ROOT_DIR)/etc" ]; then \
+		find "$(ROOT_DIR)/etc" -type f \
+		| sed -r "s|$(ROOT_DIR)|%config(noreplace) |" \
+		 >> "$(SPEC_FILE)" ; \
+        fi
 
 cp-rpmspec: builddir
 	cp $(ARTIFACT_NAME)/$(SPEC_FILE_NAME) $(SPEC_FILE)
