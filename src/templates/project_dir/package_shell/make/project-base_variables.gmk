@@ -15,8 +15,6 @@ DROP_DIR = $(SCRATCH_AREA)/drop
 BUILD_DIR = $(SCRATCH_AREA)/build
 ROOT_DIR = $(BUILD_DIR)/root
 
-BASE_DIR = /opt/IAS
-
 .PHONY: debug-project-base_variables
 
 debug-project-base_variables:

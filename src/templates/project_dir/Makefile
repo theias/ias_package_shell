@@ -1,9 +1,6 @@
 MAKEFILE_PATH = $(strip $(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
 
-ARTIFACT_NAME = [% project.package_name %]
-
 include $(MAKEFILE_PATH)/base.gmk
-
 
 PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 
@@ -14,6 +11,10 @@ ifneq ("$(wildcard $(ARTIFACT_NAME)/artifact_variables.gmk)","")
 	include $(ARTIFACT_NAME)/artifact_variables.gmk
 else
 	include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+endif
+
+ifeq ($(BASE_DIR),)
+	BASE_DIR := $([% project.BASE_DIR %])
 endif
 
 

@@ -111,6 +111,13 @@ my $prompts = {
 
 my $project_info = get_project_info($prompts);
 
+$project_info->{BASE_DIR} ||= '/opt/IAS';
+$project_info->{AUTOMATION_USER} ||= 'iasnetauto';
+$project_info->{AUTOMATION_GROUP} ||= 'iasnetauto';
+$project_info->{USE_AUTOMATION_PERMISSIONS} ||= 0;
+$project_info->{installed_directory_layout} ||= 'project_directories-full_project.gmk';
+
+
 process_project_dir($project_info);
 exit;
 

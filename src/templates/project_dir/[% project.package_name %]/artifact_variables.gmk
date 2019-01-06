@@ -1,7 +1,7 @@
 # Set to 1 to enable useful permission settings
-USE_AUTOMATION_PERMISSIONS = 0
-AUTOMATION_USER = iasnetauto
-AUTOMATION_GROUP = iasnetauto
+USE_AUTOMATION_PERMISSIONS = [% project.USE_AUTOMATION_PERMISSIONS %]
+AUTOMATION_USER = [% project.AUTOMATION_USER %]
+AUTOMATION_GROUP = [% project.AUTOMATION_GROUP %]
 
 # Symbolically link things in src/bin to /usr/bin
 # 
@@ -13,5 +13,5 @@ AUTOMATION_GROUP = iasnetauto
 # Advanced usage below
 
 # Use the "Full Project" layout.
-include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
 
