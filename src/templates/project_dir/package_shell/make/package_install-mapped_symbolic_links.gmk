@@ -16,5 +16,5 @@ package_install-mapped_symbolic_links-usr_bin:
 .PHONY: debug-package_install-mapped_symbolic_links
 
 debug-package_install-mapped_symbolic_links:
-	# symbolc_links-usr_bin: $(symbolic_links-usr_bin)
-	# mapped_symbolic_links-usr_bin : $(mapped_symbolic_links-usr_bin)
+	# package_install-mapped_symbolic_links - debug variables
+	#   symbolc_links-usr_bin: $(symbolic_links-usr_bin)
