@@ -1,4 +1,4 @@
-MAKEFILE_PATH = $(strip $(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
+MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
 include $(MAKEFILE_PATH)/base.gmk
 
