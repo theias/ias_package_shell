@@ -5,6 +5,7 @@
 # [%# 
 #
 # This comment is intended for whomever is editing ias_package_shell
+# This is parsable by both make and by the template toolkit.
 #
 # # IMPORTANT
 #
@@ -19,15 +20,6 @@
 #
 # %]
 
-
-###########################
-# IMPORTANT
-###########################
-
-# This is a STATIC file that should not be changed
-
-# It's not supposed to be changed by a template system
-# 
 
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
