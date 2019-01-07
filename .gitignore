@@ -1,4 +1,14 @@
 build
+drop/*
+
+src/input/*
+src/output/*
+src/log/*
+
 tests/ias_test_package
 .nfs*
+
+
 *.swp
+__pycache__/
+*.pyc
