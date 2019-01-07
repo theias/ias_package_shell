@@ -21,7 +21,10 @@ ifneq ($(PACKAGE_SELF_REPLICATING),"")
 	
 	mkdir -p "$(SELF_REPLICATING_FULL_DIR_PATH)"
 	ls | egrep -v '(build|\.svn)' | \
-		xargs -n1 -i cp -r {} "./build/$(ARTIFACT_NAME)-$(RELEASE_VERSION)/"
+		xargs -n1 -i cp -r {} "$(SELF_REPLICATING_FULL_DIR_PATH)/"
+
+	# This is not ideal, as packages SHOULD be made from a build server from a
+	# new checkout of the tree, and the following things should NOT be there
 
 	# input, output, and log should not get shipped with the tar.gz	
 	-rm -rf "$(SELF_REPLICATING_FULL_DIR)/src/input"
