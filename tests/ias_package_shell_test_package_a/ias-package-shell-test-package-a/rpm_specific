@@ -1,0 +1,7 @@
+#Requires: 
+AutoReqProv: no 
+Summary: For use to test things in the source repo.
+Group: Generic Group
+License: Generic License
+Vendor: Generic Vendor
+BuildArch: noarch
