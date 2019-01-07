@@ -4,6 +4,24 @@
 
 package_install-conditional_additions: package_install-base_directories
 
+ifneq ($(PACKAGE_SELF_REPLICATING),"")
+	# Self Replicating
+	# This will put a copy of the source tree in a tar.gz file
+	# in the doc dir.
+	
+	# TODO: ls should not be used this way.
+	# TODO: Maybe move this into a separate make file?
+	
+	mkdir "./build/$(ARTIFACT_NAME)-$(RELEASE_VERSION)"
+	ls | egrep -v '(build|\.svn)' | \
+		xargs -n1 -i cp -r {} "./build/$(ARTIFACT_NAME)-$(RELEASE_VERSION)/"
+	
+	cd "$(BUILD_DIR)" && tar czvf "$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz" \
+		"$(ARTIFACT_NAME)-$(RELEASE_VERSION)"
+	
+	mv "$(BUILD_DIR)/$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz" "$(DOC_INST_DIR)/"
+endif
+
 ifneq ("$(wildcard $(SRC_DIR)/run_scripts/*)","")
 	# Installing run scripts
 	cp -r $(SRC_DIR)/run_scripts $(DOC_INST_DIR)/run_scripts

@@ -9,6 +9,8 @@ symbolic_links-usr_bin = \
    	ias_package_shell_test_package_a_hello.sh
 # 	another_program.sh
 
+# Copy of the source tree distributed with the package,
+# PACKAGE_SELF_REPLICATING=1
 
 # Advanced usage below
 
