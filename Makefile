@@ -2,6 +2,13 @@ MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
 include $(MAKEFILE_PATH)/base.gmk
 
+# The following are optional in base.gmk ,
+# but must be set before the other stuff loads
+ifeq ($(BASE_DIR),)
+	BASE_DIR := /opt/IAS
+endif
+
+
 PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project-base_variables.gmk
@@ -13,10 +20,6 @@ endif
 
 ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)
 	include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
-endif
-
-ifeq ($(BASE_DIR),)
-	BASE_DIR := $( '/opt/IAS')
 endif
 
 
