@@ -14,7 +14,7 @@ else
 endif
 
 ifeq ($(BASE_DIR),)
-	BASE_DIR := $([% project.BASE_DIR %])
+	BASE_DIR := $( '[% project.BASE_DIR %]')
 endif
 
 

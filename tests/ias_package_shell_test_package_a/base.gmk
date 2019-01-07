@@ -3,3 +3,5 @@
 
 ARTIFACT_NAME = ias-package-shell-test-package-a
 
+# This is set here only for testing purposes.
+BASE_DIR=/opt/IAS
