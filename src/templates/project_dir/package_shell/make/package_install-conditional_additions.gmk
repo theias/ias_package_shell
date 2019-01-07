@@ -27,11 +27,11 @@ ifneq ($(PACKAGE_SELF_REPLICATING),"")
 	# new checkout of the tree, and the following things should NOT be there
 
 	# input, output, and log should not get shipped with the tar.gz	
-	-rm -rf "$(SELF_REPLICATING_FULL_DIR)/src/input"
-	-rm -rf	"$(SELF_REPLICATING_FULL_DIR)/src/output"
-	-rm -rf "$(SELF_REPLICATING_FULL_DIR)/src/log"
+	-rm -rf "$(SELF_REPLICATING_FULL_DIR_PATH)/src/input"
+	-rm -rf	"$(SELF_REPLICATING_FULL_DIR_PATH)/src/output"
+	-rm -rf "$(SELF_REPLICATING_FULL_DIR_PATH)/src/log"
 	
-	cd "$(SELF_REPPLICATING_PARENT_DIR)" && tar czvf "$(SELF_REPLICATING_TAR_GZ_NAME)" \
+	cd "$(SELF_REPLICATING_PARENT_DIR)" && tar czvf "$(SELF_REPLICATING_TAR_GZ_NAME)" \
 		"$(SELF_REPLICATING_COPY_DIR)"
 	
 	# Currently we just put the tar ball into the doc dir; which probably isn't fantastic	
