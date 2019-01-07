@@ -1,3 +1,34 @@
+###########################
+# Advanced Usage below.
+###########################
+
+# [%# 
+#
+# This comment is intended for whomever is editing ias_package_shell
+#
+# # IMPORTANT
+#
+# You might be viewing this file through a symbolic link.
+# you are trying to edit ias_package_shell/Makefile
+# instead of ias_package_shell/src/templates/project_dir/Makefile
+#
+# For the ias_package_shell package itself, this is NEVER to be changed
+# to accomodate for the ias_package_shell program 
+#
+# The idea here is that ias_package_shell should 
+#
+# %]
+
+
+###########################
+# IMPORTANT
+###########################
+
+# This is a STATIC file that should not be changed
+
+# It's not supposed to be changed by a template system
+# 
+
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
 include $(MAKEFILE_PATH)/base.gmk
