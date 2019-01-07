@@ -3,10 +3,10 @@
 all:
 
 clean:
-	-rm -rf $(BUILD_DIR)
+	-rm -rf "$(BUILD_BASE_DIR)"
 
 builddir:
-	if [ ! -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi;
+	if [ ! -d "$(BUILD_DIR)" ]; then mkdir -p "$(BUILD_DIR)"; fi;
 
 install: \
 	builddir \
