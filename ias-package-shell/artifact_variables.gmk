@@ -5,8 +5,8 @@ AUTOMATION_GROUP = iasnetauto
 
 # Symbolically link things in src/bin to /usr/bin
 # 
-# symbolic_links-usr_bin = \
-#   	hello.sh 
+symbolic_links-usr_bin = \
+   	ias_package_shell.pl
 # 	another_program.sh
 
 # Copy of the source tree distributed with the package,

@@ -1,8 +1,15 @@
 .PHONY: package_install-conditional_additions
 
+SELF_REPLICATING_PARENT_DIR=$(BUILD_DIR)
+SELF_REPLICATING_COPY_DIR=$(ARTIFACT_NAME)-$(RELEASE_VERSION)
+SELF_REPLICATING_FULL_DIR_PATH=$(SELF_REPLICATING_PARENT_DIR)/$(SELF_REPLICATING_COPY_DIR)
+SELF_REPLICATING_TAR_GZ_NAME=$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz
+
+
 # Conditional additions
 
 package_install-conditional_additions: package_install-base_directories
+
 
 ifneq ($(PACKAGE_SELF_REPLICATING),"")
 	# Self Replicating
@@ -12,14 +19,20 @@ ifneq ($(PACKAGE_SELF_REPLICATING),"")
 	# TODO: ls should not be used this way.
 	# TODO: Maybe move this into a separate make file?
 	
-	mkdir "./build/$(ARTIFACT_NAME)-$(RELEASE_VERSION)"
+	mkdir -p "$(SELF_REPLICATING_FULL_DIR_PATH)"
 	ls | egrep -v '(build|\.svn)' | \
 		xargs -n1 -i cp -r {} "./build/$(ARTIFACT_NAME)-$(RELEASE_VERSION)/"
+
+	# input, output, and log should not get shipped with the tar.gz	
+	-rm -rf "$(SELF_REPLICATING_FULL_DIR)/src/input"
+	-rm -rf	"$(SELF_REPLICATING_FULL_DIR)/src/output"
+	-rm -rf "$(SELF_REPLICATING_FULL_DIR)/src/log"
 	
-	cd "$(BUILD_DIR)" && tar czvf "$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz" \
-		"$(ARTIFACT_NAME)-$(RELEASE_VERSION)"
+	cd "$(SELF_REPPLICATING_PARENT_DIR)" && tar czvf "$(SELF_REPLICATING_TAR_GZ_NAME)" \
+		"$(SELF_REPLICATING_COPY_DIR)"
 	
-	mv "$(BUILD_DIR)/$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz" "$(DOC_INST_DIR)/"
+	# Currently we just put the tar ball into the doc dir; which probably isn't fantastic	
+	mv "$(SELF_REPLICATING_PARENT_DIR)/$(SELF_REPLICATING_TAR_GZ_NAME)" "$(DOC_INST_DIR)"
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/run_scripts/*)","")
@@ -92,4 +105,8 @@ endif
 
 debug-package_install-conditional_additions:
 	# package_install-conditional_additions - debug variables
-	#   (no variables defined)
+	#   SELF_REPLICATING_PARENT_DIR: '$(SELF_REPLICATING_PARENT_DIR)'
+	#   SELF_REPLICATING_COPY_DIR: '$(SELF_REPLICATING_COPY_DIR)'
+	#   SELF_REPLICATING_FULL_DIR_PATH: '$(SELF_REPLICATING_FULL_DIR_PATH)'
+	#   SELF_REPLICATING_TAR_GZ_NAME: '$(SELF_REPLICATING_TAR_GZ_NAME)'
+
