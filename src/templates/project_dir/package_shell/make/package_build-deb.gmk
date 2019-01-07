@@ -13,10 +13,10 @@ debsetup:
 	mkdir -p $(DEB_DIR)
 	echo "Package: " $(ARTIFACT_NAME) >> $(DEB_CONTROL_FILE)
 	echo "Version: " $(RELEASE_VERSION) >> $(DEB_CONTROL_FILE)
-	cat $(ARTIFACT_NAME)/deb_control >> $(DEB_CONTROL_FILE)
+	cat $(ARTIFACT_DIR)/deb_control >> $(DEB_CONTROL_FILE)
 	
 	echo "Description: " $(SUMMARY) >> $(DEB_CONTROL_FILE)
-	cat ./$(ARTIFACT_NAME)/description | egrep -v '^\s*$$' | sed 's/^/ /' >> $(DEB_CONTROL_FILE)
+	cat ./$(ARTIFACT_DIR)/description | egrep -v '^\s*$$' | sed 's/^/ /' >> $(DEB_CONTROL_FILE)
 
 # Project Config, example /opt/IAS/etc/(project-name)
 ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")

@@ -18,8 +18,8 @@ PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project-base_variables.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/make-standard_phonies.gmk
 
-ifneq ("$(wildcard $(ARTIFACT_NAME)/artifact_variables.gmk)","")
-	include $(ARTIFACT_NAME)/artifact_variables.gmk
+ifneq ("$(wildcard $(ARTIFACT_DIR)/artifact_variables.gmk)","")
+	include $(ARTIFACT_DIR)/artifact_variables.gmk
 endif
 
 ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)

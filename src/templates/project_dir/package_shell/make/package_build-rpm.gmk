@@ -17,11 +17,11 @@ rpmspec:
 	echo `svn info |grep '^URL:'` >> $(SPEC_FILE)
 	echo "Packager: $$USER" >> $(SPEC_FILE)
 	
-	# cat ./$(ARTIFACT_NAME)/pkginfo >> $(SPEC_FILE)
-	cat ./$(ARTIFACT_NAME)/rpm_specific >> $(SPEC_FILE)
-	for file in $(ARTIFACT_NAME)/install_scripts/*; do echo "%"`basename $$file` >> $(SPEC_FILE); cat $$file >> $(SPEC_FILE); done
+	# cat ./$(ARTIFACT_DIR)/pkginfo >> $(SPEC_FILE)
+	cat ./$(ARTIFACT_DIR)/rpm_specific >> $(SPEC_FILE)
+	for file in $(ARTIFACT_DIR)/install_scripts/*; do echo "%"`basename $$file` >> $(SPEC_FILE); cat $$file >> $(SPEC_FILE); done
 	echo "%description" >> $(SPEC_FILE)
-	cat ./$(ARTIFACT_NAME)/description >> $(SPEC_FILE)
+	cat ./$(ARTIFACT_DIR)/description >> $(SPEC_FILE)
 	echo "" >> $(SPEC_FILE)
 
 	echo "%files" >> $(SPEC_FILE)
@@ -79,7 +79,7 @@ rpmspec:
         fi
 
 cp-rpmspec: builddir
-	cp $(ARTIFACT_NAME)/$(SPEC_FILE_NAME) $(SPEC_FILE)
+	cp $(ARTIFACT_DIR)/$(SPEC_FILE_NAME) $(SPEC_FILE)
 
 rpmbuild:
 	rpmbuild --buildroot $(ROOT_DIR) -bb $(SPEC_FILE) --define '_topdir $(BUILD_DIR)' --define '_rpmtopdir $(BUILD_DIR)'
