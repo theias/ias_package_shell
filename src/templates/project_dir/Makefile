@@ -9,7 +9,9 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/make-standard_phonies.gmk
 
 ifneq ("$(wildcard $(ARTIFACT_NAME)/artifact_variables.gmk)","")
 	include $(ARTIFACT_NAME)/artifact_variables.gmk
-else
+endif
+
+ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)
 	include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 endif
 
