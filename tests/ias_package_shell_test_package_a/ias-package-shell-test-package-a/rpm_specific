@@ -1,7 +1,1 @@
-#Requires: 
-AutoReqProv: no 
-Summary: For use to test things in the source repo.
-Group: Generic Group
-License: Generic License
-Vendor: Generic Vendor
-BuildArch: noarch
+../../../src/templates/project_dir/[% project.package_name %]/rpm_specific

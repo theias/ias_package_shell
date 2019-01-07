@@ -1,3 +1,1 @@
-Ticket URL: none
-Wiki Page: none
-
+../../../src/templates/project_dir/[% project.package_name %]/description

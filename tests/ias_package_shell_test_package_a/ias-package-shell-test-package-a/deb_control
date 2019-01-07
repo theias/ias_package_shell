@@ -1,4 +1,1 @@
-Architecture: all
-Maintainer: CHANGEME
-#Depends: rsync
-Priority: optional
+../../../src/templates/project_dir/[% project.package_name %]/deb_control
