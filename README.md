@@ -9,7 +9,7 @@ Supplemental documentation for this project can be found here:
 # Synopsis (a _very_ short example)
 
 ```
-package_shell.pl
+ias_package_shell.pl
 ```
 
 And answer questions.  It will create a project tree for you.
@@ -70,7 +70,7 @@ rpm_specific (rpm systems), or deb_control (deb systems) and run it.
 
 You can build a package and install it, which will take care of the dependencies and install into:
 
-* /opt/IAS/bin/ias-package-shell/package_shell.pl
+* /opt/IAS/bin/ias-package-shell/ias_package_shell.pl
 
 
 ### Requirements

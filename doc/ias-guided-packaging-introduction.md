@@ -50,12 +50,12 @@ Please follow the instructions in README.md to get that set up.
 Run this:
 
 ```
-/opt/IAS/bin/ias-package-shell/package_shell.pl
+/opt/IAS/bin/ias-package-shell/ias_package_shell.pl
 ```
 
 You will be asked questions:
 
-```$ /opt/IAS/bin/ias-package-shell/package_shell.pl
+```$ /opt/IAS/bin/ias-package-shell/ias_package_shell.pl
 Project names must not begin with numbers.
 Project names must not contain whitespace or dashes.
 Example: some_project_name

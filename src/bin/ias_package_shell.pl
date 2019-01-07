@@ -5,11 +5,11 @@
 
 =head1 NAME
 
-package_shell.pl - Creates a project directory that generates an installable package
+ias_package_shell.pl - Creates a project directory that generates an installable package
 
 =head1 SYNOPSIS
 
-  package_shell.pl
+  ias_package_shell.pl
 
 =head1 DESCRIPTION
 
