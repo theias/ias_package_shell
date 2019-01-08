@@ -1,3 +1,34 @@
+
+############################
+# Package Dependencies
+############################
+#
+# RPM dependencies (separated by whitespace)
+# PACKAGE_SHELL_RPM_REQUIRES = \
+# 	rsync \
+# 	screen
+
+# DEB dependencies (separated by commas)
+# PACKAGE_SHELL_DEB_DEPENDENCIES = \
+# 	rsync, \
+#	screen
+
+###########################
+# end Package Dependencies
+###########################
+
+##############################
+# Generic Packaging Parameters
+##############################
+
+PACKAGE_SHELL_MAINTAINER = CHANGEME
+PACKAGE_SHELL_LICENSE = Generic License
+PACKAGE_SHELL_VENDOR = Generic Vendor
+PACKAGE_SHELL_SUMMARY = [% project.summary %]
+
+PACKAGE_SHELL_RPM_GROUP = Generic Group
+
+
 # Set to 1 to enable useful permission settings
 USE_AUTOMATION_PERMISSIONS = [% project.USE_AUTOMATION_PERMISSIONS %]
 AUTOMATION_USER = [% project.AUTOMATION_USER %]
@@ -12,7 +43,13 @@ AUTOMATION_GROUP = [% project.AUTOMATION_GROUP %]
 # Copy of the source tree distributed with the package,
 # PACKAGE_SELF_REPLICATING=1
 
+#######################
 # Advanced usage below
+#######################
+
+#######################
+# Debian Settings
+#######################
 
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
