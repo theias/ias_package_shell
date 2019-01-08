@@ -19,7 +19,7 @@ directories.
 
 =head1 OPTIONS
 
-  [ --project-path ] - optionally specify where to drop the project files. 
+  [ --project-output-path ] - optionally specify where to drop the project files. 
 
 =cut
 
@@ -40,7 +40,7 @@ use Getopt::Long;
 my $DEBUG=0;
 my $OPTIONS_VALUES = {};
 my $OPTIONS=[
-	'project-path=s',
+	'project-path-output=s',
 ];
 
 GetOptions(
@@ -205,9 +205,12 @@ sub process_project_dir
 	my ($project_info) = @_;
 
 	my $project_dir = $project_info->{project_name};
-	if (defined $OPTIONS_VALUES->{'project-path'})
+	if (defined $OPTIONS_VALUES->{'project-path-output'})
 	{
-		$project_dir = $OPTIONS_VALUES->{'project-path'}
+		$project_dir = join('/',
+			$OPTIONS_VALUES->{'project-path-output'},
+			$project_info->{project_name},
+		);
 	}
 
 	rcopy($PROJECT_TEMPLATE_DIR, $project_dir)
@@ -215,7 +218,9 @@ sub process_project_dir
 
 	finddepth(
 		{
-			wanted => sub { rename_path_template($_, { project => $project_info}); },
+			wanted => sub {
+				rename_path_template($_, { project => $project_info});
+			},
 			no_chdir => 1,
 		},
 		$project_dir,
