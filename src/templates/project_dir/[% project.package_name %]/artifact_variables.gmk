@@ -1,34 +1,3 @@
-
-############################
-# Package Dependencies
-############################
-#
-# RPM dependencies (separated by whitespace)
-# PACKAGE_SHELL_RPM_REQUIRES = \
-# 	rsync \
-# 	screen
-
-# DEB dependencies (separated by commas)
-# PACKAGE_SHELL_DEB_DEPENDENCIES = \
-# 	rsync, \
-#	screen
-
-###########################
-# end Package Dependencies
-###########################
-
-##############################
-# Generic Packaging Parameters
-##############################
-
-PACKAGE_SHELL_MAINTAINER = CHANGEME
-PACKAGE_SHELL_LICENSE = Generic License
-PACKAGE_SHELL_VENDOR = Generic Vendor
-PACKAGE_SHELL_SUMMARY = [% project.summary %]
-
-PACKAGE_SHELL_RPM_GROUP = Generic Group
-
-
 # Set to 1 to enable useful permission settings
 USE_AUTOMATION_PERMISSIONS = [% project.USE_AUTOMATION_PERMISSIONS %]
 AUTOMATION_USER = [% project.AUTOMATION_USER %]
