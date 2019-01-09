@@ -102,7 +102,7 @@ package_install-templates:
 ifneq ("$(wildcard $(SRC_DIR)/templates/*)","") 
 	# Installing Templates
 	mkdir -p $(TEMPLATE_INST_DIR)
-	cp -r $(SRC_DIR)/templates/* $(TEMPLATE_INST_DIR)
+	cp -r $(SRC_DIR)/templates/* $(TEMPLATE_INST_DIR)/
 	find $(TEMPLATE_INST_DIR) -type d -exec chmod 755 {} \;
 	find $(TEMPLATE_INST_DIR) -type f -exec chmod 644 {} \;
 endif
