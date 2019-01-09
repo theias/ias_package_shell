@@ -1,3 +1,10 @@
+ias-package-shell 3.0.0-0 noarch; urgency=low
+
+	* Symbolically link programs to /usr/bin
+	* Better Makefile organization
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Wed, 09 Jan 2019 13:20:24 -0500
+
 ias-package-shell 2.6.1-0 noarch; urgency=low
 
 	* Make file containing variables is also in artifact dir
