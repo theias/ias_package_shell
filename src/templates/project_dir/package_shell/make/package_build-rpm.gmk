@@ -68,7 +68,7 @@ rpmspec:
 
 	# /usr/bin
 
-	-for file in $$( find -P "$(ROOT_DIR)/usr/bin/" -type f,l ); do \
+	-for file in $$( find -P "$(ROOT_DIR)/usr/bin/" \( -type l -o -type f \) ); do \
 		echo "$$file" | sed -r "s|$(ROOT_DIR)||" >> "$(SPEC_FILE)" ; \
 	done
 
