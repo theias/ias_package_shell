@@ -1,5 +1,7 @@
 # Advanced Usage
 # You don't need to edit this file unless you are an advanced user.
 
-ARTIFACT_NAME = [% project.package_name %]
+ifeq ($(ARTIFACT_NAME),)
+	ARTIFACT_NAME = [% project.package_name %]
+endif
 
