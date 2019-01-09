@@ -16,10 +16,6 @@ AUTOMATION_GROUP = [% project.AUTOMATION_GROUP %]
 # Advanced usage below
 #######################
 
-#######################
-# Debian Settings
-#######################
-
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
 
