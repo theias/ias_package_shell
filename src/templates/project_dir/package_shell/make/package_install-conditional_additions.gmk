@@ -11,7 +11,7 @@ SELF_REPLICATING_TAR_GZ_NAME=$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz
 package_install-conditional_additions: package_install-base_directories
 
 
-ifneq ($(PACKAGE_SELF_REPLICATING),"")
+ifeq ($(PACKAGE_SELF_REPLICATING),"1")
 	# Self Replicating
 	# This will put a copy of the source tree in a tar.gz file
 	# in the doc dir.

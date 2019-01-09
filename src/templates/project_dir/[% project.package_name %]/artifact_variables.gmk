@@ -6,7 +6,7 @@ AUTOMATION_GROUP = [% project.AUTOMATION_GROUP %]
 # Symbolically link things in src/bin to /usr/bin
 # 
 # symbolic_links-usr_bin = \
-#   	hello.sh 
+#	[% project.package_name %]_hello.sh \ 
 # 	another_program.sh
 
 # Copy of the source tree distributed with the package,
