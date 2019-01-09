@@ -1,4 +1,3 @@
-.PHONY: package_install-conditional_additions
 
 SELF_REPLICATING_PARENT_DIR=$(BUILD_DIR)
 SELF_REPLICATING_COPY_DIR=$(ARTIFACT_NAME)-$(RELEASE_VERSION)
@@ -8,7 +7,9 @@ SELF_REPLICATING_TAR_GZ_NAME=$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz
 
 # Conditional additions
 
-package_install-conditional_additions: \
+.PHONY: package_install-conditional_additions-ALL
+
+package_install-conditional_additions-ALL: \
 	package_install-base_directories \
 	package_install-self_replication \
 	package_install-run_scripts \
