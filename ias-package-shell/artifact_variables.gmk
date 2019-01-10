@@ -21,5 +21,5 @@ artifact_install: \
 	package_install-self_replication \
 	package_install-code_repository_info_md_file
 
-artifact_install_cleanup:
+artifact_install-post:
 	# This is where the cleanup happens.
