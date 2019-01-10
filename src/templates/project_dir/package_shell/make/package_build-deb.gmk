@@ -16,24 +16,25 @@ debsetup:
 	cat "$(ARTIFACT_DIR)/deb_control" >> "$(DEB_CONTROL_FILE)"
 	
 	echo "Description: " "$(SUMMARY)" >> "$(DEB_CONTROL_FILE)"
-	cat "./$(ARTIFACT_DIR)/description" \
+	cat "$(ARTIFACT_DIR)/description" \
 		| egrep -v '^\s*$$' \
 		| sed 's/^/ /' \
 		>> "$(DEB_CONTROL_FILE)"
 
-# Project Config, example /opt/IAS/etc/(project-name)
-ifneq ("$(wildcard $(SRC_DIR)/etc/*)","")
-	-find "$(ROOT_DIR)/$(CONF_DIR)" -type f \
-		| sed -r "s|$(ROOT_DIR)||" \
-		>> $(DEB_CONF_FILES_FILE)
-endif
+	# Project config files
+	if [ -e "$(CONF_INST_DIR)" ]; then \
+		find "$(CONF_INST_DIR)" \( -type l -o -type f \) \
+			|  sed -r "s|$(ROOT_DIR)||" \
+			>> "$(DEB_CONF_FILES_FILE)" ; \
+	fi
 
-ifneq ("$(wildcard $(SRC_DIR)/root_etc/*)","")
 	# /etc/ config files
-	-find $(ROOT_DIR)/etc -type f \
-		|  sed -r "s|$(ROOT_DIR)||" \
-		>> "$(DEB_CONF_FILES_FILE)"
-endif
+	if [ -e "$(ROOT_DIR)/etc" ]; then \
+		find "$(ROOT_DIR)/etc" \( -type l -o -type f \) \
+			|  sed -r "s|$(ROOT_DIR)||" \
+			>> "$(DEB_CONF_FILES_FILE)" ; \
+	fi
+	
 	
 debbuild:
 	dpkg-deb --build "$(ROOT_DIR)" "$(BUILD_DIR)"
