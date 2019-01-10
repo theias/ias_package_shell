@@ -45,17 +45,17 @@ rpmspec:
         # cgi-bin
 	if [ -e "$(CGI_BIN_INST_DIR)" ]; then \
 		echo "$(CGI_BIN_DIR)" >> "$(SPEC_FILE)" ; \
-        fi
+	fi
 	
 	# Templates
 	if [ -e "$(TEMPLATE_INST_DIR)" ]; then \
 		echo "$(TEMPLATE_DIR)" >> "$(SPEC_FILE)" ; \
-        fi
+	fi
 
 	# Libraries
 	if [ -e "$(LIB_INST_DIR)" ]; then \
 		echo "$(LIB_DIR)" >> "$(SPEC_FILE)" ; \
-        fi
+	fi
 
 	# Project Config
 	if [ -e "$(CONF_INST_DIR)" ]; then \
@@ -63,7 +63,7 @@ rpmspec:
 		find "$(CONF_INST_DIR)" -type f \
 		|  sed -r "s|$(ROOT_DIR)|%config(noreplace) |" \
 		 >> "$(SPEC_FILE)" ; \
-        fi
+	fi
 
 
 	# /usr/bin
@@ -80,7 +80,7 @@ rpmspec:
 		find "$(ROOT_DIR)/etc" -type f \
 		| sed -r "s|$(ROOT_DIR)|%config(noreplace) |" \
 		 >> "$(SPEC_FILE)" ; \
-        fi
+	fi
 
 cp-rpmspec: builddir
 	cp "$(ARTIFACT_DIR)/$(SPEC_FILE_NAME)" "$(SPEC_FILE)"
