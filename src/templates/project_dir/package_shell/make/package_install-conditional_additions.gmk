@@ -14,7 +14,7 @@ package_install-conditional_additions-ALL: \
 	package_install-self_replication \
 	package_install-run_scripts \
 	package_install-docs \
-	code_repository_info_md_file \
+	package_install-code_repository_info_md_file \
 	package_install-bin \
 	package_install-cgi-bin \
 	package_install-templates \
@@ -25,7 +25,6 @@ package_install-conditional_additions-ALL: \
 .PHONY: package_install-self_replication
 package_install-self_replication:
 
-ifeq ($(PACKAGE_SELF_REPLICATING),"1")
 	# Self Replicating
 	# This will put a copy of the source tree in a tar.gz file
 	# in the doc dir.
@@ -50,7 +49,7 @@ ifeq ($(PACKAGE_SELF_REPLICATING),"1")
 	
 	# Currently we just put the tar ball into the doc dir; which probably isn't fantastic	
 	mv "$(SELF_REPLICATING_PARENT_DIR)/$(SELF_REPLICATING_TAR_GZ_NAME)" "$(DOC_INST_DIR)"
-endif
+
 
 .PHONY: package_install-run_scripts
 package_install-run_scripts:

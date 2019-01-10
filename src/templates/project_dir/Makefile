@@ -30,7 +30,7 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/package_shell-additional.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/source-basic_tests.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-base_directories.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-conditional_additions.gmk
-include $(PACKAGE_SHELL_INCLUDE_PATH)/package_build-code_repository_info.gmk
+include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-code_repository_info.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-final_cleanup.gmk
 
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-mapped_symbolic_links.gmk
@@ -54,7 +54,7 @@ debug-ALL: \
 	debug-package_build-rpm \
 	debug-package_build-deb \
 	debug-package_install-mapped_symbolic_links \
-	debug-package_build-code_repository_info
+	debug-package_install-code_repository_info
 
 .PHONY: debug-base-Makefile
 
