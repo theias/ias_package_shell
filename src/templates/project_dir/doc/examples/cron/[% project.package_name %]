@@ -2,4 +2,4 @@ SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root@localhost
 
-# 50 6 * * * root /opt/IAS/bin/[% project.package_name %]/hello.sh 
+# 50 6 * * * [% project.AUTOMATION_USER %] /opt/IAS/bin/[% project.package_name %]/[% project.package_name %]_hello.sh
