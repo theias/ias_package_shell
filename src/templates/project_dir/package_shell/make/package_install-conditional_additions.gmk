@@ -14,7 +14,6 @@ package_install-conditional_additions-ALL: \
 	package_install-self_replication \
 	package_install-run_scripts \
 	package_install-docs \
-	package_install-code_repository_info_md_file \
 	package_install-bin \
 	package_install-cgi-bin \
 	package_install-templates \

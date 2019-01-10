@@ -13,7 +13,9 @@ install: \
 	package_install-base_directories \
 	artifact_install \
 	package_install-mapped_symbolic_links \
-	package_install-final_cleanup
+	package_install-final_cleanup \
+	artifact_install-post
+
 
 .PHONY: debug-make-standard_phonies
 

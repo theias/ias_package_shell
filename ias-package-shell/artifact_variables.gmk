@@ -18,5 +18,8 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
 artifact_install: \
 	package_install-conditional_additions-ALL \
-	package_install-self_replication
+	package_install-self_replication \
+	package_install-code_repository_info_md_file
 
+artifact_install_cleanup:
+	# This is where the cleanup happens.
