@@ -2,7 +2,11 @@
 
 all:
 
-clean:
+clean: project-standard_clean artifact_clean
+
+artifact_clean:
+
+project-standard_clean:
 	-rm -rf "$(BUILD_BASE_DIR)"
 
 builddir:
@@ -16,6 +20,7 @@ install: \
 	package_install-final_cleanup \
 	artifact_install-post
 
+artifact_install:
 
 .PHONY: debug-make-standard_phonies
 
