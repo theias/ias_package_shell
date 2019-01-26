@@ -1,0 +1,37 @@
+# Set to 1 to enable useful permission settings
+USE_AUTOMATION_PERMISSIONS = 0
+AUTOMATION_USER = iasnetauto
+AUTOMATION_GROUP = iasnetauto
+
+# Symbolically link things in src/bin to /usr/bin
+# 
+# symbolic_links-usr_bin = \
+#	ias-java-test-a_hello.sh \ 
+# 	another_program.sh
+
+#######################
+# Advanced usage below
+#######################
+
+# Use the "Full Project" layout.
+include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
+
+
+JAVA_APP_NAME=IAS/SampleApplication
+
+artifact_debug: artifact_module-java-debug
+
+artifact_clean: \
+	java-clean
+
+artifact_all: java-compile-all
+
+artifact_install: \
+	package_install-standard \
+	java-install
+
+artifact_install-post:
+	echo "This is where the cleanup happens."
+
+
