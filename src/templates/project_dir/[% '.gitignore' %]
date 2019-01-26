@@ -8,3 +8,6 @@ src/log/*
 *.swp
 __pycache__/
 *.pyc
+
+src/java/**/*.class
+
