@@ -1,9 +1,10 @@
 # Currently experimental
 # Use it like this in your artifact_variables.gmk:
 #
-# include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
 # JAVA_APP_NAME=IAS/SampleApplication
-# JAVA_ARTIFACT_CLASSPATH=/path/to/more/libs
+# JAVA_PATHS_PROGRAM=$(SRC_DIR)/bin/java_paths.sh
+#
+# include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
 # artifact_debug: artifact_module-java-debug
 #
 # artifact_clean: \
@@ -20,15 +21,26 @@ JAVA_SRC_JAVA_DIR=$(SRC_DIR)/java
 JAVA_SRC_LIB_DIR=$(SRC_DIR)/lib/java
 JAVA_BASE_LIB_DIR=$(BASE_DIR)/lib/java
 
+ifeq ($(JAVA_PATHS_PROGRAM),)
+	JAVA_CLASSPATH="$(JAVA_SRC_LIB_DIR):$(JAVA_ARTIFACT_CLASSPATH):$(JAVA_BASE_LIB_DIR)"
+	JAVA_SOURCEPATH="$(JAVA_SRC_JAVA_DIR)"
+else
+	JAVA_CLASSPATH=$(shell $(JAVA_PATHS_PROGRAM) classpath )
+	JAVA_SOURCEPATH=$(shell $(JAVA_PATHS_PROGRAM) sourcepath )
+endif
+
 JAVA_SRC_JAVA_FILES=$(wildcard $(JAVA_SRC_JAVA_DIR)/**/*.java)
 JAVA_SRC_JAVA_CLASS_FILES=$(patsubst %.java, %.class, $(JAVA_SRC_JAVA_FILES))
 
 artifact_module-java-debug:
-	# artifact_debug-java - debug variables
+	# artifact_module-java-debug - debug variables
 	#   JAVA_SRC_JAVA_DIR: "$(JAVA_SRC_JAVA_DIR)"
 	#   JAVA_SRC_LIB_DIR: "$(JAVA_SRC_LIB_DIR)"
 	#   JAVA_BASE_LIB_DIR: "$(JAVA_BASE_LIB_DIR)"
 	#   JAVA_ARTIFACT_CLASSPATH: "$(JAVA_ARTIFACT_CLASSPATH)"
+	#   JAVA_PATHS_PROGRAM: "$(JAVA_PATHS_PROGRAM)"
+	#   JAVA_CLASSPATH: "$(JAVA_CLASSPATH)"
+	#   JAVA_SOURCEPATH: "$(JAVA_SOURCEPATH)"
 	
 	#   JAVA_SRC_JAVA_FILES: $(JAVA_SRC_JAVA_FILES)
 	#   JAVA_SRC_JAVA_CLASS_FILES: $(JAVA_SRC_JAVA_CLASS_FILES)
@@ -43,8 +55,8 @@ java-clean:
 
 java-compile-single:
 	javac \
-		-sourcepath "$(JAVA_SRC_JAVA_DIR)" \
-		-classpath "$(JAVA_SRC_LIB_DIR):$(JAVA_BASE_LIB_DIR)" \
+		-sourcepath "$(JAVA_SOURCEPATH)" \
+		-classpath "$(JAVA_CLASSPATH)" \
 		$(JAVA_SRC_JAVA_FILES)
 
 java-compile-all: $(JAVA_SRC_JAVA_CLASS_FILES)
@@ -53,14 +65,14 @@ java-compile-all: $(JAVA_SRC_JAVA_CLASS_FILES)
 	%.java
 	
 	javac  \
-		-sourcepath "$(JAVA_SRC_JAVA_DIR)" \
-		-classpath "$(JAVA_SRC_LIB_DIR):$(JAVA_ARTIFACT_CLASSPATH):$(JAVA_BASE_LIB_DIR)" \
+		-sourcepath "$(JAVA_SOURCEPATH)" \
+		-classpath "$(JAVA_CLASSPATH)" \
 		"$<"
 	
 
 java-run:
 	java \
-	-classpath "$(JAVA_SRC_JAVA_DIR):$(JAVA_SRC_LIB_DIR):$(JAVA_ARTIFACT_CLASSPATH):$(JAVA_BASE_LIB_DIR)" \
+	-classpath "$(JAVA_SOURCEPATH):$(JAVA_CLASSPATH)" \
 	$(JAVA_APP_NAME)
 
 java-install: java-compile
