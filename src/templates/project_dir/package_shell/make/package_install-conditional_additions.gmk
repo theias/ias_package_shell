@@ -11,7 +11,6 @@ SELF_REPLICATING_TAR_GZ_NAME=$(ARTIFACT_NAME)-$(RELEASE_VERSION).tar.gz
 
 package_install-conditional_additions-ALL: \
 	package_install-base_directories \
-	package_install-self_replication \
 	package_install-run_scripts \
 	package_install-docs \
 	package_install-bin \
