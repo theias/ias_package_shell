@@ -21,9 +21,7 @@ ias_package_shell_test_package_a:
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 
-.PHONY: 
-ias_java_test_a
-
+.PHONY: ias_java_test_a
 ias_java_test_a:
 	cd $(MAKEFILE_PATH)/ias_java_test_a \
 	&& make clean \
