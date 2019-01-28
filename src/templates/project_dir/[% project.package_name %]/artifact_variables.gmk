@@ -16,11 +16,3 @@ AUTOMATION_GROUP = [% project.AUTOMATION_GROUP %]
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
 
-.PHONY: artifact_install
-
-artifact_install: \
-	package_install-conditional_additions-ALL \
-	package_install-code_repository_info_md_file
-
-artifact_install-post:
-	echo "This is where the cleanup happens."
