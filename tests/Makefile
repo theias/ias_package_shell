@@ -10,6 +10,7 @@ package_shell_all_tests: \
 .PHONY: ias_package_shell_test_package_basic
 ias_package_shell_test_package_basic:
 	cd $(MAKEFILE_PATH)/ias_package_shell_test_package_basic \
+	&& make release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 	&& make clean
@@ -17,6 +18,7 @@ ias_package_shell_test_package_basic:
 .PHONY: ias_package_shell_test_package_a
 ias_package_shell_test_package_a:
 	cd $(MAKEFILE_PATH)/ias_package_shell_test_package_a \
+	&& make release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 	&& make clean
@@ -24,6 +26,7 @@ ias_package_shell_test_package_a:
 .PHONY: ias_java_test_a
 ias_java_test_a:
 	cd $(MAKEFILE_PATH)/ias_java_test_a \
+	&& make release \
 	&& make java-compile \
 	&& make java-run \
 	&& fakeroot make package-deb \
