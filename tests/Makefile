@@ -5,6 +5,7 @@ MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 package_shell_all_tests: \
 	ias_package_shell_test_package_a \
 	ias_package_shell_test_package_basic \
+	ias_package_shell_test_fresh_package \
 	ias_java_test_a
 
 .PHONY: ias_package_shell_test_package_basic
