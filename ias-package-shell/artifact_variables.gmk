@@ -14,6 +14,10 @@ symbolic_links-usr_bin = \
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
+.PHONY: artifact_test
+artifact_test:
+	cd $(PROJECT_DIR)/tests && make package_shell_all_tests
+
 .PHONY: artifact_install
 
 artifact_install: \
