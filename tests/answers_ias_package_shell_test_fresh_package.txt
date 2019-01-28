@@ -1,0 +1,4 @@
+ias_package_shell_test_fresh_package
+This is a basic full run of the package shell.
+wiki
+ticket

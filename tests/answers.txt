@@ -1,4 +1,0 @@
-ias_test_package
-summary
-wiki
-ticket
