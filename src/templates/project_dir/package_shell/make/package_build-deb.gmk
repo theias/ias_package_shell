@@ -10,16 +10,10 @@ DEB_CONF_FILES_FILE=$(DEB_DIR)/conffiles
 package-deb: clean all install debsetup debbuild
 
 debsetup:
-	mkdir -p "$(DEB_DIR)"
-	echo "Package: " "$(ARTIFACT_NAME)" >> "$(DEB_CONTROL_FILE)"
-	echo "Version: " "$(RELEASE_VERSION)" >> "$(DEB_CONTROL_FILE)"
-	cat "$(ARTIFACT_DIR)/deb_control" >> "$(DEB_CONTROL_FILE)"
-	
-	echo "Description: " "$(SUMMARY)" >> "$(DEB_CONTROL_FILE)"
-	cat "$(ARTIFACT_DIR)/description" \
-		| egrep -v '^\s*$$' \
-		| sed 's/^/ /' \
-		>> "$(DEB_CONTROL_FILE)"
+	# mkdir -p "$(DEB_DIR)"
+	cp -r "$(ARTIFACT_DIR)/DEBIAN" "$(DEB_DIR)"
+	"$(ARTIFACT_DIR)/case.sh" all DEB > "$(DEB_CONTROL_FILE)"
+	cat "$(ARTIFACT_DIR)/DEBIAN/control" >> "$(DEB_CONTROL_FILE)"
 
 	# Project config files
 	if [ -e "$(CONF_INST_DIR)" ]; then \

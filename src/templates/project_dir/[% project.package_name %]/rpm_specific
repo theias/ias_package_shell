@@ -1,7 +1,0 @@
-#Requires: 
-AutoReqProv: no 
-Summary: [% project.summary %]
-Group: Generic Group
-License: Generic License
-Vendor: Generic Vendor
-BuildArch: noarch
