@@ -17,7 +17,9 @@
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-description_file="$script_dir/description"
+description_file="$script_dir/common/description"
+synopsis_file="$script_dir/common/synopsis"
+
 changelog_file="$script_dir/changelog"
 
 artifact_name=$(echo "$script_dir"| awk -F'/' '{print $NF}')
@@ -26,10 +28,6 @@ arch=$( cat "${changelog_file}" | grep -v '^\s+$' | head -n 1 | awk '{print $3}'
 src_version=$( echo "$release_version" | awk -F '-' '{print $1}')
 pkg_version=$( echo "$release_version" | awk -F '-' '{print $2}')
 
-project_summary="[% project.summary %]"
-# [%#
-project_summary="Deploys package templates"
-# %]
 DEB_package_fields=( \
 	"Architecture" \
 	"Priority" \
@@ -59,7 +57,7 @@ function package_field_mapping
 	case $entry in
 	# Generic Entries
 		"DEB_Description_synopsis"|"RPM_Summary")
-			echo "${project_summary}"
+			cat "$synopsis_file"
 			;;
 		'DEB_Package'|'RPM_Name')
 			echo "$artifact_name"
