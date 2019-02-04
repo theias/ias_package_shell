@@ -1,7 +1,0 @@
-Requires: perl-Template-Toolkit perl-File-Copy-Recursive
-AutoReqProv: no 
-Summary: Deploys package templates
-Group: Generic Group
-License: Generic License
-Vendor: Generic Vendor
-BuildArch: noarch
