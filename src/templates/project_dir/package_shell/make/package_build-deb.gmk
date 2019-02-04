@@ -11,7 +11,7 @@ package-deb: clean all install debsetup debbuild
 
 debsetup:
 	# mkdir -p "$(DEB_DIR)"
-	cp -r "$(ARTIFACT_DIR)/DEBIAN" "$(DEB_DIR)"
+	cp -rL "$(ARTIFACT_DIR)/DEBIAN" "$(DEB_DIR)"
 	"$(ARTIFACT_DIR)/case.sh" all DEB > "$(DEB_CONTROL_FILE)"
 	cat "$(ARTIFACT_DIR)/DEBIAN/control" >> "$(DEB_CONTROL_FILE)"
 
