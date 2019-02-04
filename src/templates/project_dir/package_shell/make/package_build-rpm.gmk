@@ -19,7 +19,7 @@ rpmspec:
 	done
 
 	echo "%description" >> "$(SPEC_FILE)"
-	cat "$(ARTIFACT_DIR)/description" >> "$(SPEC_FILE)"
+	cat "$(ARTIFACT_DIR)/common/description" >> "$(SPEC_FILE)"
 	echo "" >> "$(SPEC_FILE)"
 
 	echo "%files" >> "$(SPEC_FILE)"

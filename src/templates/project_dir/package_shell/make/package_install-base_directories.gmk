@@ -11,7 +11,7 @@ package_install-base_directories:
 	chmod 775 "$(ROOT_DIR)/$(DOC_BASE_DIR)"
 	
 	cp "$(ARTIFACT_DIR)/changelog" "$(DOC_INST_DIR)/"
-	cp "$(ARTIFACT_DIR)/description" "$(DOC_INST_DIR)/"
+	cp "$(ARTIFACT_DIR)/common/description" "$(DOC_INST_DIR)/"
 	cp "$(PROJECT_DIR)/README.md" "$(DOC_INST_DIR)"
 	find "$(DOC_INST_DIR)" -type d -exec chmod 755 {} \;
 	find "$(DOC_INST_DIR)" -type f -exec chmod 644 {} \;
