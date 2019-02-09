@@ -117,10 +117,23 @@ $project_info->{AUTOMATION_GROUP} ||= 'iasnetauto';
 $project_info->{USE_AUTOMATION_PERMISSIONS} ||= 0;
 $project_info->{installed_directory_layout} ||= 'project_directories-full_project.gmk';
 
-
 process_project_dir($project_info);
+run_post_project_create($project_info);
+
 exit;
 
+sub run_post_project_create
+{
+	my ($project_info) = @_;
+	
+	my $makefile = $project_info->{'project_dir'}."/Makefile";
+	my $project_dir = $project_info->{'project_dir'};
+	
+	if (-e $makefile)
+	{
+		`cd $project_dir; make package_shell-project_post_create_cleanup`;
+	}
+}
 
 sub get_project_info
 {
@@ -213,6 +226,7 @@ sub process_project_dir
 		);
 	}
 
+	$project_info->{'project_dir'} = $project_dir;
 	rcopy($PROJECT_TEMPLATE_DIR, $project_dir)
 		or die ("Unable to rcopy $PROJECT_TEMPLATE_DIR to $project_dir: $!");
 
