@@ -1,3 +1,12 @@
+ias-package-shell 4.0.0-0 noarch; urgency=low
+
+	* Better separation of packaging systems
+	* Example Java project
+	* Better testing
+
+  -- Martin VanWinkle  (mvanwinkle@ias.edu)  Sat, 09 Feb 2019 11:50:26 -0500
+
+
 ias-package-shell 3.0.0-0 noarch; urgency=low
 
 	* Symbolically link programs to /usr/bin
