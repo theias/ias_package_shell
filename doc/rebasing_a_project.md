@@ -134,8 +134,17 @@ marty@marty ias_password_ldap_checker$ git merge rebase
 
 # Notes
 
+## Troubleshooting
+
+If you have problems with what you might have left behind then check out
+the tag that you made before.
+
+## Future Proofing
+
 Newer versions of Package Shell make an attempt to be "future proof", so
 that rebasing complex projects gets more simple.
+
+## Byproducts
 
 Rebasing the package will potentially create unneccessary files, which will be listed
 when you do a **git status** .
