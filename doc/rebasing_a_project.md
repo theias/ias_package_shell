@@ -18,6 +18,10 @@ marty@marty ias_password_ldap_checker_master$ git push origin rebase-2019-02-27
 ```
 marty@marty ias_password_ldap_checker$ git checkout -b rebase
 marty@marty ias_password_ldap_checker$ cp -r ../ias_password_ldap_checker /var/tmp
+##### PLEASE BE CAREFUL WITH THIS
+# Ensure you are in the project directory you want to rebase,
+# and that you have taken appropriate action (as documented above)
+# to make sure you won't lose any important changes. 
 marty@marty ias_password_ldap_checker$ rm -rf *
 ```
 
@@ -122,6 +126,16 @@ Changes to be committed:
 	modified:   spell_check.sh
 	new file:   src/bin/ias-password-ldap-checker_hello.sh
 ```
+
+### Including, but not limited to...
+
+Pay special attention to the output from **git status** , as it might indicate
+more stuff that you should copy back into the project.  This might include
+(but isn't limited to)
+
+* tests
+* README.md
+* changelog
 
 ## Commit, and merge back
 
