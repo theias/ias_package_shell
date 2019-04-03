@@ -55,7 +55,8 @@ Run this:
 
 You will be asked questions:
 
-```$ /opt/IAS/bin/ias-package-shell/ias_package_shell.pl
+```
+/opt/IAS/bin/ias-package-shell/ias_package_shell.pl
 Project names must not begin with numbers.
 Project names must not contain whitespace or dashes.
 Example: some_project_name
