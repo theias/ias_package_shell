@@ -24,7 +24,14 @@
 			"name" : "AUTOMATION_USER",
 			"default_value" : "iasnetauto",
 			"description" : "Service user account.",
-			"prompt" : "Automation user name:"
+			"prompt" : "Automation user name:"		
+		},
+		{
+			"dont_prompt" : true,
+			"name" : "AUTOMATION_GROUP",
+			"default_value" : "iasnetauto",
+			"description" : "Service group.",
+			"prompt" : "Automation user group:"		
 		},
 		{
 			"dont_prompt" : true,
@@ -47,6 +54,13 @@
 			"name" : "ticket",
 			"prompt" : "Ticket: ",
 			"description" : "Link to ticket."
+		}
+	],
+	"transforms" : [
+		{
+			"name" : "package_name",
+			"transform" : "underscores_to_dashes",
+			"template_string" : "[% project_name %]"
 		}
 	]
 }

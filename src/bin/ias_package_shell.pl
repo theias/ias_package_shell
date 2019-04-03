@@ -35,9 +35,10 @@ use File::Basename;
 use IO::File;
 use File::Spec;
 use Template;
+use JSON;
 
 use Getopt::Long;
-my $DEBUG=1;
+my $DEBUG=0;
 our $SUPPRESS_DEFAULT_NOTIFICATIONS=1;
 my $OPTIONS_VALUES = {};
 my $OPTIONS=[
@@ -106,11 +107,68 @@ our $project_control_file = $OPTIONS_VALUES->{'project-control-file'}
 our $project_template_path = $OPTIONS_VALUES->{'project-template-path'}
 	|| $PROJECT_TEMPLATE_DIR;
 
-my $project_info = do_prompts(load_json_file($project_control_file));
+my $project_control_data = load_json_file($project_control_file);
+
+my $project_info = do_prompts($project_control_data);
+
+our %CONTROL_TRANSFORMS = (
+	'underscores_to_dashes' => \&transform_underscores_to_dashes,
+);
+
+do_control_transforms(
+	$project_control_data,
+	$project_info,
+);
+
+# print "Project info after transform: \n";
+# print Dumper($project_info);
+
+# exit;
+
 process_project_dir($project_info);
 run_post_project_create($project_info);
 
 exit;
+
+sub do_control_transforms
+{
+	my ($project_control_data, $project_info) = @_;
+
+=pod	
+		"transforms" : [
+		{
+			"name" : "package_name",
+			"transform" : "underscores_to_dashes",
+			"template_string" : "[% project.project_name %]"
+		}
+=cut
+
+	# print "Project control data:\n";
+	# print Dumper($project_control_data);
+	# print "Project Info:\n";
+	# print Dumper($project_info);
+
+	CONTROL_TRANSFORM: foreach my $transform (@{$project_control_data->{transforms}})
+	{
+		# print "Start of transform loop!\n";
+		if (! defined $CONTROL_TRANSFORMS{$transform->{transform}})
+		{
+			warn "Transform ", $transform->{transform}, " is not a valid transform.\n";
+			next CONTROL_TRANSFORM;
+		}
+		# print "Transform is defined!\n";
+		$project_info->{$transform->{name}} = $CONTROL_TRANSFORMS{$transform->{transform}}->(
+			$project_info,
+			$transform->{template_string},
+		);
+		
+		# print "Transform info:\n";
+		# print Dumper($transform);
+		
+		# print "Transformed: ", $project_info->{$transform->{name}},$/;
+	}
+
+}
 
 sub run_post_project_create
 {
@@ -223,7 +281,7 @@ sub rename_path_template
 	# print "$path",$/;
 	
 	my $template = new Template()
-		|| die $Template::ERROR,$/;
+		|| die $Template::ERROR.$/;
 	
 	my $basename = basename($path);
 	my $dirname = dirname($path);
@@ -241,6 +299,27 @@ sub rename_path_template
 	debug("New file name: $new_file_name",$/);
 	
 	rename($path, $new_file_name);
+}
+
+sub transform_underscores_to_dashes
+{
+	my ($data_ref, $template_string) = @_;
+
+	# print "Transform underscores to dashes!\n";
+	# print "In data:\n";
+	# print Dumper($data_ref),$/;
+	# print "Template: $template_string\n";
+	my $template = new Template()
+		|| die $Template::ERROR.$/;
+	my $new_value;
+	$template->process(
+		\$template_string,
+		$data_ref,
+		\$new_value,
+	);
+	
+	$new_value =~ s/_/-/g;
+	return $new_value;	
 }
 
 
@@ -339,3 +418,5 @@ sub load_json_file
 	# $json_text   = $json->encode( $perl_scalar );
 	return $json->decode( $whole_file );
 }
+
+
