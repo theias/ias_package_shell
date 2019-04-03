@@ -13,6 +13,20 @@
 			"fail_regex" : "^\\s*$"
 		},
 		{
+			"dont_prompt" : true,
+			"name" : "BASE_DIR",
+			"prompt" : "Base dir: ",
+			"description" : "Where project files get installed.  Required.",
+			"default_value" : "/opt/IAS"
+		},
+		{
+			"dont_prompt" : true,
+			"name" : "AUTOMATION_USER",
+			"default_value" : "iasnetauto",
+			"description" : "Service user account.",
+			"prompt" : "Automation user name:"
+		},
+		{
 			"name" : "wiki_page",
 			"prompt" : "Wiki page: ",
 			"description" : "External documentation."

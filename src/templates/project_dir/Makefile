@@ -9,7 +9,7 @@ include $(MAKEFILE_PATH)/base.gmk
 # The following are optional in base.gmk ,
 # but must be set before the other stuff loads
 ifeq ($(BASE_DIR),)
-	BASE_DIR := /opt/IAS
+	BASE_DIR := [% project.base_dir %]
 endif
 
 
