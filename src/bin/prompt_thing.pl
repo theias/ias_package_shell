@@ -29,17 +29,20 @@ sub do_prompts
 		my $response;
 		if (! $prompt->{'dont_prompt'})
 		{
+
+			print "####################\n";
+			print "#   ",$prompt->{"prompt"},$/;
+			
 			if ($prompt->{'description'})
 			{
-				print $prompt->{"description"},$/
+				print $prompt->{"description"},$/;
 			}
-		
-			print $prompt->{"prompt"};
 		
 			if ( defined ($prompt->{"default_value"}) )
 			{
-				print '[',$prompt->{"default_value"},'] ';
+				print 'Default: [',$prompt->{"default_value"},'] ';
 			}
+			print "Enter Response: ";
 		
 			$response = <STDIN>;
 			chomp($response);

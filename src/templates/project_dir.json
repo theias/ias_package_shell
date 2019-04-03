@@ -27,6 +27,18 @@
 			"prompt" : "Automation user name:"
 		},
 		{
+			"dont_prompt" : true,
+			"name" : "USE_AUTOMATION_PERMISSIONS",
+			"default_value" : 0,
+			"description" : "Sets up permissions for the service user."
+		},
+		{
+			"dont_prompt" : true,
+			"name" : "installed_directory_layout",
+			"default_value" : "project_directories-full_project.gmk",
+			"description" : "File containing layout."
+		},
+		{
 			"name" : "wiki_page",
 			"prompt" : "Wiki page: ",
 			"description" : "External documentation."

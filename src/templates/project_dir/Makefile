@@ -23,7 +23,7 @@ ifneq ("$(wildcard $(ARTIFACT_DIR)/artifact_variables.gmk)","")
 endif
 
 ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)
-	include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+	include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
 endif
 
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_shell-additional.gmk
