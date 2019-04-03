@@ -24,13 +24,6 @@
 		},
 		{
 			"dont_prompt" : true,
-			"name" : "BASE_DIR",
-			"prompt" : "Base dir: ",
-			"description" : "Where project files get installed.  Required.",
-			"default_value" : "/opt/IAS"
-		},
-		{
-			"dont_prompt" : true,
 			"name" : "AUTOMATION_USER",
 			"default_value" : "iasnetauto",
 			"description" : "Service user account.",
@@ -50,6 +43,15 @@
 			"description" : "Sets up permissions for the service user."
 		},
 		{
+			"note" : "This one isn't used yet.  Need to make tests pass.",
+			"dont_prompt" : true,
+			"name" : "BASE_DIR",
+			"prompt" : "Base dir: ",
+			"description" : "Where project files get installed.  Required.",
+			"default_value" : "/opt/IAS"
+		},
+		{
+			"note" : "This one isn't used yet.  Need to make tests pass.",
 			"dont_prompt" : true,
 			"name" : "installed_directory_layout",
 			"default_value" : "project_directories-full_project.gmk",
