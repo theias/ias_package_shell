@@ -1,0 +1,26 @@
+{
+	"prompts" : [
+		{
+			"name" : "project_name",
+			"fail_regex" : "[^0-9a-zA-Z_]",
+			"prompt" : "Project Name: ",
+			"description" : "Contains only letters, numbers and underscores.  Required."
+		},
+		{
+			"name" : "summary",
+			"prompt": "Summary: ",
+			"description": "Short description of project.  Required.",
+			"fail_regex" : "^\\s*$"
+		},
+		{
+			"name" : "wiki_page",
+			"prompt" : "Wiki page: ",
+			"description" : "External documentation."
+		},
+		{
+			"name" : "ticket",
+			"prompt" : "Ticket: ",
+			"description" : "Link to ticket."
+		}
+	]
+}
