@@ -1,14 +1,17 @@
-personal_ws-1.1 en 71 
+personal_ws-1.1 en 79 
 debsetup
 Makefile
 topdir
+py
 RHEL
+pacakge
 json
 ldap
 cd
 rpmdir
 config
 incrementing
+myapp
 tmppath
 rpmtopdir
 ias
@@ -27,6 +30,7 @@ dir
 gpg
 TODO
 gnupg
+javac
 fakeroot
 specdir
 srcrpmdir
@@ -41,6 +45,7 @@ mkdir
 apache
 gz
 noarch
+rebased
 png
 VanWinkle
 SFTP
@@ -68,5 +73,8 @@ README
 builddir
 conf
 gitignore
+env
+SomePackage
 marty
 rf
+globbing

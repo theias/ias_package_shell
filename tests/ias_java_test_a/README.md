@@ -65,7 +65,7 @@ Basically, both directories, src/lib/java and src/java get copied to the same de
 
 ## Implementation Details
 
-* The makefile which compiles and (optionally) runs the Java program sources
+* The Makefile which compiles and (optionally) runs the Java program sources
 the same **java_env.sh** file as above. 
 
 # Supplemental Documentation

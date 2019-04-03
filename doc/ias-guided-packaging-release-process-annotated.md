@@ -39,7 +39,7 @@ The format of the version is:
 
 The fields are described here:
 
-* **Major** - A major redesign has occurred.  Changes in this number typically denote a backwards compatability issue.
+* **Major** - A major redesign has occurred.  Changes in this number typically denote a backwards compatibility issue.
 * **Minor** - Significant improvements were made.
 * **Patch** - Bug fixes.
 * **Release** - Changes in packaging code / how the code was deployed.
@@ -61,7 +61,7 @@ The fields are described here:
   * If your previous version was 1.0.0-0 , your current version is 1.0.0-1 .
 
 ## Your Name
-Self explanatory.  If you want credit (or responsiblity) for this package, then by all means put your name in here.
+Self explanatory.  If you want credit (or responsibility) for this package, then by all means put your name in here.
 
 
 ## Your Email Address

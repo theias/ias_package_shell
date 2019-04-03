@@ -77,7 +77,7 @@ You might not find many references to **ROOT_ETC_DIR** in the Makefile .  The co
 of this directory are always installed to /etc/ , and do not (at this time) require abstraction.
 
 There might be a time when abstraction is required, such as when working out the differences
-between /etc/httpd/conf.d (RPM) and /etc/apache2/sites-enabled (debian).  But, a simple deb package
+between /etc/httpd/conf.d (RPM) and /etc/apache2/sites-enabled (Debian).  But, a simple deb package
 that drops a configuration file could easily take care of that.
 
 * **ROOT_ETC_DIR** is not to be confused with **ROOT_CONF_DIR** :
@@ -120,7 +120,7 @@ The semantics of updating only **CONF_DIR** with a package update have not been 
 # Transient Locations
 
 The following are used inside of project directory and have rules about being checked in.
-They are there for convienence: you check out a project, and it should know where
+They are there for convenience: you check out a project, and it should know where
 transient files go.
 
 Not all projects will have all of these transient locations.  If the directories get

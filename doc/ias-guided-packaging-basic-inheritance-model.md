@@ -1,8 +1,8 @@
-# Basic Inheritence Model
+# Basic Inheritance Model
 
-![Diagram of classes and directory structure][basic_inheritence_model]
+![Diagram of classes and directory structure][basic_inheritance_model]
 
-[basic_inheritence_model]: ./base_infra_diagram/infrastructure_overview.png
+[basic_inheritance_model]: ./base_infra_diagram/infrastructure_overview.png
 
 ## Notes
 

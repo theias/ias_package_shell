@@ -34,7 +34,7 @@ In the following steps you will be asked to give a package name to the package t
 
 Valid names:
 
-* Don't use spaces, dashes, or any other special charactor
+* Don't use spaces, dashes, or any other special character
 * Separate words with underscores
 
 ## Packaging Host
@@ -58,7 +58,7 @@ You will be asked questions:
 ```
 /opt/IAS/bin/ias-package-shell/ias_package_shell.pl
 Project names must not begin with numbers.
-Project names must not contain whitespace or dashes.
+Project names must not contain white space or dashes.
 Example: some_project_name
 Required:
 Project name: my_first_ias_package
@@ -72,7 +72,7 @@ Ticket URL: https://rt.ias.edu/Display.html?290290
 Your package template has been created.
 
 
-## Check it into Revison Control
+## Check it into Revision Control
 
 ```cd my_first_package```
 
@@ -242,5 +242,5 @@ Subsequent releases have different steps, and the process is described here:
 [Subsequent releases](./ias-guided-packaging-release-process-annotated.md)
 
 # Troubleshooting
-Emphasis was placed on being as compatable with a "standard" .rpmmacros  file.  Having NO rpmmacros file should always work.
+Emphasis was placed on being as compatible with a "standard" .rpmmacros  file.  Having NO rpmmacros file should always work.
 If you're having problems then please let me know.

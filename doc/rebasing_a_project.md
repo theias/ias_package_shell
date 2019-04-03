@@ -31,7 +31,7 @@ marty@marty ias_password_ldap_checker$ rm -rf *
 marty@marty ias_password_ldap_checker$ cd ..
 marty@marty rebase$ ias_package_shell.pl 
 Project names must not begin with numbers.
-Project names must not contain whitespace or dashes.
+Project names must not contain white space or dashes.
 Example: some_project_name
 Required:
 Project name: ias_password_ldap_checker
@@ -160,5 +160,5 @@ that rebasing complex projects gets more simple.
 
 ## Byproducts
 
-Rebasing the package will potentially create unneccessary files, which will be listed
+Rebasing the package will potentially create unnecessary files, which will be listed
 when you do a **git status** .

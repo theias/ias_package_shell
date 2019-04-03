@@ -34,7 +34,7 @@ The README has "generic" building instructions that ship with all packages and n
 
 ```
 sudo yum install rpmbuild make
-git clone (url from above)
+git clone (URL from above)
 cd ias_package_shell*
 fakeroot make package-rpm
 # Then install the RPM.
@@ -44,7 +44,7 @@ sudo yum localinstall -y (rpm)
 For Debian based systems:
 ```
 sudo apt-get install gdebi build-essential
-git clone (url from above)
+git clone (URL from above)
 cd ias_package_shell*
 fakeroot make package-deb
 # Then install the RPM.
