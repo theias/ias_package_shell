@@ -3,19 +3,16 @@
 ###########################
 
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 
 include $(MAKEFILE_PATH)/base.gmk
 
 # The following are optional in base.gmk ,
 # but must be set before the other stuff loads
 ifeq ($(BASE_DIR),)
-	# TODO: make tests work with
-	# BASE_DIR := [% project.BASE_DIR %]
-	BASE_DIR := /opt/IAS
+	BASE_DIR := [% project.BASE_DIR %]
 endif
 
-
-PACKAGE_SHELL_INCLUDE_PATH=$(MAKEFILE_PATH)/package_shell/make
 
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project-base_variables.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/make-standard_phonies.gmk
@@ -24,10 +21,11 @@ ifneq ("$(wildcard $(ARTIFACT_DIR)/artifact_variables.gmk)","")
 	include $(ARTIFACT_DIR)/artifact_variables.gmk
 endif
 
+ifeq ($(PROJECT_DIRECTORIES_MAKE_FILE),)
+	PROJECT_DIRECTORIES_MAKE_FILE:=[% project.installed_directory_layout %]
+endif
 ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)
-	# TODO: make tests work with:
-	# include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
-	include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+	include $(PACKAGE_SHELL_INCLUDE_PATH)/$(PROJECT_DIRECTORIES_MAKE_FILE)
 	
 endif
 

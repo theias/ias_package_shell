@@ -1,4 +1,9 @@
+# We're setting this here because we use the symbolicly linked
+# versions of the make files for our stuff.
+BASE_DIR=/opt/IAS
+
 # Set to 1 to enable useful permission settings
+
 USE_AUTOMATION_PERMISSIONS = 0
 AUTOMATION_USER = iasnetauto
 AUTOMATION_GROUP = iasnetauto

@@ -20,7 +20,7 @@
 		{
 			"name" : "ticket",
 			"prompt" : "Ticket: ",
-			"description" : "Link to ticket."
+			"description" : "Link to ticket, or ticket ID"
 		},
 		{
 			"dont_prompt" : true,
