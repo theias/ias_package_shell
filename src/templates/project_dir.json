@@ -43,7 +43,6 @@
 			"description" : "Sets up permissions for the service user."
 		},
 		{
-			"note" : "This one isn't used yet.  Need to make tests pass.",
 			"dont_prompt" : true,
 			"name" : "BASE_DIR",
 			"prompt" : "Base dir: ",
@@ -51,7 +50,6 @@
 			"default_value" : "/opt/IAS"
 		},
 		{
-			"note" : "This one isn't used yet.  Need to make tests pass.",
 			"dont_prompt" : true,
 			"name" : "installed_directory_layout",
 			"default_value" : "project_directories-full_project.gmk",
