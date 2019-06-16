@@ -16,19 +16,6 @@ package_install-base_directories:
 	find "$(DOC_INST_DIR)" -type d -exec chmod 755 {} \;
 	find "$(DOC_INST_DIR)" -type f -exec chmod 644 {} \;
 
-	# Directories for FullProjectPath type apps:
-
-	mkdir -p "$(ROOT_DIR)/$(INPUT_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(INPUT_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(INPUT_BASE_DIR)"
-	
-	mkdir -p "$(ROOT_DIR)/$(OUTPUT_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(OUTPUT_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(OUTPUT_BASE_DIR)"
-	
-	mkdir -p "$(ROOT_DIR)/$(LOG_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(LOG_DIR)"
-	chmod 755 "$(ROOT_DIR)/$(LOG_BASE_DIR)"
 
 .PHONY: debug-package_install-base_directories
 

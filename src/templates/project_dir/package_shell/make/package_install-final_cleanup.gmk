@@ -18,6 +18,21 @@ package_install-final_cleanup:
 	# chown somegroup:somegroup "$(ROOT_DIR)/drop"
 
 ifeq ($(USE_AUTOMATION_PERMISSIONS), 1)
+
+	# "Standard" automation directories:
+
+		mkdir -p "$(ROOT_DIR)/$(INPUT_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(INPUT_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(INPUT_BASE_DIR)"
+		
+		mkdir -p "$(ROOT_DIR)/$(OUTPUT_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(OUTPUT_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(OUTPUT_BASE_DIR)"
+		
+		mkdir -p "$(ROOT_DIR)/$(LOG_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(LOG_DIR)"
+		chmod 755 "$(ROOT_DIR)/$(LOG_BASE_DIR)"
+
 		chown $(AUTOMATION_USER):$(AUTOMATION_GROUP) "$(ROOT_DIR)/$(INPUT_DIR)"
 		chmod g+w "$(ROOT_DIR)/$(INPUT_DIR)"
 	
