@@ -1,7 +1,9 @@
 # Set to 1 to enable useful permission settings
-USE_AUTOMATION_PERMISSIONS = 0
-AUTOMATION_USER = iasnetauto
-AUTOMATION_GROUP = iasnetauto
+# No, you shouldn't use root as your automation user.
+# This package is for testing.
+USE_AUTOMATION_PERMISSIONS = 1
+AUTOMATION_USER = root
+AUTOMATION_GROUP = root
 
 # Symbolically link things in src/bin to /usr/bin
 # 
