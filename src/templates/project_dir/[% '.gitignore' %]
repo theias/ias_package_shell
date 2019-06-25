@@ -9,5 +9,7 @@ src/log/*
 __pycache__/
 *.pyc
 
+*.dia.autosave
+
 src/java/**/*.class
 

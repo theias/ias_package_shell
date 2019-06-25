@@ -8,6 +8,7 @@ src/log/*
 tests/ias_test_package
 .nfs*
 
+*.dia.autosave
 
 *.swp
 __pycache__/
