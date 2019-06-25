@@ -1,6 +1,7 @@
 ias-package-shell 4.2.0-0 noarch; urgency=low
 
 	* Automation directory creation and permissions are now more related
+	* More documentation
 
   -- Martin VanWinkle  (mvanwinkle@ias.edu)  Sun, 16 Jun 2019 19:49:56 -0400
 
