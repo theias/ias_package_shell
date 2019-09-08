@@ -22,12 +22,22 @@ JAVA_PATHS_PROGRAM=$(SRC_DIR)/bin/java_paths.sh
 # Include this after you've set your variables
 include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
 
+.PHONY: \
+	artifact_all \
+	artifact_test \
+	artifact_debug \
+	artifact_clean \
+	artifact_install \
+	artifact_install-post
+
+artifact_all: java-compile-all
+
+artifact_test:
+
 artifact_debug: artifact_module-java-debug
 
 artifact_clean: \
 	java-clean
-
-artifact_all: java-compile-all
 
 artifact_install: \
 	package_install-standard \

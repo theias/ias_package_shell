@@ -20,4 +20,23 @@ symbolic_links-usr_bin = \
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
-artifact_install: package_install-conditional_additions-ALL
+.PHONY: \
+	artifact_all \
+	artifact_test \
+	artifact_debug \
+	artifact_clean \
+	artifact_install \
+	artifact_install-post
+
+artifact_all:
+
+artifact_test:
+ 
+artifact_debug:
+
+artifact_clean:
+
+artifact_install: \
+	package_install-standard
+
+artifact_install-post:

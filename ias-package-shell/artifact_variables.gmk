@@ -18,17 +18,28 @@ symbolic_links-usr_bin = \
 
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+.PHONY: \
+	artifact_all \
+	artifact_test \
+	artifact_debug \
+	artifact_clean \
+	artifact_install \
+	artifact_install-post
 
-.PHONY: artifact_test
+artifact_all:
+
 artifact_test:
 	cd $(PROJECT_DIR)/tests && make package_shell_all_tests
 
 .PHONY: artifact_install
 
+artifact_debug:
+
+artifact_clean:
+
 artifact_install: \
-	package_install-conditional_additions-ALL \
+	package_install-standard
 	package_install-self_replication \
-	package_install-code_repository_info_md_file
+	# package_install-code_repository_info_md_file
 
 artifact_install-post:
-	# This is where the cleanup happens.
