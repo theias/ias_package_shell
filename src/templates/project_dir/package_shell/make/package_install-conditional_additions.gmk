@@ -66,6 +66,14 @@ package_install-docs:
 ifneq ("$(wildcard $(PROJECT_DIR)/doc/*)","") 
 	# Installing more documentation
 	mkdir -p "$(DOC_INST_DIR)"
+
+	mkdir -p "$(DOC_INST_DIR)"
+	chmod 775 "$(ROOT_DIR)/$(DOC_BASE_DIR)"
+	
+	cp "$(ARTIFACT_DIR)/changelog" "$(DOC_INST_DIR)/"
+	cp "$(ARTIFACT_DIR)/common/description" "$(DOC_INST_DIR)/"
+	cp "$(PROJECT_DIR)/README.md" "$(DOC_INST_DIR)"
+
 	cp -r "$(PROJECT_DIR)/doc" "$(DOC_INST_DIR)/doc"
 	find "$(DOC_INST_DIR)" -type d -exec chmod 755 {} \;
 	find "$(DOC_INST_DIR)" -type f -exec chmod 644 {} \;
