@@ -1,3 +1,8 @@
+ias-package-shell 4.3.0-0 noarch; urgency=low
+	* Better ability to customize artifacts without modifying files
+		under package_shell/make
+
+
 ias-package-shell 4.2.0-0 noarch; urgency=low
 
 	* Automation directory creation and permissions are now more related
