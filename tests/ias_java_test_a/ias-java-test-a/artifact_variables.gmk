@@ -22,28 +22,8 @@ JAVA_PATHS_PROGRAM=$(SRC_DIR)/bin/java_paths.sh
 # Include this after you've set your variables
 include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
 
-.PHONY: \
-	artifact_all \
-	artifact_test \
-	artifact_debug \
-	artifact_clean \
-	artifact_install \
-	artifact_install-post
-
-artifact_all: java-compile-all
-
-artifact_test:
-
-artifact_debug: artifact_module-java-debug
-
-artifact_clean: \
-	java-clean
-
-artifact_install: \
-	package_install-standard \
-	java-install
-
-artifact_install-post:
-	echo "This is where the cleanup happens."
-
+# Use a generic set of make rules for this artifact.
+# If you want to alter the artifact rules, copy and past the contents of the
+# above file into this one, and remove the include statement.
+include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
 

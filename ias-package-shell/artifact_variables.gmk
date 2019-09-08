@@ -18,6 +18,8 @@ symbolic_links-usr_bin = \
 
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+
+# This artifact needs more than the generic standard artifact stuff.
 .PHONY: \
 	artifact_all \
 	artifact_test \
@@ -38,7 +40,7 @@ artifact_debug:
 artifact_clean:
 
 artifact_install: \
-	package_install-standard
+	package_install-standard \
 	package_install-self_replication \
 	# package_install-code_repository_info_md_file
 

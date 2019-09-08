@@ -12,31 +12,12 @@ symbolic_links-usr_bin = \
 	ias_package_shell_test_package_a_bye.sh
 # 	another_program.sh
 
-# Copy of the source tree distributed with the package,
-# PACKAGE_SELF_REPLICATING=1
-
 # Advanced usage below
 
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
-.PHONY: \
-	artifact_all \
-	artifact_test \
-	artifact_debug \
-	artifact_clean \
-	artifact_install \
-	artifact_install-post
-
-artifact_all:
-
-artifact_test:
- 
-artifact_debug:
-
-artifact_clean:
-
-artifact_install: \
-	package_install-standard
-
-artifact_install-post:
+# Use a generic set of make rules for this artifact.
+# If you want to alter the artifact rules, copy and past the contents of the
+# above file into this one, and remove the include statement.
+include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
