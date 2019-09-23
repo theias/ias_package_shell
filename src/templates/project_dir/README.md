@@ -33,7 +33,7 @@ Supplemental documentation for this project can be found here:
 # Installation
 
 Ideally stuff should run if you clone the git repo, and install the deps specified
-in either "deb_control" or "rpm_specific"
+in either "DEBIAN/control" or "RPM/specfile.spec"
 
 Optionally, you can build a package which will install the binaries in
 
@@ -55,7 +55,7 @@ Optionally, you can build a package which will install the binaries in
 
 * rpm-build
 
-## Export a specific tag (or just the source directory)
+## Export a specific tag (or just the project directory)
 
 ## Supported Systems
 
