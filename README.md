@@ -103,4 +103,4 @@ fakeroot make package-rpm
 
 # TODO
 
-
+* Separate packages made from same project directory
