@@ -1,4 +1,4 @@
-ias-package-shell-package-division-test 1.0.0-0 noarch; urgency=low
+ias-package-shell-package-division-test-lib 1.0.0-0 noarch; urgency=low
 
 	* initial packaging stuff
 
