@@ -1,0 +1,40 @@
+# Set to 1 to enable useful permission settings
+USE_AUTOMATION_PERMISSIONS ?= 0
+AUTOMATION_USER ?= iasnetauto
+AUTOMATION_GROUP ?= iasnetauto
+
+# Symbolically link things in src/bin to /usr/bin
+# 
+# symbolic_links-usr_bin = \
+#	ias-package-shell-package-division-test_hello.sh \ 
+# 	another_program.sh
+
+#######################
+# Advanced usage below
+#######################
+
+# Use the "Full Project" layout.
+include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+
+# Here, we just want the libraries
+
+.PHONY: \
+	artifact_all \
+	artifact_test \
+	artifact_debug \
+	artifact_clean \
+	artifact_install \
+	artifact_install-post
+
+artifact_all:
+
+artifact_test:
+ 
+artifact_debug:
+
+artifact_clean:
+
+artifact_install: \
+	package_install-lib \
+
+artifact_install-post:

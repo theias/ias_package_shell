@@ -47,6 +47,7 @@ debug-ALL: \
 
 debug-base-Makefile:
 	# Makefile - debug variables
+	#   ARTIFACT_BASE_NAME: '$(ARTIFACT_BASE_NAME)'
 	#   ARTIFACT_NAME: '$(ARTIFACT_NAME)'
 	#   MAKEFILE_PATH: '$(MAKEFILE_PATH)'
 	#   PACKAGE_SHELL_INCLUDE_PATH: '$(PACKAGE_SHELL_INCLUDE_PATH)'
