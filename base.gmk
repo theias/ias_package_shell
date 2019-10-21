@@ -1,6 +1,6 @@
 # Advanced Usage
 # You don't need to edit this file unless you are an advanced user.
 
-ARTIFACT_BASE = ias-package-shell
+ARTIFACT_BASE_NAME = ias-package-shell
 ARTIFACT_NAME = ias-package-shell
 
