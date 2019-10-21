@@ -7,3 +7,4 @@ ifeq ($(ARTIFACT_NAME),)
 	ARTIFACT_NAME = ias-package-shell-package-division-test
 endif
 
+BASE_DIR=/opt/IAS
