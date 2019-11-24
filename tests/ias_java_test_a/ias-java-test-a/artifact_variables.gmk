@@ -16,7 +16,8 @@ AUTOMATION_GROUP = iasnetauto
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
-JAVA_APP_NAME=IAS/SampleApplication
+# JAVA_APP_NAME=IAS/SampleApplication
+JAVA_APP_NAME=edu.ias.net.SampleApplication
 JAVA_PATHS_PROGRAM=$(SRC_DIR)/bin/java_paths.sh
 
 # Include this after you've set your variables

@@ -1,7 +1,7 @@
-package IAS;
+package edu.ias.net;
 
-import IAS.SampleLibrary;
-import IAS.SomeLocalDependency;
+import edu.ias.net.SampleLibrary;
+import edu.ias.net.SomeLocalDependency;
 
 public class SampleApplication {
 	public static void main(String[] args) {
@@ -10,6 +10,7 @@ public class SampleApplication {
 		SampleLibrary sample_object = new SampleLibrary();
 		sample_object.SayHello();
 
+		System.out.println("New layout!");
 		SomeLocalDependency local_dependency = new SomeLocalDependency();
 		local_dependency.SayHello();
 		

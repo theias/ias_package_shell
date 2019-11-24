@@ -29,7 +29,8 @@ else
 	JAVA_SOURCEPATH=$(shell $(JAVA_PATHS_PROGRAM) sourcepath )
 endif
 
-JAVA_SRC_JAVA_FILES=$(wildcard $(JAVA_SRC_JAVA_DIR)/**/*.java)
+# JAVA_SRC_JAVA_FILES=$(wildcard $(JAVA_SRC_JAVA_DIR)/**/*.java)
+JAVA_SRC_JAVA_FILES=$(shell find "$(JAVA_SRC_JAVA_DIR)" -type f -name "*.java")
 JAVA_SRC_JAVA_CLASS_FILES=$(patsubst %.java, %.class, $(JAVA_SRC_JAVA_FILES))
 
 artifact_module-java-debug:

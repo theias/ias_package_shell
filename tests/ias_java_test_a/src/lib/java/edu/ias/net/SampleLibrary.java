@@ -1,4 +1,4 @@
-package IAS;
+package edu.ias.net;
 
 // This file would normally belong in src/java , because we have access
 // to the source code for it, and we want to compile it and 

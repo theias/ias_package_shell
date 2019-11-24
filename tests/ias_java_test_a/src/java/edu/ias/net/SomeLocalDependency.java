@@ -1,4 +1,4 @@
-package IAS;
+package edu.ias.net;
 
 public class SomeLocalDependency {
 	public void SayHello () {

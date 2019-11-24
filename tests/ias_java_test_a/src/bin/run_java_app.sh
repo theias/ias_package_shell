@@ -4,7 +4,7 @@ app_name="$1"
 
 if [ -z "$app_name" ]
 then
-	app_name="IAS/SampleApplication"
+	app_name="edu.ias.net.SampleApplication"
 fi
 
 bash_source_real_path="$( realpath "${BASH_SOURCE[0]}" )"
