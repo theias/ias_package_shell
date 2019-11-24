@@ -5,3 +5,5 @@ ifeq ($(ARTIFACT_NAME),)
 	ARTIFACT_NAME = ias-java-test-a
 endif
 
+include $(PACKAGE_SHELL_INCLUDE_PATH)/project-test_defaults.gmk
+
