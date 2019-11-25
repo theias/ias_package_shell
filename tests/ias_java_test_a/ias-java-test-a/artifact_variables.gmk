@@ -25,6 +25,6 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_module-java.gmk
 
 # Use a generic set of make rules for this artifact.
 # If you want to alter the artifact rules, copy and past the contents of the
-# above file into this one, and remove the include statement.
+# below file into this one, and remove the include statement.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
 
