@@ -7,4 +7,4 @@ For changing behavior of the artifact rules, use artifact-name/artifact_variable
 
 Ideally, this will allow for subsequent release for package shell to update the code
 and (hopefully) allow for the maintainer to put the code in place without having
-to regenerate the package.
+to regenerate the project layout.
