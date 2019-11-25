@@ -52,6 +52,7 @@ ias_java_test_a:
 	&& make java-run \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
+	&& make java-clean \
 	&& make clean
 
 .PHONY: ias_package_shell_test_fresh_package
