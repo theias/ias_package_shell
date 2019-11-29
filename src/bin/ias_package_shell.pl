@@ -38,10 +38,11 @@ use Template;
 use JSON;
 
 use Getopt::Long;
-my $DEBUG=0;
+
 our $SUPPRESS_DEFAULT_NOTIFICATIONS=1;
 my $OPTIONS_VALUES = {};
 my $OPTIONS=[
+	'debug',
 	'project-path-output=s',
 	'project-control-file=s',
 	'project-template-path=s',
@@ -109,6 +110,9 @@ our $project_template_path = $OPTIONS_VALUES->{'project-template-path'}
 
 my $project_control_data = load_json_file($project_control_file);
 
+$project_control_data->{template_base_dir} =
+	remove_double_slashes($project_template_path.'/');
+
 my $project_info = do_prompts($project_control_data);
 
 our %CONTROL_TRANSFORMS = (
@@ -121,7 +125,7 @@ do_control_transforms(
 );
 
 # print "Project info after transform: \n";
-# print Dumper($project_info);
+debug("Project info: ",Dumper($project_info),"\n");
 
 # exit;
 
@@ -129,6 +133,24 @@ process_project_dir($project_info);
 run_post_project_create($project_info);
 
 exit;
+
+sub remove_front_part
+{
+	my ($string, $front_part) = @_;
+	
+	$string =~ s/^\Q$front_part\E//;
+	
+	return $string;
+}
+
+sub remove_double_slashes
+{
+	my ($string) = @_;
+	
+	$string =~ s/\/\//\//g;
+	
+	return $string;
+}
 
 sub do_control_transforms
 {
@@ -249,15 +271,32 @@ sub process_file_template
 	my ($source_file_name, $project_info) = @_;
 	my $temp_file_name = File::Temp::tmpnam();
 
-	debug("Processing file template: $source_file_name",$/);
+
+	my $template_exclusions = $project_control_data->{'not-template-files'}->{exclusions};
+	my @exclude_regexes = map {$_->{regex}} @$template_exclusions;
+	# debug("Exclusion regexes: ", Dumper(\@exclude_regexes),"\n");
 	
-	# use Cwd;
-	# print "Cwd: ", getcwd,$/;
-	# print "Exists!$/" if (-e $source_file_name);
+	my $project_name_dir = $project_info->{project_name}.'/';
+	my $compare_me=remove_front_part($source_file_name,$project_name_dir);
 	
+	foreach my $exclude_regex (@exclude_regexes)
+	{
+		print "Exclude regex: $exclude_regex\n";
+		print "Compare me: $compare_me\n";
+		if ($compare_me =~ m/$exclude_regex/)
+		{
+			debug("$compare_me matches $exclude_regex.  Not processing as template.\n");
+			return;
+		}
+	}
 	return if (! -f $source_file_name);
+
+
+	debug("Processing file template: $source_file_name",$/);
 	debug("Source file: $source_file_name\n");
 	debug("Temp file: $temp_file_name\n");
+
+
 
 	use File::Temp;
 	use File::Copy;
@@ -325,7 +364,7 @@ sub transform_underscores_to_dashes
 
 sub debug
 {
-	print @_ if ($DEBUG);
+	print @_ if $OPTIONS_VALUES->{debug};
 }
 
 sub do_prompts

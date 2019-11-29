@@ -62,5 +62,12 @@
 			"transform" : "underscores_to_dashes",
 			"template_string" : "[% project_name %]"
 		}
-	]
+	],
+	"not-template-files" : {
+		"comment" : "For this project these are demonstrations / tests.",
+		"exclusions": [
+			{ "regex" : "\\.jpg$", "comment" : "jpg files" },
+			{ "regex" : "\\.png$", "comment" : "png files" }
+		]
+	}
 }
