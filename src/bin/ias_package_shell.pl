@@ -195,14 +195,22 @@ sub do_control_transforms
 sub run_post_project_create
 {
 	my ($project_info) = @_;
+
+	return if (! defined $project_control_data->{'post-create-run'});
+
+	my $template = new Template()
+		|| die $Template::ERROR.$/;
 	
-	my $makefile = $project_info->{'project_dir'}."/Makefile";
-	my $project_dir = $project_info->{'project_dir'};
+	my $new_post_create_command;
+	$template->process(
+		\$project_control_data->{'post-create-run'},
+		$project_info,
+		\$new_post_create_command,
+	);
 	
-	if (-e $makefile)
-	{
-		`cd $project_dir; make package_shell-project_post_create_cleanup`;
-	}
+	debug("Running post create command:\n$new_post_create_command\n");
+	
+	system($new_post_create_command);
 }
 
 sub write_template_file
