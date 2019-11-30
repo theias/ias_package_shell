@@ -28,4 +28,8 @@
 
 * Separate Java tests / template
 
+## Templates
+
+* release , tests, included in artifact_variables.gmk.
+
 
