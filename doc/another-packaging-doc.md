@@ -152,4 +152,63 @@ This is precisely what the infrastructure libraries I have written do.
 They provide definitions or how and where to find things, in an abstracted form,
  so a program calls a standardized subroutine to get answers to these questions.
 
+# Almost There!
 
+Some things still need to be worked out.  Here's a good representation of the
+final layout:
+
+```
+proto_repo_7/
+├── Makefile
+├── proto-repo-7
+│   ├── changelog
+│   ├── DEBIAN
+│   └── RPM
+├── README.md
+└── src
+    ├── bin
+    │   ├── another_thing.sh
+    │   ├── some_parser.py
+    │   ├── something.pl
+    │   ├── something.rb
+    │   ├── something.sh
+    │   └── third_thing.sh
+    ├── etc
+    ├── input
+    ├── lib
+    │   ├── bash4
+    │   │   └── IAS
+    │   │       └── BashLibrary.sh
+    │   ├── perl5
+    │   │   └── IAS
+    │   │       └── SomeModule.pm
+    │   ├── python3
+    │   │   └── IAS
+    │   │       └── a_parser.py
+    │   └── ruby2
+    │       └── IAS
+    │           └── SomeGem.rb
+    └── output
+
+```
+
+## Libraries
+
+Some people like Python.  Some people like Ruby.  Some like Perl, some like Bash.
+I say, "That's great.  Organize it."
+
+Under lib, put the name of the programming language, along with the major version
+of the programming language that's in use.
+
+Under that, put the name of your Institution.
+
+Under that, organize your libraries.
+
+You might not need to use 4 different programming languages in your project,
+but if you organize things this way, you can create and use libraries for
+your project in different languages without interfering with things.
+
+## The artifact directory: proto-repo-7
+
+This controls how artifacts for your project should be created.  An artifact
+(in this case) is a deployable unit, such as a package.
