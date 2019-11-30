@@ -31,5 +31,4 @@
 ## Templates
 
 * release , tests, included in artifact_variables.gmk.
-
-
+* PHP syntax checking
