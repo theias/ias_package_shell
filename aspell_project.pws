@@ -1,4 +1,4 @@
-personal_ws-1.1 en 79 
+personal_ws-1.1 en 84 
 debsetup
 Makefile
 topdir
@@ -20,8 +20,11 @@ cp
 usr
 rpmspec
 gmk
+init
 unstage
+txt
 httpd
+proto
 snmp
 mvanwinkle
 perl
@@ -31,9 +34,11 @@ gpg
 TODO
 gnupg
 javac
+yay
 fakeroot
 specdir
 srcrpmdir
+repos
 localinstall
 gpgbin
 MERCHANTABILITY

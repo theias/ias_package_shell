@@ -19,7 +19,7 @@ directories.
 
 =head1 OPTIONS
 
-  [ --project-output-path ] - optionally specify where to drop the project files. 
+  [ --project-path-output ] - optionally specify where to drop the project files. 
 
 =cut
 

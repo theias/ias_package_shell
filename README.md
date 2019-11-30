@@ -101,6 +101,4 @@ All of the requisite things can be installed via packages.
 fakeroot make package-rpm
 ```
 
-# TODO
 
-* Separate packages made from same project directory

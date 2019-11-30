@@ -46,7 +46,7 @@ git clone ~/repos/your_name_project_1
 
 ```
 cd (project you've cloned)
-fakeroot make package-deb # debian
+fakeroot make package-deb # Debian
 fakeroot make package-rpm # rpm
 ```
 
