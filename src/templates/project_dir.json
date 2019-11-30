@@ -63,11 +63,17 @@
 			"template_string" : "[% project_name %]"
 		}
 	],
-	"not-template-files" : {
+	"not-template-files-contents" : {
 		"comment" : "For this project these are demonstrations / tests.",
-		"exclusions": [
+		"regexes": [
 			{ "regex" : "\\.jpg$", "comment" : "jpg files" },
 			{ "regex" : "\\.png$", "comment" : "png files" }
+		]
+	},
+	"not-template-files-paths" : {
+		"comment" : "For this project these are demonstrations / tests.",
+		"regexes": [
+			{ "regex" : "\\[% project.NON_TEMPLATE_NAME %\\]"}
 		]
 	}
 }

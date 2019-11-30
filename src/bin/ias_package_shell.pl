@@ -272,7 +272,7 @@ sub process_file_template
 	my $temp_file_name = File::Temp::tmpnam();
 
 
-	my $template_exclusions = $project_control_data->{'not-template-files'}->{exclusions};
+	my $template_exclusions = $project_control_data->{'not-template-files-contents'}->{regexes};
 	my @exclude_regexes = map {$_->{regex}} @$template_exclusions;
 	# debug("Exclusion regexes: ", Dumper(\@exclude_regexes),"\n");
 	
@@ -291,12 +291,9 @@ sub process_file_template
 	}
 	return if (! -f $source_file_name);
 
-
 	debug("Processing file template: $source_file_name",$/);
 	debug("Source file: $source_file_name\n");
 	debug("Temp file: $temp_file_name\n");
-
-
 
 	use File::Temp;
 	use File::Copy;
@@ -315,6 +312,24 @@ sub process_file_template
 sub rename_path_template
 {
 	my ($path, $template_data) = @_;
+
+	my $template_exclusions = $project_control_data->{'not-template-files-paths'}->{regexes};
+	my @exclude_regexes = map {$_->{regex}} @$template_exclusions;
+	# debug("Exclusion regexes: ", Dumper(\@exclude_regexes),"\n");
+	
+	my $project_name_dir = $project_info->{project_name}.'/';
+	my $compare_me=remove_front_part($path,$project_name_dir);
+	
+	foreach my $exclude_regex (@exclude_regexes)
+	{
+		print "Exclude regex: $exclude_regex\n";
+		print "Compare me: $compare_me\n";
+		if ($compare_me =~ m/$exclude_regex/)
+		{
+			debug("$compare_me matches $exclude_regex.  Not processing as template.\n");
+			return;
+		}
+	}
 
 	use File::Basename;
 	# print "$path",$/;
