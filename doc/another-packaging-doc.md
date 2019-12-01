@@ -1,24 +1,21 @@
 # Purpose
 
-I really need to reorganize the documentation for this project.
+To describe the evolution of a project repository layout to a well-defined
+layout which allows for expansion.
 
-This is a collection of thoughts that need to be organized.  It's hard to find
-a starting point to explain the philosophy of everything without having written
-some stuff first.
-
-# First Off
+# Introduction
 
 A source code repository layout doesn't need to match the layout of the
-repository when it's "installed".  The current focus of this project has been
+repository when it's __installed__.  The current focus of this project has been
 files that need to be installed verbatim (i.e. files that just need
 to be copied for installation).  Programs written in scripting languages where
-the primary "audience" for this system: they don't need to be compiled and
+the primary audience for this system: they don't need to be compiled and
 linked (well; mostly).
 
 If you need to package up and deploy Java programs, or C programs; this project
 isn't for you (yet).
 
-# Building Up to Things
+# Starting Off
 
 At first, when you learn a repository control system, you might want to lay
 out things like this (where all of your scripts are in the base directory of the repo):
@@ -62,8 +59,8 @@ proto_repo_3/
 └── README.md
 ```
 
-Let's say you want to include an install script in the form of a Makefile;
-and you want a changelog file:
+Let's say you want to include an install script in the form of a **Makefile**;
+and you want a **changelog** file:
 
 ```
 proto_repo_4/
@@ -103,14 +100,26 @@ proto_repo_5/
     └── output/
 ```
 
-Now it's abundantly clear; stuff "you run" goes in bin.  Library code goes
-under lib.  Anything outside of the src dir is not related to the behavior
+Now it's abundantly clear; stuff "you run" goes in **bin**.  Library code goes
+under **lib**.  Anything outside of **src** is not related to the behavior
 of the code.
 
-You might be wondering about why I moved the output directory in the last step.
-*output* is transient in nature; in this method of doing things it doesn't
+You might be wondering about why I moved the **output** directory in the last step.
+**output** is transient in nature; in this method of doing things it doesn't
 really ever get checked in.  If it does, then things under it never should
 get checked in.
+
+
+### **output** Directory - An Aside
+
+git doesn't allow you to check in empty directories.  subversion does.
+If you have a program create output under **output** , it might be up to you
+to create the directory locally when you check out a repository that does things
+in this style.
+
+When something is installed, and it's expected to create output under **output**
+, then it's the job of the installation mechanism to create the **output**
+directory and set its permissions appropriately. 
 
 # The Repo is Laid Out... Now what?
 
@@ -189,7 +198,6 @@ proto_repo_7/
     │       └── IAS
     │           └── SomeGem.rb
     └── output
-
 ```
 
 ## Libraries
