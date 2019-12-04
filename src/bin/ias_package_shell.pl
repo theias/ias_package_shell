@@ -210,7 +210,7 @@ sub run_post_project_create
 	
 	debug("Running post create command:\n$new_post_create_command\n");
 	
-	system($new_post_create_command);
+	`$new_post_create_command`;
 }
 
 sub write_template_file
