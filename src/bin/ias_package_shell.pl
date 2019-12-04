@@ -289,8 +289,8 @@ sub process_file_template
 	
 	foreach my $exclude_regex (@exclude_regexes)
 	{
-		print "Exclude regex: $exclude_regex\n";
-		print "Compare me: $compare_me\n";
+		# debug("Exclude regex: $exclude_regex\n");
+		# debug(print "Compare me: $compare_me\n");
 		if ($compare_me =~ m/$exclude_regex/)
 		{
 			debug("$compare_me matches $exclude_regex.  Not processing as template.\n");
@@ -330,8 +330,8 @@ sub rename_path_template
 	
 	foreach my $exclude_regex (@exclude_regexes)
 	{
-		print "Exclude regex: $exclude_regex\n";
-		print "Compare me: $compare_me\n";
+		# debug("Exclude regex: $exclude_regex\n");
+		# debug("Compare me: $compare_me\n");
 		if ($compare_me =~ m/$exclude_regex/)
 		{
 			debug("$compare_me matches $exclude_regex.  Not processing as template.\n");
