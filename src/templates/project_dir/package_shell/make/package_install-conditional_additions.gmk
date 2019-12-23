@@ -27,8 +27,10 @@ package_install-self_replication:
 	# This will put a copy of the source tree in a tar.gz file
 	# in the doc dir.
 
-	# This is not ideal, as packages SHOULD be made from a build server from a
-	# new checkout of the tree, and the following things should NOT be there
+	# Making a copy of the source tree from a non-clean repo
+	# is not a good idea, as transient files should not be included
+	# in the copy.  This rsync attempts to mitigate it by excluding
+	# a list of directories that are transient by the layout's convention
 
 	rsync -avp \
 	    --exclude .svn/ \
