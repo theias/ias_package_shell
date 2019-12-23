@@ -34,7 +34,7 @@ debug-ALL: \
 	debug-make-standard_phonies \
 	debug-project_directories \
 	debug-package_shell-additional \
-	debug-source-basic_tests \
+	debug-package_shell_basic_tests \
 	debug-package_install-base_directories \
 	debug-package_install-conditional_additions \
 	debug-package_install-final_cleanup \

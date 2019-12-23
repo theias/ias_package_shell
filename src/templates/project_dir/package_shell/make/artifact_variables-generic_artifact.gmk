@@ -13,7 +13,8 @@
 	artifact_debug \
 	artifact_clean \
 	artifact_install \
-	artifact_install-post
+	artifact_install-post \
+	artifact_release
 
 artifact_all:
 
@@ -27,3 +28,5 @@ artifact_install: \
 	package_install-standard
 
 artifact_install-post:
+
+artifact_release: package_shell_basic_test-all

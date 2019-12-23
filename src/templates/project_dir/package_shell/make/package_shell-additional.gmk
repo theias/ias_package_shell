@@ -1,7 +1,3 @@
-.PHONY: release 
-
-release: test-all
-
 .PHONY: package_shell-project_post_create_cleanup
 
 package_shell-project_post_create_cleanup:

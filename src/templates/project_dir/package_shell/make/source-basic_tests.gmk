@@ -1,8 +1,13 @@
-.PHONY: test test-all test-doc
+.PHONY: \
+	package_shell_basic_test-all \
+	package_shell_basic_test-syntax \
+	package_shell_basic_test-doc
 
-test-all: test test-doc
+package_shell_basic_test-all: \
+	package_shell_basic_test-syntax \
+	package_shell_basic_test-doc
 
-test:
+package_shell_basic_test-syntax:
 	
 	# Syntax checking routines.
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
@@ -35,15 +40,15 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.rb)","")
 	-exec ruby -c {} \;
 endif
 
-test-doc:
+package_shell_basic_test-doc:
 	# Testing documentation
 	find "$(SRC_DIR)" -type f \
 		-name '*.pl' \
 		-o -name '*.pm' \
 	-exec podchecker {} \;
 
-.PHONY: debug-source-basic_tests
+.PHONY: debug-package_shell_basic_tests
 
-debug-source-basic_tests:
+debug-package_shell_basic_tests:
 	# source-basic_tests - debug variables
 	#   (no variables defined)
