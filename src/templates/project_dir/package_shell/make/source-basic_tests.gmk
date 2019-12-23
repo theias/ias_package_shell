@@ -4,7 +4,7 @@ test-all: test test-doc
 
 test:
 	
-	# Sytax checking routines.
+	# Syntax checking routines.
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
 	# Running Perl Tests
 	find "$(SRC_DIR)/bin" -type f \
