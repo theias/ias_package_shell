@@ -11,7 +11,7 @@ package_shell_all_tests: \
 .PHONY: ias_package_shell_package_division_test
 ias_package_shell_package_division_test:
 	cd $(MAKEFILE_PATH)/ias_package_shell_package_division_test \
-	&& make release \
+	&& make artifact_release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 	&& make clean \
@@ -31,7 +31,7 @@ ias_package_shell_package_division_test:
 .PHONY: ias_package_shell_test_package_basic
 ias_package_shell_test_package_basic:
 	cd $(MAKEFILE_PATH)/ias_package_shell_test_package_basic \
-	&& make release \
+	&& make artifact_release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 	&& make clean
@@ -39,7 +39,7 @@ ias_package_shell_test_package_basic:
 .PHONY: ias_package_shell_test_package_a
 ias_package_shell_test_package_a:
 	cd $(MAKEFILE_PATH)/ias_package_shell_test_package_a \
-	&& make release \
+	&& make artifact_release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm \
 	&& make clean
@@ -47,7 +47,7 @@ ias_package_shell_test_package_a:
 .PHONY: ias_java_test_a
 ias_java_test_a:
 	cd $(MAKEFILE_PATH)/ias_java_test_a \
-	&& make release \
+	&& make artifact_release \
 	&& make java-compile \
 	&& make java-run \
 	&& fakeroot make package-deb \
@@ -62,7 +62,7 @@ ias_package_shell_test_fresh_package:
 	&& chmod +x ias_package_shell_test_fresh_package/*.sh \
 	&& chmod +x ias_package_shell_test_fresh_package/src/bin/*.sh \
 	&& cd ias_package_shell_test_fresh_package \
-	&& make release \
+	&& make artifact_release \
 	&& fakeroot make package-deb \
 	&& fakeroot make package-rpm
 	rm -rf ias_package_shell_test_fresh_package
