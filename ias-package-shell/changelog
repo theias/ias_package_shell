@@ -1,3 +1,15 @@
+ias-package-shell 4.5.0-0 noarch; urgency=low
+
+	* Support for excluding file names from being templated, as well as file contents
+	  via regular expressions
+
+	* Permissions for files in the artifact should now more closely match those
+	  in the source repository.  Modifying permissions in post-install is now
+	  part of a different (optional) target
+
+	* Release and test targets are now named to conflict less with other "things"
+	  calling themselves things like "test" and "test-all"
+
 ias-package-shell 4.4.0-0 noarch; urgency=low
 
 	* Ability to generate multiple artifacts containing different parts of the project
