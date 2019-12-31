@@ -49,7 +49,7 @@ package_install-self_replication:
 
 
 .PHONY: package_install-run_scripts
-package_install-run_scripts:
+package_install-run_scripts: package_install-docs
 
 ifneq ("$(wildcard $(SRC_DIR)/run_scripts/*)","")
 	# Installing run scripts
