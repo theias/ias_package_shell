@@ -14,7 +14,7 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
 	# Running Perl Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.pl' \
-	-exec perl -c {} \; 
+	-exec perl -c {} + 
 	
 endif
 
@@ -22,7 +22,7 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.sh)","")
 	# Running Bash Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.sh' \
-	-exec bash -n {} \;
+	-exec bash -n {} +
 	
 endif
 
@@ -30,15 +30,24 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.py)","")
 	# Running Python Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.py' \
-	-exec python -m py_compile {} \;
+	-exec python -m py_compile {} +
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.rb)","")
 	# Running Ruby Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.rb' \
-	-exec ruby -c {} \;
+	-exec ruby -c {} +
 endif
+
+	# PHP, when running syntax checks on files doesn't check
+	# files that are included. 
+	# Therefore, find looks for all of the PHP files in the
+	# source tree.
+
+	find ./ -type f \
+		-name '*.php' \
+	-exec php -n -l {} +
 
 package_shell_basic_test-doc:
 	# Testing documentation
