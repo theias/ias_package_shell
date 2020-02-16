@@ -10,11 +10,13 @@ package_shell_basic_test-all: \
 package_shell_basic_test-syntax:
 	
 	# Syntax checking routines.
+	# For "scripts", src/bin is searched, assuming that
+	# things in there use what's under src/lib "correctly"
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.pl)","")
 	# Running Perl Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.pl' \
-	-exec perl -c {} + 
+	-print0 | xargs --null -n1 -i perl -c '{}' 
 	
 endif
 
@@ -22,7 +24,7 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.sh)","")
 	# Running Bash Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.sh' \
-	-exec bash -n {} +
+	-print0 | xargs --null -n1 -i bash -n '{}'
 	
 endif
 
@@ -30,14 +32,14 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*.py)","")
 	# Running Python Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.py' \
-	-exec python -m py_compile {} +
+	-print0 | xargs --null -n1 -i python -m py_compile '{}'
 endif
 
 ifneq ("$(wildcard $(SRC_DIR)/bin/*.rb)","")
 	# Running Ruby Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.rb' \
-	-exec ruby -c {} +
+	-print0 | xargs --null -n1 -i ruby -c '{}'
 endif
 
 	# PHP, when running syntax checks on files doesn't check
@@ -45,9 +47,9 @@ endif
 	# Therefore, find looks for all of the PHP files in the
 	# source tree.
 
-	find ./ -type f \
+	find "$(SRC_DIR)/" -type f \
 		-name '*.php' \
-	-exec php -n -l {} +
+	-print0 | xargs --null -n1 -i php -n -l '{}'
 
 package_shell_basic_test-doc:
 	# Testing documentation
