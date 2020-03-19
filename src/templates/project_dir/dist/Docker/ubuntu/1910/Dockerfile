@@ -7,4 +7,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         build-essential \
         fakeroot
 
-CMD /[% project.project_name %]/package_shell/dist/ubuntu/1910/build-dist.sh
+CMD /[% project.project_name %]/dist/Docker/ubuntu/1910/build-dist.sh

@@ -10,4 +10,4 @@ RUN yum -y update && \
         rpm-build \
         fakeroot
 
-CMD /[% project.project_name %]/package_shell/dist/centos/8/build-dist.sh
+CMD /[% project.project_name %]/dist/Docker/centos/8/build-dist.sh
