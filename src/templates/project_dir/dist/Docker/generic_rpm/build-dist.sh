@@ -2,5 +2,5 @@
 
 set -e
 
-cd CMD /[% project_dir %]/
+cd /[% project_dir %]/
 fakeroot make package-rpm
