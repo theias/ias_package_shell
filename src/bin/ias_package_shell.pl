@@ -19,7 +19,19 @@ directories.
 
 =head1 OPTIONS
 
-  [ --project-path-output ] - optionally specify where to drop the project files. 
+=over 4
+
+=item [ --project-path-output ] - optionally specify where to drop the project files.
+The default is the current directory.
+
+=item [ --project-control-file ] - A JSON file that contains configuration for
+the project.
+
+=item [ --project-template-path ] - The directory containing the project template.
+It defaults to the project-control-file name, without the '.json' extension.
+
+
+=back
 
 =cut
 
@@ -94,19 +106,36 @@ our $TEMPLATE_CONFIG = {};
 if ($OPTIONS_VALUES->{'auto-dev-mode'})
 {
 	$PROJECT_CONTROL_FILE="$RealBin/../templates/project_dir.json";
-	$PROJECT_TEMPLATE_DIR="$RealBin/../templates/project_dir";
 }
 else
 {
 	$PROJECT_CONTROL_FILE="/opt/IAS/templates/ias-package-shell/project_dir.json";
-	$PROJECT_TEMPLATE_DIR="/opt/IAS/templates/ias-package-shell/project_dir";
 }
 
 our $project_control_file = $OPTIONS_VALUES->{'project-control-file'}
-	|| $PROJECT_CONTROL_FILE;
-	
+	// $PROJECT_CONTROL_FILE;
+
+my $template_guess_path = $PROJECT_CONTROL_FILE;
+$template_guess_path =~ s/\.[^.]+$//;
+if ( defined $OPTIONS_VALUES->{'project-control-file'} )
+{
+	my $tmp_guess_path = $OPTIONS_VALUES->{'project-control-file'};
+	$tmp_guess_path =~ s/\.[^.]+$//;
+
+	if (-d $tmp_guess_path)
+	{
+		$template_guess_path = $tmp_guess_path;
+	}
+}
+
 our $project_template_path = $OPTIONS_VALUES->{'project-template-path'}
-	|| $PROJECT_TEMPLATE_DIR;
+	// $template_guess_path;
+
+if (! defined $project_template_path
+	|| ! -d $project_template_path )
+{
+	die "Please provide a project template path.\n";
+}
 
 my $project_control_data = load_json_file($project_control_file);
 
@@ -156,13 +185,15 @@ sub do_control_transforms
 {
 	my ($project_control_data, $project_info) = @_;
 
-=pod	
-		"transforms" : [
+=pod
+
+"transforms" : [
 		{
 			"name" : "package_name",
 			"transform" : "underscores_to_dashes",
 			"template_string" : "[% project.project_name %]"
 		}
+
 =cut
 
 	# print "Project control data:\n";
