@@ -27,7 +27,7 @@ The default is the current directory.
 =item [ --project-control-file ] - A JSON file that contains configuration for
 the project.
 
-=item [ --project-template-path ] - The directory containing the project template.
+=item [ --project-template-dir ] - The directory containing the project template.
 It defaults to the project-control-file name, without the '.json' extension.
 
 
@@ -57,7 +57,7 @@ my $OPTIONS=[
 	'debug',
 	'project-path-output=s',
 	'project-control-file=s',
-	'project-template-path=s',
+	'project-template-dir=s',
 ];
 
 GetOptions(
@@ -128,7 +128,7 @@ if ( defined $OPTIONS_VALUES->{'project-control-file'} )
 	}
 }
 
-our $project_template_path = $OPTIONS_VALUES->{'project-template-path'}
+our $project_template_path = $OPTIONS_VALUES->{'project-template-dir'}
 	// $template_guess_path;
 
 if (! defined $project_template_path
@@ -146,6 +146,7 @@ my $project_info = do_prompts($project_control_data);
 
 our %CONTROL_TRANSFORMS = (
 	'underscores_to_dashes' => \&transform_underscores_to_dashes,
+	'dashes_to_underscores' => \&transform_dashes_to_underscores,
 );
 
 do_control_transforms(
@@ -412,6 +413,28 @@ sub transform_underscores_to_dashes
 	);
 	
 	$new_value =~ s/_/-/g;
+	return $new_value;	
+}
+
+sub transform_dashes_to_underscores
+{
+	my ($data_ref, $template_string) = @_;
+
+	# print "Transform underscores to dashes!\n";
+	# print "In data:\n";
+	# print Dumper($data_ref),$/;
+	# print "Template: $template_string\n";
+	my $template = new Template()
+		|| die $Template::ERROR.$/;
+	my $new_value;
+	$template->process(
+		\$template_string,
+		$data_ref,
+		\$new_value,
+	);
+	
+	$new_value =~ s/\-/_/g;
+
 	return $new_value;	
 }
 
