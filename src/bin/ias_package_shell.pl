@@ -147,6 +147,7 @@ my $project_info = do_prompts($project_control_data);
 our %CONTROL_TRANSFORMS = (
 	'underscores_to_dashes' => \&transform_underscores_to_dashes,
 	'dashes_to_underscores' => \&transform_dashes_to_underscores,
+	'upper_case' => \&transform_to_upper_case,
 );
 
 do_control_transforms(
@@ -434,6 +435,28 @@ sub transform_dashes_to_underscores
 	);
 	
 	$new_value =~ s/\-/_/g;
+
+	return $new_value;	
+}
+
+sub transform_to_upper_case
+{
+	my ($data_ref, $template_string) = @_;
+
+	# print "Transform underscores to dashes!\n";
+	# print "In data:\n";
+	# print Dumper($data_ref),$/;
+	# print "Template: $template_string\n";
+	my $template = new Template()
+		|| die $Template::ERROR.$/;
+	my $new_value;
+	$template->process(
+		\$template_string,
+		$data_ref,
+		\$new_value,
+	);
+	
+	$new_value = uc($new_value);
 
 	return $new_value;	
 }
