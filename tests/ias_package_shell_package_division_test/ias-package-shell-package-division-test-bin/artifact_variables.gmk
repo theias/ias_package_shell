@@ -16,7 +16,7 @@ AUTOMATION_GROUP ?= iasnetauto
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
-# Here, we just want the libraries
+# Here, we just want the bin stuff
 
 .PHONY: \
 	artifact_all \

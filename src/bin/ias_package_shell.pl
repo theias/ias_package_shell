@@ -30,6 +30,8 @@ the project.
 =item [ --project-template-dir ] - The directory containing the project template.
 It defaults to the project-control-file name, without the '.json' extension.
 
+=item [ --do-post-create-run ] - Run the "post-create-run" entry from the control
+file.  Disable with --nodo-post-create-run
 
 =back
 
@@ -52,12 +54,15 @@ use JSON;
 use Getopt::Long;
 
 our $SUPPRESS_DEFAULT_NOTIFICATIONS=1;
-my $OPTIONS_VALUES = {};
+my $OPTIONS_VALUES = {
+	'do-post-create-run' => 1,
+};
 my $OPTIONS=[
 	'debug',
 	'project-path-output=s',
 	'project-control-file=s',
 	'project-template-dir=s',
+	'do-post-create-run!',
 ];
 
 GetOptions(
@@ -161,7 +166,9 @@ debug("Project info: ",Dumper($project_info),"\n");
 # exit;
 
 process_project_dir($project_info);
-run_post_project_create($project_info);
+
+run_post_project_create($project_info)
+	if ($OPTIONS_VALUES->{'do-post-create-run'});
 
 exit;
 
