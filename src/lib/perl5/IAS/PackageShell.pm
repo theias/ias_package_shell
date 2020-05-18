@@ -6,6 +6,7 @@ use warnings;
 use Pod::Usage;
 use FindBin qw($RealBin $Script);
 use Data::Dumper;
+$Data::Dumper::Indent = 1;
 use Template;
 use File::Basename;
 use IO::File;
@@ -25,6 +26,7 @@ my $OPTIONS=[
 	'project-control-file=s',
 	'project-template-dir=s',
 	'do-post-create-run!',
+	'dump-stuff!',
 ];
 
 GetOptions(
@@ -132,10 +134,13 @@ sub run
 	
 	$self->do_control_transforms();
 
-	# print "Project info after transform: \n";
-	$self->debug("Project info: ",Dumper($project_info),"\n");
-
-	# exit;
+	if ($OPTIONS_VALUES->{'dump-stuff'})
+	{
+		my $json = JSON->new->allow_nonref();
+		my %h = %$self;
+		print $json->pretty->encode(\%h);
+		exit;
+	}	
 
 	$self->process_project_dir();
 
@@ -163,50 +168,7 @@ sub remove_double_slashes
 	return $string;
 }
 
-sub do_control_transforms
-{
-	my ($self) = @_;
-	
-	my $project_control_data = $self->{project_control_data};
-	my $project_info = $self->{project_info};
 
-=pod
-
-"transforms" : [
-		{
-			"name" : "package_name",
-			"transform" : "underscores_to_dashes",
-			"template_string" : "[% project.project_name %]"
-		}
-
-=cut
-
-	# print "Project control data:\n";
-	# print Dumper($project_control_data);
-	# print "Project Info:\n";
-	# print Dumper($project_info);
-
-	CONTROL_TRANSFORM: foreach my $transform (@{$project_control_data->{transforms}})
-	{
-		# print "Start of transform loop!\n";
-		if (! defined $CONTROL_TRANSFORMS{$transform->{transform}})
-		{
-			warn "Transform ", $transform->{transform}, " is not a valid transform.\n";
-			next CONTROL_TRANSFORM;
-		}
-		# print "Transform is defined!\n";
-		$project_info->{$transform->{name}} = $CONTROL_TRANSFORMS{$transform->{transform}}->(
-			$project_info,
-			$transform->{template_string},
-		);
-		
-		# print "Transform info:\n";
-		# print Dumper($transform);
-		
-		# print "Transformed: ", $project_info->{$transform->{name}},$/;
-	}
-
-}
 
 sub run_post_project_create
 {
@@ -343,8 +305,6 @@ sub rename_path_template
 	
 	foreach my $exclude_regex (@exclude_regexes)
 	{
-		# $self->debug("Exclude regex: $exclude_regex\n");
-		# $self->debug("Compare me: $compare_me\n");
 		if ($compare_me =~ m/$exclude_regex/)
 		{
 			$self->debug("$compare_me matches $exclude_regex.  Not processing as template.\n");
@@ -353,7 +313,6 @@ sub rename_path_template
 	}
 
 	use File::Basename;
-	# print "$path",$/;
 	
 	my $template = new Template()
 		|| die $Template::ERROR.$/;
@@ -499,14 +458,34 @@ sub write_template_file
 
 =cut
 
+sub do_control_transforms
+{
+	my ($self) = @_;
+	
+	my $project_control_data = $self->{project_control_data};
+	my $project_info = $self->{project_info};
+
+	CONTROL_TRANSFORM: foreach my $transform (@{$project_control_data->{transforms}})
+	{
+		# print "Start of transform loop!\n";
+		if (! defined $CONTROL_TRANSFORMS{$transform->{transform}})
+		{
+			warn "Transform ", $transform->{transform}, " is not a valid transform.\n";
+			next CONTROL_TRANSFORM;
+		}
+		# print "Transform is defined!\n";
+		$project_info->{$transform->{name}} = $CONTROL_TRANSFORMS{$transform->{transform}}->(
+			$project_info,
+			$transform->{template_string},
+		);
+	}
+
+}
+
 sub transform_underscores_to_dashes
 {
 	my ($data_ref, $template_string) = @_;
 
-	# print "Transform underscores to dashes!\n";
-	# print "In data:\n";
-	# print Dumper($data_ref),$/;
-	# print "Template: $template_string\n";
 	my $template = new Template()
 		|| die $Template::ERROR.$/;
 	my $new_value;
@@ -524,10 +503,6 @@ sub transform_dashes_to_underscores
 {
 	my ($data_ref, $template_string) = @_;
 
-	# print "Transform underscores to dashes!\n";
-	# print "In data:\n";
-	# print Dumper($data_ref),$/;
-	# print "Template: $template_string\n";
 	my $template = new Template()
 		|| die $Template::ERROR.$/;
 	my $new_value;
@@ -547,10 +522,6 @@ sub transform_to_upper_case
 {
 	my ($data_ref, $template_string) = @_;
 
-	# print "Transform underscores to dashes!\n";
-	# print "In data:\n";
-	# print Dumper($data_ref),$/;
-	# print "Template: $template_string\n";
 	my $template = new Template()
 		|| die $Template::ERROR.$/;
 	my $new_value;
