@@ -33,6 +33,11 @@ It defaults to the project-control-file name, without the '.json' extension.
 =item [ --do-post-create-run ] - Run the "post-create-run" entry from the control
 file.  Disable with --nodo-post-create-run
 
+=item [ --debug ] - Display debug information
+
+=item [ --dump-stuff ] - After (optionally) prompting, dump the data that will
+be used to process the template directory.
+
 =back
 
 =cut

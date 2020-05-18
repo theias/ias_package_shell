@@ -3,6 +3,21 @@ package IAS::PackageShell;
 use strict;
 use warnings;
 
+=head1 NAME
+
+IAS::PackageShell
+
+=head1 SYNOPSIS
+
+See ias_package_shell.pl
+
+=head1 DESCRIPTION
+
+Documentation in this file will be for how IAS::PackageShell is
+developed.  ias_package_shell.pl will contain how it's used.
+
+=cut
+
 use Pod::Usage;
 use FindBin qw($RealBin $Script);
 use Data::Dumper;
@@ -102,6 +117,10 @@ if ( defined $OPTIONS_VALUES->{'project-control-file'} )
 
 our $project_template_path = $OPTIONS_VALUES->{'project-template-dir'}
 	// $template_guess_path;
+
+=head1 SUBROUTINES
+
+=cut
 
 sub new
 {
@@ -345,6 +364,19 @@ sub debug
 	print @_ if $OPTIONS_VALUES->{debug};
 }
 
+=head2 do_prompts
+
+=over 4
+
+=item Asks for user input.
+=item Complains if fail_regex matches
+=item Complains if pass_regex doesn't match
+=item Applies default value if necessary
+
+=back
+
+=cut
+
 sub do_prompts
 {
 	my ($self) = @_;
@@ -454,7 +486,10 @@ sub write_template_file
 
 }
 
-=head3 Transforms
+=head2 Transforms
+
+These are dispatched subroutines that can be specified from the configuration
+file.
 
 =cut
 
@@ -482,6 +517,12 @@ sub do_control_transforms
 
 }
 
+=head3 transform_underscores_to_dashes
+
+Does just what it says.
+
+=cut
+
 sub transform_underscores_to_dashes
 {
 	my ($data_ref, $template_string) = @_;
@@ -498,6 +539,12 @@ sub transform_underscores_to_dashes
 	$new_value =~ s/_/-/g;
 	return $new_value;	
 }
+
+=head3 transform_dashes_to_underscores
+
+Does just what it says.
+
+=cut
 
 sub transform_dashes_to_underscores
 {
@@ -517,6 +564,11 @@ sub transform_dashes_to_underscores
 	return $new_value;	
 }
 
+=head3 transform_to_upper_case
+
+Does just what it says.
+
+=cut
 
 sub transform_to_upper_case
 {
