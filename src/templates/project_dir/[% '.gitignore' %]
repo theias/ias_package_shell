@@ -20,3 +20,7 @@ src/java/**/*.class
 
 # perl6
 src/**/.precomp
+
+# editors
+*.dia.autosave
+*.swp
