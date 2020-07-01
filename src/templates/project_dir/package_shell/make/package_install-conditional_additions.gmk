@@ -89,9 +89,9 @@ endif
 package_install-web:
 
 ifneq ("$(wildcard $(SRC_DIR)/web/*)","")
-    # Installing web files
-    mkdir -p "$(ROOT_DIR)/$(WEB_DIR)"
-    -cp -r "$(SRC_DIR)/web/"* "$(ROOT_DIR)/$(WEB_DIR)"
+	# Installing web files
+	mkdir -p "$(ROOT_DIR)/$(WEB_DIR)"
+	-cp -r "$(SRC_DIR)/web/"* "$(ROOT_DIR)/$(WEB_DIR)"
 endif
 
 .PHONY: package_install-cgi-bin
