@@ -66,6 +66,10 @@ debug-project_directories:
 	#   BIN_DIR: '$(BIN_DIR)'
 	#   BIN_INST_DIR: '$(BIN_INST_DIR)'
 	# 
+	#   WEB_BASE_DIR: '$(WEB_BASE_DIR)'
+	#   WEB_DIR: '$(WEB_DIR)'
+	#   WEB_INST_DIR: '$(WEB_INST_DIR)'
+	# 
 	#   CGI_BIN_BASE_DIR: '$(CGI_BIN_BASE_DIR)'
 	#   CGI_BIN_DIR: '$(CGI_BIN_DIR)'
 	#   CGI_BIN_INST_DIR: '$(CGI_BIN_INST_DIR)'
