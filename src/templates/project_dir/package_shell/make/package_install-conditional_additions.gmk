@@ -14,6 +14,7 @@ package_install-conditional_additions-ALL: \
 	package_install-run_scripts \
 	package_install-docs \
 	package_install-bin \
+	package_install-web \
 	package_install-cgi-bin \
 	package_install-templates \
 	package_install-lib \
@@ -82,6 +83,15 @@ ifneq ("$(wildcard $(SRC_DIR)/bin/*)","")
 	mkdir -p "$(ROOT_DIR)/$(BIN_DIR)"
 	cp -r "$(SRC_DIR)/bin/"* "$(ROOT_DIR)/$(BIN_DIR)"
 
+endif
+
+.PHONY: package_install-web
+package_install-web:
+
+ifneq ("$(wildcard $(SRC_DIR)/web/*)","")
+    # Installing web files
+    mkdir -p "$(ROOT_DIR)/$(WEB_DIR)"
+    -cp -r "$(SRC_DIR)/web/"* "$(ROOT_DIR)/$(WEB_DIR)"
 endif
 
 .PHONY: package_install-cgi-bin

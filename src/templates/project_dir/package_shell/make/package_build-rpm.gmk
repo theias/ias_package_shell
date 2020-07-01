@@ -48,6 +48,11 @@ rpmspec:
 		echo "$(BIN_DIR)" >> "$(SPEC_FILE)" ; \
 	fi
 
+	# web
+	if [ -e "$(WEB_INST_DIR)" ]; then \
+		echo "$(WEB_DIR)" >> "$(SPEC_FILE)" ; \
+	fi
+
 	# cgi-bin
 	if [ -e "$(CGI_BIN_INST_DIR)" ]; then \
 		echo "$(CGI_BIN_DIR)" >> "$(SPEC_FILE)" ; \
