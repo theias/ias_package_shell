@@ -37,7 +37,7 @@ in either "DEBIAN/control" or "RPM/specfile.spec"
 
 Optionally, you can build a package which will install the binaries in
 
-* /opt/IAS/bin/[% project.package_name %]/.
+* /opt/IAS/bin/[% project.package_name %]/
 
 # Building a Package
 
