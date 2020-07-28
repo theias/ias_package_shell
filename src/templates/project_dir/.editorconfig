@@ -1,6 +1,11 @@
 # EditorConfig is awesome: https://EditorConfig.org
 # .editorconfig
 
+# Please see doc/developer_notes.md
+# If you find anything egregious or missing, please consider submitting a pull request
+# to https://github.com/theias/ias_package_shell
+
+
 # top-most EditorConfig file
 root = true
 
