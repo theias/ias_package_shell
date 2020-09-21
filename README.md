@@ -74,9 +74,10 @@ from within the current repository itself.
 
 #### Libraries
 
-As this is a progressive framework, you do not need to know this in order
-to use the framework.  However, things have been written which allow you
-to organize your programs better, standardize, and reduce code.
+As this is a progressive framework, you do not need to know how to use
+libraries this in order to use the framework.  However, things have been
+written which allow you to organize your programs better, standardize, and
+reduce code.
 
 All of the scripting languages listed above have corresponding libraries which
 (for example):
