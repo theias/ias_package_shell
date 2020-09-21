@@ -12,7 +12,7 @@ installed those dependencies
 It is known to work on the following Linux Distributions:
 
 * EL 5,6,7,8
-* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04, Raspian, etc
+* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04
 
 It probably works on more, but those are the main distributions I use.
 
@@ -20,6 +20,9 @@ It probably works on more, but those are the main distributions I use.
 
 The _Full Project_ template is a project template that ships with IAS Package Shell.
 It is the default project directory template that is used.
+
+It generates noarch / all arch packages.  It can be used to generate other
+artifacts, such as Ruby Gems.
 
 ### Agnosticism
 
