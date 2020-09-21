@@ -81,10 +81,10 @@ to organize your programs better, standardize, and reduce code.
 All of the scripting languages listed above have corresponding libraries which
 (for example):
 
-* Know where to store and retrieve transient files from
+* know where to store and retrieve transient files from
 	* Input and output directories; and script_name-label-2020-03-02.txt (for example)
-* Know where to load configuration files from (src/etc, for example)
-* Have logging facilities built in
+* know where to load configuration files from (src/etc, for example)
+* have logging facilities built in
 
 These libraries know how to find those locations when run from:
 * the source directory
