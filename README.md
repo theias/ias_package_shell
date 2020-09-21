@@ -48,11 +48,11 @@ by specifying directories into which to put files.
 #### Layout
 
 The _Full Project_ template is designed for you to put a file in
-<pre>src/bin/</pre> and have that file deployed inside of a package (DEB, RPM)
+```src/bin/``` and have that file deployed inside of a package (DEB, RPM)
 which is built with one command.
 
-If you wish to write a library, you simply create <pre>src/lib/language</pre> 
-and put your library there.  Files under </pre>src/lib</pre> are automatically
+If you wish to write a library, you simply create ```src/lib/language``` 
+and put your library there.  Files under ```src/lib``` are automatically
 added by the packaging code.
 
 Thus, you can go from a simple single script to having a library without
