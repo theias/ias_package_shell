@@ -41,11 +41,11 @@ by specifying directories into which to put files.
 #### Layout
 
 The *Full Project* template is designed for you to put a file in
-_src/bin/_ and have that file deployed inside of a package (DEB, RPM)
+```src/bin/``` and have that file deployed inside of a package (DEB, RPM)
 which is built with one command.
 
-If you wish to write a library, you simply create _src/lib/language_ 
-and put your library there.  Files under _src/lib_ are automatically
+If you wish to write a library, you simply create ```src/lib/language``` 
+and put your library there.  Files under ```src/lib``` are automatically
 added by the packaging code.
 
 Thus, you can go from a simple single script to having a library without
