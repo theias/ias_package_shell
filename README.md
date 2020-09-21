@@ -12,7 +12,7 @@ installed those dependencies
 It is known to work on the following Linux Distributions:
 
 * EL 5,6,7,8
-* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04
+* Debian based systems, such as Ubuntu 16.04, 18.04, 20.04 .
 
 It probably works on more, but those are the main distributions I use.
 
