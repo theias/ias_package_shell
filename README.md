@@ -9,17 +9,17 @@ or repositories that have large community support (e.g. EPEL)
 * Functioning on both Debian and RPM based systems after only having
 installed those dependencies
 
-The current main project layout, "Full Project" is:
+## The Full Project Template
+
+### Agnosticism
+
+For scripting languages, current main project layout, "Full Project" is:
 
 * version control system agnostic
 * packaging system agnostic
-* programming language agnostic (for scripting languages)
+* programming language agnostic
 * distribution agnostic
 * deployment system agnostic
-
-Examples for multiple scripting languages can be found here:
-
-* https://github.com/mvanwinkleias/repo_layout_demo1
 
 This layout is known to be compatible with:
 
@@ -29,7 +29,37 @@ This layout is known to be compatible with:
 * Ruby: Gems (see artifact-name/gem)
 * Bash
 
-Additionally, project directory templates have been created for the following:
+### "Progressive Framework"
+
+A "Progressive Framework" accomodates for future groth without encumbering
+newcomers.  Certain aspects of packaging have been abstracted away simply
+by specifying directories into which to put files.
+
+The *Full Project* template is designed for you to put a file in
+_src/bin/_ and have that file deployed inside of a package (DEB, RPM)
+which is built with one command.
+
+If you wish to write a library, you simply create _src/lib/language_ 
+and put your library there.  Files under _src/lib_ are automatically
+added by the packaging code.
+
+Thus, you can go from a simple single script to having a library without
+issue.  You can also mix and match scripting languages inside of the
+same repository.
+
+Examples for multiple scripting languages can be found here:
+
+* https://github.com/mvanwinkleias/repo_layout_demo1
+
+When you decide you want to make a PIP, Gem, CPAN Module, Composer Module,
+etc, you can also easily progress to those systems as well.  As your
+project becomes better defined, you can either migrate your libraries
+out to different repositories, or you can use those packaging systems
+from within the current repository itself.
+
+## Other Projects
+
+Project directory templates have been created for the following:
 
 * Autotools + Simple C program: https://github.com/mvanwinkleias/mv_c_package_template_test/tree/master/src/templates/c_project_template
 * Autotools + C program with libraries: https://github.com/mvanwinkleias/mv_c_package_template_test/tree/master/src/templates/c_library_template
