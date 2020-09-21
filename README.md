@@ -9,6 +9,13 @@ or repositories that have large community support (e.g. EPEL)
 * Functioning on both Debian and RPM based systems after only having
 installed those dependencies
 
+It is known to work on the following Linux Distributions:
+
+* EL 5,6,7,8
+* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04, Raspian, etc
+
+It probably works on more, but those are the main distributions I use.
+
 ## The _Full Project_ Template
 
 The _Full Project_ template is a project template that ships with IAS Package Shell.
@@ -23,13 +30,6 @@ For scripting languages, the current main project layout, _Full Project_, is:
 * programming language agnostic
 * Linux distribution agnostic
 * deployment system agnostic
-
-It is known to work on the following Linux Distributions:
-
-* EL 5,6,7,8
-* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04, Raspian, etc
-
-It probably works on more, but those are the main distributions I use.
 
 This layout is known to be compatible with:
 
