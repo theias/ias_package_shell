@@ -1,5 +1,11 @@
 require 'pp'
 
+executables = Dir['bin/*.rb']
+executables.each do | e |
+	e.gsub!(/^bin\//, '')
+end
+
+
 Gem::Specification.new do |s|
   s.name        = '[% project.package_name %]'
   s.version     = '0.0.0'
@@ -9,7 +15,7 @@ Gem::Specification.new do |s|
   s.authors     = ["SomeAuthor"]
   s.email       = 'someemail@example.com'
   s.files       = Dir['lib/**/*']
-  s.executables = Dir['bin/*.rb']
+  s.executables = executables
   s.homepage    =
     'https://example.com/SomeGem'
   s.license       = 'GPL-3.0'
