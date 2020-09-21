@@ -174,10 +174,11 @@ For Debian faimly systems, install the dependencies listed in ```ias-package-she
 
 ## Building a Package
 
-You can build a package and install it, which will take care of the dependencies and install into:
+For RedHat family systems, you'll need rpmbuild, fakeroot and make.
+* ```fakeroot make package-rpm```
 
-* /opt/IAS/bin/ias-package-shell/ias_package_shell.pl
-
+For Debian family systems, you'll need build-essential, and fakeroot.
+* ```fakeroot make package-deb```
 
 ### Requirements
 
