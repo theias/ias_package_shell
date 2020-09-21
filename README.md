@@ -122,6 +122,9 @@ For RedHat family systems, you'll need rpm-build, fakeroot and make.
 
 For Debian family systems, you'll need build-essential, and fakeroot.
 * ```fakeroot make package-deb```
+
+The last lines of output will contain the package that was generated.
+
 # Supplemental Documentation
 
 Supplemental documentation for this project can be found here:
