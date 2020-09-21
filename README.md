@@ -11,6 +11,9 @@ installed those dependencies
 
 ## The Full Project Template
 
+The "Full Project" template is a project template that ships with IAS Package Shell.
+It is the default project directory template that is used.
+
 ### Agnosticism
 
 For scripting languages, current main project layout, "Full Project" is:
@@ -35,6 +38,8 @@ A "Progressive Framework" accomodates for future groth without encumbering
 newcomers.  Certain aspects of packaging have been abstracted away simply
 by specifying directories into which to put files.
 
+#### Layout
+
 The *Full Project* template is designed for you to put a file in
 _src/bin/_ and have that file deployed inside of a package (DEB, RPM)
 which is built with one command.
@@ -57,7 +62,37 @@ project becomes better defined, you can either migrate your libraries
 out to different repositories, or you can use those packaging systems
 from within the current repository itself.
 
-## Other Projects
+#### Libraries
+
+As this is a progressive framework, you do not need to know this in order
+to use the framework.  However, things have been written which allow you
+to organize your programs better, standardize, and reduce code.
+
+All of the scripting languages listed above have corresponding libraries which
+(for example):
+
+* Know where to store and retrieve transient files from
+	* Input and output directories; and script_name-label-2020-03-02.txt (for example)
+* Know where to load configuration files from (src/etc, for example)
+* Have logging facilities built in
+
+In the case of Object Oriented programming languages, the "Application Object"
+inherits that functionality from a class, which inherits functionality from multiple
+classes.  This means you can mix and match functionality.
+
+* [Bash 4](https://github.com/theias/ias_bash_script_infra)
+* [Perl](https://github.com/theias/ias_perl_script_infra) (Tested with 5, probably works with 7)
+* [Ruby 2](https://github.com/theias/ias_ruby2_script_infra)
+* PHP (to be released)
+* [Python 3](https://github.com/theias/ias_python3_script_infra) (Tested with 3.\*, might work with 2)
+
+You can see the general idea of how libraries work here:
+
+* [Infra Overview](./doc/base_infra_diagram/infrastructure_overview.png)
+
+## Other Project Layouts
+
+### Gnu Autotools + C
 
 Project directory templates have been created for the following:
 
