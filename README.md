@@ -168,10 +168,9 @@ I, personally, recommend following a release process (which is documented in the
 
 # Installation
 
-## Check Out the Source
+For RedHat family systems, install the dependencies listed in ```ias-package-shell/RPM/specfile.spec```.
 
-The script should run just fine if you check it out, install the dependencies in
-rpm_specific (rpm systems), or deb_control (deb systems) and run it.
+For Debian faimly systems, install the dependencies listed in ```ias-package-shell/DEBIAN/control```.
 
 ## Building a Package
 
