@@ -9,14 +9,14 @@ or repositories that have large community support (e.g. EPEL)
 * Functioning on both Debian and RPM based systems after only having
 installed those dependencies
 
-## The Full Project Template
+## The _Full Project_ Template
 
-The "Full Project" template is a project template that ships with IAS Package Shell.
+The _Full Project_ template is a project template that ships with IAS Package Shell.
 It is the default project directory template that is used.
 
 ### Agnosticism
 
-For scripting languages, current main project layout, "Full Project" is:
+For scripting languages, the current main project layout, _Full Project_, is:
 
 * version control system agnostic
 * packaging system agnostic
@@ -40,7 +40,7 @@ by specifying directories into which to put files.
 
 #### Layout
 
-The *Full Project* template is designed for you to put a file in
+The _Full Project_ template is designed for you to put a file in
 ```src/bin/``` and have that file deployed inside of a package (DEB, RPM)
 which is built with one command.
 
