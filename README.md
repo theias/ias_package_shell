@@ -21,7 +21,7 @@ For scripting languages, current main project layout, "Full Project" is:
 * version control system agnostic
 * packaging system agnostic
 * programming language agnostic
-* distribution agnostic
+* Linux distribution agnostic
 * deployment system agnostic
 
 This layout is known to be compatible with:
