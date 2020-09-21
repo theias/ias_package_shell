@@ -176,38 +176,11 @@ For Debian faimly systems, install the dependencies listed in ```ias-package-she
 
 ## Building a Package
 
-For RedHat family systems, you'll need rpmbuild, fakeroot and make.
+For RedHat family systems, you'll need rpm-build, fakeroot and make.
 * ```fakeroot make package-rpm```
 
 For Debian family systems, you'll need build-essential, and fakeroot.
 * ```fakeroot make package-deb```
 
-### Requirements
-
-All of the requisite things can be installed via packages.
-
-#### All Systems
-
-* fakeroot
-
-#### Debian
-
-* build-essential
-
-#### RPM Based Systems
-
-* rpm-build
-
-### Building a Debian package
-
-```
-  fakeroot make package-deb
-```
-
-### Building an RPM
-
-```
-fakeroot make package-rpm
-```
 
 
