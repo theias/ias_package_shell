@@ -109,6 +109,19 @@ all of which install manual pages, info pages, and can have Debian packages gene
 issuing a single command.
 
 
+# Installation
+
+For RedHat family systems, install the dependencies listed in ```ias-package-shell/RPM/specfile.spec```.
+
+For Debian faimly systems, install the dependencies listed in ```ias-package-shell/DEBIAN/control```.
+
+## Building a Package
+
+For RedHat family systems, you'll need rpm-build, fakeroot and make.
+* ```fakeroot make package-rpm```
+
+For Debian family systems, you'll need build-essential, and fakeroot.
+* ```fakeroot make package-deb```
 # Supplemental Documentation
 
 Supplemental documentation for this project can be found here:
@@ -168,19 +181,6 @@ so your package management system knows how to handle upgrades.
 I, personally, recommend following a release process (which is documented in the
 [Supplemental Documentation](./doc/index.md)).
 
-# Installation
-
-For RedHat family systems, install the dependencies listed in ```ias-package-shell/RPM/specfile.spec```.
-
-For Debian faimly systems, install the dependencies listed in ```ias-package-shell/DEBIAN/control```.
-
-## Building a Package
-
-For RedHat family systems, you'll need rpm-build, fakeroot and make.
-* ```fakeroot make package-rpm```
-
-For Debian family systems, you'll need build-essential, and fakeroot.
-* ```fakeroot make package-deb```
 
 
 
