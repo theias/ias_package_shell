@@ -24,7 +24,7 @@ Examples for multiple scripting languages can be found here:
 This layout is known to be compatible with:
 
 * PHP: Composer
-* Python: pupenv
+* Python: pipenv
 * Perl
 * Ruby: Gems (see artifact-name/gem)
 * Bash
