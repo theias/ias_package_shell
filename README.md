@@ -76,8 +76,10 @@ All of the scripting languages listed above have corresponding libraries which
 * Know where to load configuration files from (src/etc, for example)
 * Have logging facilities built in
 
-These libraries know how to find those locations when run from the source directory,
-or when installed as an RPM/Deb package.
+These libraries know how to find those locations when run from:
+* the source directory
+* the installed location as an RPM/Deb package
+* a symbolic link
 
 In the case of Object Oriented programming languages, the "Application Object"
 inherits that functionality from a class, which inherits functionality from multiple
