@@ -24,6 +24,13 @@ For scripting languages, the current main project layout, _Full Project_, is:
 * Linux distribution agnostic
 * deployment system agnostic
 
+It is known to work on the following Linux Distributions:
+
+* EL 5,6,7,8
+* Various Debian systems, including Ubuntu 16.04, 18.04, 20.04, Raspian, etc
+
+It probably works on more, but those are the main distributions I use.
+
 This layout is known to be compatible with:
 
 * PHP: Composer
