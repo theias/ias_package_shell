@@ -24,31 +24,6 @@ It is the default project directory template that is used.
 It generates noarch / all arch packages.  It can be used to generate other
 artifacts, such as Ruby Gems.
 
-### "Supported" "Packaging" Systems
-
-Both "supported" and "packaging" are in quotes for a couple of reasons.
-
-Out-of-the box, these systems work:
-* RPM
-* Debian
-
-#### Programming Language Package Systems
-
-Many programming languages assume that if you're building a module (or a package
-or whatever) that the repo is completely dedicated to it.
-
-There are ways around this assumption.
-
-* Gem - is simple.  It's possible to build a gem and install it.
-* Perl / CPAN - Symbolically link ```src/lib/perl5``` to the ```lib``` directory
-after you run something like ```module-starter```
-* PHP Composer - Composer is different... Examples are provided.  I currently haven't
-deployed code as a Composer package; I've just depended on them.
-
-Basically: If you need something MORE complicated or dedicated, migrate your code to
-another repo, and make that a "pure" repo.  This system was designed to be
-easily transitioned out of.
-
 ### Agnosticism
 
 For scripting languages, the current main project layout, _Full Project_, is:
@@ -66,6 +41,36 @@ This layout is known to be compatible with:
 * Perl
 * Ruby: Gems (see artifact-name/gem)
 * Bash
+
+### "Supported" "Packaging" Systems
+
+Both "supported" and "packaging" are in quotes for a couple of reasons.
+Because the system package system agnostic, some people would debate
+what exactly a "package system" is.  Also, "supported" here means
+that it generally melds well with it.
+
+Out-of-the box, these systems work:
+* RPM
+* Debian
+
+#### Programming Language Package Systems
+
+Many programming languages assume that if you're building a module (or a package
+or whatever) that the repo is completely dedicated to it.
+
+There are ways around this assumption, and the following are known
+to work / mostly work:
+
+* Gem - is simple.  It's possible to build a gem and install it.
+* Perl / CPAN - Symbolically link ```src/lib/perl5``` to the ```lib``` directory
+after you run something like ```module-starter```
+* PHP Composer - Composer is different... Examples are provided.  I currently haven't
+deployed code as a Composer package; I've just depended on them.
+
+Basically: If you need something MORE complicated or dedicated, migrate your code to
+another repo, and make that a "pure" repo.  This system was designed to be
+easily transitioned out of.
+
 
 ### "Progressive Framework"
 
