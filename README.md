@@ -24,6 +24,15 @@ It is the default project directory template that is used.
 It generates noarch / all arch packages.  It can be used to generate other
 artifacts, such as Ruby Gems.
 
+### Supported Packaging Systems
+
+* RPM
+* Debian
+* Gem
+* PHP Composer (\*)
+
+\* Composer is different... Examples are provided.
+
 ### Agnosticism
 
 For scripting languages, the current main project layout, _Full Project_, is:
