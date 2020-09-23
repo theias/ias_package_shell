@@ -26,7 +26,7 @@ artifacts, such as Ruby Gems.
 
 ### Agnosticism
 
-For scripting languages, the current main project layout, _Full Project_, is:
+For scripting languages _Full Project_ is:
 
 * version control system agnostic
 * packaging system agnostic
@@ -34,7 +34,13 @@ For scripting languages, the current main project layout, _Full Project_, is:
 * Linux distribution agnostic
 * deployment system agnostic
 
-This layout is known to be compatible with:
+The only dependencies to build a package are:
+
+* Gnu Make
+* Fakeroot
+* The package build utilities for what's being built
+
+This layout is known to be compatible with programs that use:
 
 * PHP: Composer
 * Python: pipenv
@@ -45,15 +51,15 @@ This layout is known to be compatible with:
 ### "Supported" "Packaging" Systems
 
 Both "supported" and "packaging" are in quotes for a couple of reasons.
-Because the system package system agnostic, some people would debate
-what exactly a "package system" is.  Also, "supported" here means
-that it generally melds well with it.
+Some people would debate what exactly a "package system" is.
+Also, "supported" here means that it generally melds well with it.
 
 Out-of-the box, these systems work:
+
 * RPM
 * Debian
 
-#### Programming Language Package Systems
+#### Builds for Programming Language Package Systems
 
 Many programming languages assume that if you're building a module (or a package
 or whatever) that the repo is completely dedicated to it.
@@ -112,12 +118,14 @@ reduce code.
 All of the scripting languages listed above have corresponding libraries which
 (for example):
 
-* know where to store and retrieve transient files from
-	* Input and output directories; and script_name-label-2020-03-02.txt (for example)
+* know where to store and retrieve transient files
+	* Input and output directories
+	* some also have standardized output file name generation
 * know where to load configuration files from (src/etc, for example)
 * have logging facilities built in
 
 These libraries know how to find those locations when run from:
+
 * the source directory
 * the installed location as an RPM/Deb package
 * a symbolic link
@@ -158,8 +166,12 @@ It contains examples for how to layout a project that requires class files.  It 
 not to be considered anything serious yet.  It *might* be good; I just don't use Java
 enough to recommend it.
 
+# Usage
 
-# Installation
+You can run it by cloning the repo and installing the dependencies as per the "Running".
+You can build and install as per "Building a Package".
+
+## Running
 
 For RedHat family systems, install the dependencies listed in ```ias-package-shell/RPM/specfile.spec```.
 
