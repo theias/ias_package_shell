@@ -144,6 +144,23 @@ You can see the general idea of how libraries work here:
 
 * [Infra Overview](./doc/base_infra_diagram/infrastructure_overview.png)
 
+### Naming Conventions
+
+* projects_are_named_like_this
+* artificats-are-named-like-this
+
+While this isn't a "hard" requirement of the system, the initial template generation
+configuration insists on using names formatted as stated.  This can be changed, of course.
+
+The rationale behind this is:
+
+* multiple artifacts can be generated from the same project directory, and their names
+need not be the same as the project directory
+* when working with building artificats, you deal with a LOT of erasure over many
+short and quick iterations.  RPM and Debian based repositories mostly use "-"
+to separate words in a package.  Using underscores for project names provides a visual
+and tactile safeguard.
+
 ## Other Project Layouts
 
 ### Gnu Autotools + C
