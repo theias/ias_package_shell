@@ -159,7 +159,7 @@ need not be the same as the project directory
 * when working with building artificats, you deal with a LOT of erasure over many
 short and quick iterations.  RPM and Debian based repositories mostly use "-"
 to separate words in a package.  Using underscores for project names provides a visual
-and tactile safeguard.
+and tactile safeguard.  Think twice before you delete a directory ```named_like_this```.
 
 ## Other Project Layouts
 
