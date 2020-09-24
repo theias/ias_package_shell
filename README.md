@@ -106,7 +106,7 @@ When you decide you want to make a PIP, Gem, CPAN Module, Composer Module,
 etc, you can also easily progress to those systems as well.  As your
 project becomes better defined, you can either migrate your libraries
 out to different repositories, or you can use those packaging systems
-from within the current repository itself.
+from within the current repository.
 
 #### Libraries
 
