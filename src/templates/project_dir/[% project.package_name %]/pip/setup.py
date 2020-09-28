@@ -12,6 +12,11 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://repo-url.example.com/pypa/sampleproject",
+
+	# This is where you specify scripts
+	# scripts=['bin/some_script.py'],
+
+	# This finds your packages
     packages=setuptools.find_namespace_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -20,3 +25,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
 )
+
+# Other things:
+# For entry points, see: https://packaging.python.org/specifications/entry-points/
