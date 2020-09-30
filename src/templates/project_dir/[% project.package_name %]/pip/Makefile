@@ -4,7 +4,7 @@ pip:
 	python3 setup.py sdist bdist_wheel	
 
 install_pip:
-	cd $(PIP_MAKEFILE_PATH); pip install .
+	cd $(PIP_MAKEFILE_PATH); python3 -m pip install .
 
 examine_pip:
 	tar -tzf dist/*.tar.gz
