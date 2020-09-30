@@ -1,5 +1,10 @@
+PIP_MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+
 pip:
 	python3 setup.py sdist bdist_wheel	
+
+install_pip:
+	cd $(PIP_MAKEFILE_PATH); pip install .
 
 examine_pip:
 	tar -tzf dist/*.tar.gz
