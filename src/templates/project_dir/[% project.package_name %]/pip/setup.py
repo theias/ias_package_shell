@@ -12,7 +12,7 @@ bin_files = list(
         glob.glob(
             os.path.join(
                 os.path.dirname(os.path.realpath(__file__)),
-                'bin',
+                'src/bin',
                 '*.py'
             )
         )
@@ -34,7 +34,7 @@ setuptools.setup(
 	scripts=bin_files,
 
 	# This finds your packages
-    packages=setuptools.find_namespace_packages(),
+    packages=setuptools.find_namespace_packages('src/lib/python3'),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPL-3.0-only",
