@@ -1,16 +1,21 @@
 PIP_MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
+package-pip: clean prep copy-src pip
+
+copy-src:
+	cp -r $(PIP_MAKEFILE_PATH)/../../src ./transient_src
+
 pip:
 	python3 setup.py sdist bdist_wheel	
 
-install_pip:
-	cd $(PIP_MAKEFILE_PATH); python3 -m pip install .
+install-pip: clean prep copy-src
+	cd $(PIP_MAKEFILE_PATH) && python3 -m pip install .
 
-examine_pip:
+examine-pip:
 	tar -tzf dist/*.tar.gz
 
 prep:
 	python3 -m pip install --user --upgrade setuptools wheel testresources
 
 clean:
-	-rm -r build dist *.egg-info
+	-cd $(PIP_MAKEFILE_PATH) && rm -r build dist *.egg-info transient_src

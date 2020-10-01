@@ -1,24 +1,25 @@
 import setuptools
 import os
 import glob
-with open("README.md", "r") as fh:
-    long_description = fh.read()
 
-# This works around the issue of having the "bin"
-# dir being a symbolic link.
-bin_files = list(
-    map(
-        os.path.abspath,
-        glob.glob(
-            os.path.join(
-                os.path.dirname(os.path.realpath(__file__)),
-                'src/bin',
-                '*.py'
-            )
-        )
-    )
+SRC_DIR="transient_src"
+LIB_DIR=os.path.join(
+        SRC_DIR,
+        "lib",
+        "python3"
+)
+BIN_DIR=os.path.join(
+        SRC_DIR,
+        "bin"
 )
 
+BIN_FILES = glob.glob(os.path.join(
+        BIN_DIR,
+        "*.py",
+))
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setuptools.setup(
     name="[% project.package_name %]-YOUR-USERNAME-HERE", # Replace with your own username
@@ -31,11 +32,11 @@ setuptools.setup(
     url="https://repo-url.example.com/pypa/sampleproject",
 
     # This is where you specify scripts
-    scripts=bin_files,
+    scripts=BIN_FILES,
 
     # This finds your packages
-    packages=setuptools.find_namespace_packages('src/lib/python3'),
-    package_dir={'': 'src/lib/python3'},
+    packages=setuptools.find_namespace_packages(LIB_DIR),
+    package_dir={'': LIB_DIR},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPL-3.0-only",
