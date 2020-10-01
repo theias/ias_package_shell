@@ -26,6 +26,7 @@
 *.swp
 __pycache__/
 *.pyc
+*.egg-info
 
 # Editors
 

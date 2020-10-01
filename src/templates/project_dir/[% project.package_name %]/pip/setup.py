@@ -30,11 +30,12 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://repo-url.example.com/pypa/sampleproject",
 
-	# This is where you specify scripts
-	scripts=bin_files,
+    # This is where you specify scripts
+    scripts=bin_files,
 
-	# This finds your packages
+    # This finds your packages
     packages=setuptools.find_namespace_packages('src/lib/python3'),
+    package_dir={'': 'src/lib/python3'},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPL-3.0-only",
