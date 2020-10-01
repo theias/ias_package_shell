@@ -1,7 +1,24 @@
 import setuptools
-
+import os
+import glob
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
+# This works around the issue of having the "bin"
+# dir being a symbolic link.
+bin_files = list(
+    map(
+        os.path.abspath,
+        glob.glob(
+            os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                'bin',
+                '*.py'
+            )
+        )
+    )
+)
+
 
 setuptools.setup(
     name="[% project.package_name %]-YOUR-USERNAME-HERE", # Replace with your own username
@@ -14,7 +31,7 @@ setuptools.setup(
     url="https://repo-url.example.com/pypa/sampleproject",
 
 	# This is where you specify scripts
-	# scripts=['bin/some_script.py'],
+	scripts=bin_files,
 
 	# This finds your packages
     packages=setuptools.find_namespace_packages(),
