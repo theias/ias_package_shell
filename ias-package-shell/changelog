@@ -1,3 +1,10 @@
+ias-package-shell 4.6.0-0 noarch; urgency=low
+	* Support for Python PIP packages
+	* Support for Ruby Gems
+	* Example PHP composer stuff (not fully tested)
+
+  -- Martin VanWinkle (mvanwinkle@ias.edu)  Fri, 02 Oct 2020 13:34:32 -0400
+
 ias-package-shell 4.5.0-0 noarch; urgency=low
 
 	* Support for excluding file names from being templated, as well as file contents
