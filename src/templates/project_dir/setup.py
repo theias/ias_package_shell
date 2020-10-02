@@ -12,7 +12,7 @@
 # tar -tzf dist/*.tar.gz
 #
 # clean up afterward
-# rm -r build dist *.egg-info
+# rm -r build dist src/lib/python3/*.egg-info
 
 import setuptools
 import os
