@@ -10,3 +10,13 @@ rpmbuild
 cp
 RHEL
 IAS
+ias
+gmk
+EditorConfig
+editorconfig
+EL
+edu
+specfile
+Pipenv
+pipenv
+src
