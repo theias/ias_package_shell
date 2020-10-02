@@ -1,8 +1,11 @@
 require 'pp'
 
-executables = Dir['bin/*.rb']
+# Put this in the root of your project, and
+# build it like you would a regular gem.
+
+executables = Dir['src/bin/*.rb']
 executables.each do | e |
-	e.gsub!(/^bin\//, '')
+	e.gsub!(/^src\/bin\//, '')
 end
 
 
@@ -14,7 +17,9 @@ Gem::Specification.new do |s|
   s.description = "Description"
   s.authors     = ["SomeAuthor"]
   s.email       = 'someemail@example.com'
-  s.files       = Dir['lib/**/*']
+  s.bindir      = 'src/bin'
+  s.files       = Dir['src/lib/ruby2/**/*']
+  s.require_paths = ['src/lib/ruby2']
   s.executables = executables
   s.homepage    =
     'https://example.com/SomeGem'
