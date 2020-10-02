@@ -2,7 +2,7 @@ import setuptools
 import os
 import glob
 
-SRC_DIR="transient_src"
+SRC_DIR="tmp/src"
 LIB_DIR=os.path.join(
         SRC_DIR,
         "lib",

@@ -1,9 +1,10 @@
 PIP_MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
-TRANSIENT_SRC_DIR=transient_src
+TRANSIENT_SRC_DIR=tmp/src
 
 package-pip: clean prep copy-src pip
 
 copy-src:
+	mkdir -p "$(TRANSIENT_SRC_DIR)"
 	cp -r "$(PIP_MAKEFILE_PATH)/../../src" "$(TRANSIENT_SRC_DIR)"
 
 pip:
