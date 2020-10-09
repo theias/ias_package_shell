@@ -185,7 +185,7 @@ enough to recommend it.
 
 # Usage
 
-You can run it by cloning the repo and installing the dependencies as per the "Running".
+You can run it by cloning the repo and installing the dependencies as per "Running".
 You can build and install as per "Building a Package".
 
 ## Running
