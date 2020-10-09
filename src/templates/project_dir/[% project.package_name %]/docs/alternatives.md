@@ -25,8 +25,8 @@ update-alternatives --install \
 	/opt/IAS/bin/[% project.package_name %]/[% project.package_name %]_hello.sh 50
 ```
 
-* For RPMs, put this in *RPM/install_scripts/postun*
-* For DEBs, put this in *DEBIAN/postrm*
+* For RPMs, put this in *RPM/install_scripts/preun*
+* For DEBs, put this in *DEBIAN/prerm*
 
 ```
 update-alternatives --remove \
