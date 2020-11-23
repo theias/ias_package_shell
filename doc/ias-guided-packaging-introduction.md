@@ -179,7 +179,7 @@ git pull
 # Branch for a release
 git branch release-2017-12-05-a_mvanwinkle
 git checkout release-2017-12-05-a_mvanwinkle 
-# After editing the changlog add it, commit it
+# After editing the changelog add it, commit it
 git add ias-perl-script-infra/changelog
 git commit -m 'bumped changelog'
 # Tag and (optionally) sign the tag

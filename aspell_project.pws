@@ -1,4 +1,4 @@
-personal_ws-1.1 en 103 
+personal_ws-1.1 en 102 
 Autotools
 BashLibrary
 CPAN
@@ -24,7 +24,6 @@ apache
 builddir
 cd
 changelog
-changlog
 conf
 config
 cp
