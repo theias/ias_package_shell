@@ -6,10 +6,6 @@
 
 ### Project Control
 
-* Template Exclusions
-* Prompts
-* Post installation run scripts
-* Transforms
 
 ## Tests
 
