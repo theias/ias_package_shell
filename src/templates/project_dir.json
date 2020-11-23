@@ -76,5 +76,9 @@
 		"regexes": [
 			{ "regex" : "\\[% project.NON_TEMPLATE_NAME %\\]"}
 		]
+	},
+	"save-data" : {
+		"project_control_data" : "[% project_name %]/package_shell/project_control_data.json",
+		"project_info" : "[% project_name %]/package_shell/project_info.json"
 	}
 }

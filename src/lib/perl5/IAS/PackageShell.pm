@@ -163,12 +163,52 @@ sub run
 
 	$self->process_project_dir();
 
+	$self->save_project_data();
+
 	$self->run_post_project_create($project_info)
 		if ($OPTIONS_VALUES->{'do-post-create-run'});
+
+	# my $json = JSON->new->allow_nonref();
+
+	# print $json->pretty->encode({
+	# 	'project_control_data' => $self->{'project_control_data'},
+	# 	'project_info' => $self->{project_info},
+	# });
 
 	exit;
 }
 
+sub save_project_data
+{
+	my ($self) = @_;
+
+	return if (! defined $self->{'project_control_data'}->{'save-data'});
+
+	my @data_saves = keys %{$self->{'project_control_data'}->{'save-data'}};
+
+	my $json = JSON->new->allow_nonref();
+	my $template = Template->new()
+		|| die $Template::ERROR.$/;
+
+	foreach my $data_save (@data_saves)
+	{
+		my $new_file_name;
+		$template->process(
+			\$self->{'project_control_data'}->{'save-data'}->{$data_save},
+			$self->{'project_info'},
+			\$new_file_name
+		);
+
+		# print "Would have saved to: $new_file_name\n";
+
+		my $fh = IO::File->new(">$new_file_name")
+			or die "Can't open $new_file_name for writing: $!";
+
+		print $fh $json->pretty->encode($self->{$data_save});
+
+		$fh->close();
+	}
+}
 sub remove_front_part
 {
 	my ($string, $front_part) = @_;
@@ -197,7 +237,7 @@ sub run_post_project_create
 	
 	return if (! defined $project_control_data->{'post-create-run'});
 
-	my $template = new Template()
+	my $template = Template->new()
 		|| die $Template::ERROR.$/;
 	
 	my $new_post_create_command;
@@ -333,7 +373,7 @@ sub rename_path_template
 
 	use File::Basename;
 	
-	my $template = new Template()
+	my $template = Template->new()
 		|| die $Template::ERROR.$/;
 	
 	my $basename = basename($path);
@@ -476,7 +516,7 @@ sub write_template_file
 	
 	# print "Template HR:", Dumper($template_hr),$/;
 
-	my $template = new Template($TEMPLATE_CONFIG)
+	my $template = Template->new($TEMPLATE_CONFIG)
 		|| die "$Template::ERROR\n";
 
 	$template->process($input_file_name,
@@ -527,7 +567,7 @@ sub transform_underscores_to_dashes
 {
 	my ($data_ref, $template_string) = @_;
 
-	my $template = new Template()
+	my $template = Template->new()
 		|| die $Template::ERROR.$/;
 	my $new_value;
 	$template->process(
@@ -550,7 +590,7 @@ sub transform_dashes_to_underscores
 {
 	my ($data_ref, $template_string) = @_;
 
-	my $template = new Template()
+	my $template = Template->new()
 		|| die $Template::ERROR.$/;
 	my $new_value;
 	$template->process(
@@ -574,7 +614,7 @@ sub transform_to_upper_case
 {
 	my ($data_ref, $template_string) = @_;
 
-	my $template = new Template()
+	my $template = Template->new()
 		|| die $Template::ERROR.$/;
 	my $new_value;
 	$template->process(
