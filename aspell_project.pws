@@ -1,7 +1,9 @@
-personal_ws-1.1 en 97 
+personal_ws-1.1 en 103 
 Autotools
 BashLibrary
+CPAN
 CSV
+DEBs
 EL
 EPEL
 EditorConfig
@@ -9,6 +11,8 @@ MERCHANTABILITY
 Makefile
 README
 RHEL
+RPMs
+RedHat
 SFTP
 SomeGem
 SomeModule
@@ -62,8 +66,10 @@ package
 perl
 pipenv
 png
+postinst
 postun
 pre
+prerm
 preun
 proto
 py

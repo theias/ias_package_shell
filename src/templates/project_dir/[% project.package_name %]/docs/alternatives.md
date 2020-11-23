@@ -16,7 +16,7 @@ The installation and removal must be done by scripts.
 ## Installation
 
 * For RPMs, put this in *RPM/install_scripts/post*.
-* For debian packages, put this in *DEBIAN/postinst*
+* For Debian packages, put this in *DEBIAN/postinst*
 
 ```
 update-alternatives --install \

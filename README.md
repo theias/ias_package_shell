@@ -80,7 +80,7 @@ easily transitioned out of.
 
 ### "Progressive Framework"
 
-A "Progressive Framework" accomodates for future groth without encumbering
+A "Progressive Framework" accommodates for future growth without encumbering
 newcomers.  Certain aspects of packaging have been abstracted away simply
 by specifying directories into which to put files.
 
@@ -147,7 +147,7 @@ You can see the general idea of how libraries work here:
 ### Naming Conventions
 
 * projects_are_named_like_this
-* artificats-are-named-like-this
+* artifacts-are-named-like-this
 
 While this isn't a "hard" requirement of the system, the initial template generation
 configuration insists on using names formatted as stated.  This can be changed, of course.
@@ -156,7 +156,7 @@ The rationale behind this is:
 
 * multiple artifacts can be generated from the same project directory, and their names
 need not be the same as the project directory
-* when working with building artificats, you deal with a LOT of erasure over many
+* when working with building artifacts, you deal with a LOT of erasure over many
 short and quick iterations.  RPM and Debian based repositories mostly use "-"
 to separate words in a package.  Using underscores for project names provides a visual
 and tactile safeguard.  Think twice before you delete a directory ```named_like_this```.
@@ -192,7 +192,7 @@ You can build and install as per "Building a Package".
 
 For RedHat family systems, install the dependencies listed in ```ias-package-shell/RPM/specfile.spec```.
 
-For Debian faimly systems, install the dependencies listed in ```ias-package-shell/DEBIAN/control```.
+For Debian family systems, install the dependencies listed in ```ias-package-shell/DEBIAN/control```.
 
 ## Building a Package
 
