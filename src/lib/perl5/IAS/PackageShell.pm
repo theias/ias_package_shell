@@ -39,6 +39,7 @@ my $OPTIONS=[
 	'debug',
 	'project-path-output=s',
 	'project-control-file=s',
+	'project-info-file=s',
 	'project-template-dir=s',
 	'do-post-create-run!',
 	'dump-stuff!',
@@ -147,9 +148,14 @@ sub run
 	$project_control_data->{template_base_dir} =
 		remove_double_slashes($project_template_path.'/');
 
-	my $project_info = $self->do_prompts();
-	
-	$self->{project_info} = $project_info;
+	if ($OPTIONS_VALUES->{'project-info-file'})
+	{
+		$self->load_project_info_file($OPTIONS_VALUES->{'project-info-file'});
+	}
+	else
+	{
+		$self->{project_info} = $self->do_prompts();
+	}
 	
 	$self->do_control_transforms();
 
@@ -165,17 +171,17 @@ sub run
 
 	$self->save_project_data();
 
-	$self->run_post_project_create($project_info)
+	$self->run_post_project_create($self->{project_info})
 		if ($OPTIONS_VALUES->{'do-post-create-run'});
 
-	# my $json = JSON->new->allow_nonref();
-
-	# print $json->pretty->encode({
-	# 	'project_control_data' => $self->{'project_control_data'},
-	# 	'project_info' => $self->{project_info},
-	# });
-
 	exit;
+}
+
+sub load_project_info_file
+{
+	my ($self, $file_name) = @_;
+
+	$self->{'project_info'} = load_json_file($file_name);	
 }
 
 sub save_project_data
