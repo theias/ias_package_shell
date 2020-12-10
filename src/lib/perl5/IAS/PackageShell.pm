@@ -406,7 +406,7 @@ sub rename_path_template
 
 sub debug
 {
-	my ($self) = @_;
+	my ($self) = shift;
 	print @_ if $OPTIONS_VALUES->{debug};
 }
 
