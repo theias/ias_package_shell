@@ -2,7 +2,6 @@ FROM fedora:33
 
 RUN yum -y update && \
     yum -y install && \
-    yum -y install \
         make \
         rpm-build \
         fakeroot
