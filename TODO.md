@@ -1,5 +1,7 @@
 # TODO
 
+github funding.yml
+
 ## Documentation
 
 ### Command Line Options
