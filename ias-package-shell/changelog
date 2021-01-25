@@ -1,3 +1,14 @@
+ias-package-shell 4.7.0-0 noarch; urgency=low
+
+	* Saving and loading project information
+	* Editorconfig stuff
+	* .gitignore stuff
+	* Docs for using alternatives system
+	* (Maybe) better docker support
+	* Other misc docs
+
+  -- Martin VanWinkle (mvanwinkle@ias.edu)  Sun, 24 Jan 2021 20:22:07 -0500
+
 ias-package-shell 4.6.0-0 noarch; urgency=low
 	* Support for Python PIP packages
 	* Support for Ruby Gems
