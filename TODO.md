@@ -1,6 +1,6 @@
 # TODO
 
-github funding.yml
+GitHub funding.yml
 
 ## Documentation
 
