@@ -1,0 +1,1 @@
+./src/templates/project_dir/spell_check.sh
