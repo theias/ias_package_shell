@@ -48,6 +48,10 @@ __pycache__/
 
 # Filesystem Artifacts
 
+## Mac
+
+.DS_Store
+
 ## NFS
 
 .nfs*
