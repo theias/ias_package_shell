@@ -1,3 +1,6 @@
+# Put this in the root of your project directory if you
+# want to make pips out of it.
+#
 # prepare for the pip
 # python3 -m pip install --user --upgrade setuptools wheel testresources
 #
