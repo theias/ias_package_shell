@@ -47,3 +47,5 @@ debug-project-base_variables:
 	#   USE_AUTOMATION_PERMISSIONS: '$(USE_AUTOMATION_PERMISSIONS)'
 	#   AUTOMATION_USER: '$(AUTOMATION_USER)'
 	#   AUTOMATION_GROUP: '$(AUTOMATION_GROUP)'
+
+debug-ALL:: debug-project-base_variables

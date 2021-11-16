@@ -10,3 +10,5 @@ package_shell-project_post_create_cleanup:
 debug-package_shell-additional:
 	# package_shell-additional - debug variables
 	#   (no variables defined)
+
+debug-ALL:: debug-package_shell-additional

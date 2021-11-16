@@ -172,3 +172,4 @@ debug-package_install-conditional_additions:
 	#   SELF_REPLICATING_FULL_DIR_PATH: '$(SELF_REPLICATING_FULL_DIR_PATH)'
 	#   SELF_REPLICATING_TAR_GZ_NAME: '$(SELF_REPLICATING_TAR_GZ_NAME)'
 
+debug-ALL:: debug-package_install-conditional_additions

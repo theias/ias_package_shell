@@ -14,3 +14,5 @@ package_install-base_directories:
 debug-package_install-base_directories:
 	# package_install-base_directories - debug variables
 	#   (no variables defined)
+
+debug-ALL:: debug-package_install-base_directories

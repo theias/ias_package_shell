@@ -53,3 +53,6 @@ endif
 debug-package_install-final_cleanup:
 	# package_install-final_cleanup - debug variables
 	#   (no variables defined)
+
+debug-ALL:: debug-package_install-final_cleanup
+

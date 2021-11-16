@@ -26,3 +26,5 @@ package_install-mapped_symbolic_links-usr_bin:
 debug-package_install-mapped_symbolic_links:
 	# package_install-mapped_symbolic_links - debug variables
 	#   symbolc_links-usr_bin: $(symbolic_links-usr_bin)
+
+debug-ALL:: debug-package_install-mapped_symbolic_links

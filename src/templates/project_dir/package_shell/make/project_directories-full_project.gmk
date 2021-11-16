@@ -84,3 +84,5 @@ debug-project_directories:
 	#   TEMPLATE_DIR: '$(TEMPLATE_DIR)'
 	#   TEMPLATE_INST_DIR: '$(TEMPLATE_INST_DIR)'
 	#   PROJECT_DIRECTORIES_ARE_DEFINED: '$(PROJECT_DIRECTORIES_ARE_DEFINED)'
+
+debug-ALL:: debug-project_directories

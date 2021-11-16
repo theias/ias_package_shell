@@ -17,3 +17,5 @@ debug-package_install-code_repository_info:
 	# debug-package_install-code_repository_info - debug variables
 	#   CODE_REPOSITORY_INFO_MD_FILE: '$(CODE_REPOSITORY_INFO_MD_FILE)'
 	#   CODE_REPOSITORY_INFO_MD_FILE_INST: '$(CODE_REPOSITORY_INFO_MD_FILE_INST)'
+
+debug-ALL:: debug-package_install-code_repository_info

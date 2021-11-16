@@ -106,3 +106,5 @@ debug-package_build-rpm:
 	# package_build-rpm - debug variables
 	#  SPEC_FILE_NAME: '$(SPEC_FILE_NAME)'
 	#  SPEC_FILE: '$(SPEC_FILE)'
+
+debug-ALL:: debug-package_build-rpm

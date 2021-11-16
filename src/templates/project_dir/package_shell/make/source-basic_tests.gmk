@@ -63,3 +63,5 @@ package_shell_basic_test-doc:
 debug-package_shell_basic_tests:
 	# source-basic_tests - debug variables
 	#   (no variables defined)
+
+debug-ALL:: debug-package_shell_basic_tests
