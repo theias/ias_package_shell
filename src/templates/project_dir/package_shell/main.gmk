@@ -30,6 +30,9 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/package_install-mapped_symbolic_links.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_build-rpm.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_build-deb.gmk
 
+# Basic Linting
+include $(PACKAGE_SHELL_INCLUDE_PATH)/lint-shellcheck.gmk
+
 .PHONY: debug-base-Makefile
 
 debug-base-Makefile:
