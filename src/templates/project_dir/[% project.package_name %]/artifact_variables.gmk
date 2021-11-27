@@ -9,17 +9,16 @@ AUTOMATION_GROUP ?= [% project.AUTOMATION_GROUP %]
 #	[% project.package_name %]_hello.sh \ 
 # 	another_program.sh
 
-#######################
-# Advanced usage below
-#######################
-
 # Use the "Full Project" layout.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/[% project.installed_directory_layout %]
 
 # Use a generic set of make rules for this artifact.
-# You can add things by using something:: something_else .
 #
 # If you want to substantially alter the artifact rules then copy
 # and paste the contents of the below file into this one, and remove the
 # include statement.
 include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
+
+# You can add things by using something:: something_else .
+# Here is an example for adding a lint check to the release target:
+# artifact_release:: lint-shellcheck
