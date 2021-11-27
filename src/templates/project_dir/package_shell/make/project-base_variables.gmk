@@ -1,4 +1,4 @@
-SHELL_PWD = $(shell echo `pwd`)
+SHELL_PWD = $(shell pwd)
 
 PROJECT_DIR = $(MAKEFILE_PATH)
 
@@ -9,8 +9,8 @@ SCRATCH_AREA = $(SHELL_PWD)
 ARTIFACT_DIR=$(PROJECT_DIR)/$(ARTIFACT_NAME)
 
 CHANGELOG_FILE = $(ARTIFACT_DIR)/changelog
-RELEASE_VERSION := $(shell cat "$(CHANGELOG_FILE)" | grep -v '^\s+$$' | head -n 1 | awk '{print $$2}')
-ARCH := $(shell cat "$(CHANGELOG_FILE)" | grep -v '^\s+$$' | head -n 1 | awk '{print $$3}'|sed 's/;//')
+RELEASE_VERSION := $(shell grep -v '^\s+$$' "$(CHANGELOG_FILE)" | head -n 1 | awk '{print $$2}')
+ARCH := $(shell grep -v '^\s+$$' "$(CHANGELOG_FILE)" | head -n 1 | awk '{print $$3}'|sed 's/;//')
 SRC_VERSION := $(shell echo '$(RELEASE_VERSION)' | awk -F '-' '{print $$1}')
 PKG_VERSION := $(shell echo '$(RELEASE_VERSION)' | awk -F '-' '{print $$2}')
 
@@ -35,7 +35,6 @@ debug-project-base_variables:
 	#   ARCH: '$(ARCH)'
 	#   SRC_VERSION: '$(SRC_VERSION)'
 	#   PKG_VERSION: '$(PKG_VERSION)'
-	#   SUMMARY: '$(SUMMARY)'
 	#
 	#   SRC_DIR: '$(SRC_DIR)'
 	#   DROP_DIR: '$(DROP_DIR)'
