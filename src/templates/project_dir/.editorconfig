@@ -21,6 +21,12 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 
+# Ruby
+[**.rb]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
 # Python
 [**.py]
 charset = utf-8
