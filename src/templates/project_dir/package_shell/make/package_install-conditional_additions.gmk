@@ -118,7 +118,7 @@ package_install-lib:
 ifneq ("$(wildcard $(SRC_DIR)/lib/*)","")	
 	# Installing libraries
 	mkdir -p "$(LIB_INST_DIR)"
-	cp -r "$(SRC_DIR)/lib/"* "$(LIB_INST_DIR)"
+	cp -Lr "$(SRC_DIR)/lib/"* "$(LIB_INST_DIR)"
 	
 endif
 
