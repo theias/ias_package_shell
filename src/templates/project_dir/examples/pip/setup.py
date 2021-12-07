@@ -23,18 +23,18 @@ import glob
 
 SRC_DIR="src"
 LIB_DIR=os.path.join(
-        SRC_DIR,
-        "lib",
-        "python3"
+    SRC_DIR,
+    "lib",
+    "python3"
 )
 BIN_DIR=os.path.join(
-        SRC_DIR,
-        "bin"
+    SRC_DIR,
+    "bin"
 )
 
 BIN_FILES = glob.glob(os.path.join(
-        BIN_DIR,
-        "*.py",
+    BIN_DIR,
+    "*.py",
 ))
 
 with open("README.md", "r") as fh:
