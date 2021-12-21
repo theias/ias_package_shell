@@ -1,3 +1,9 @@
+ias-package-shell 4.8.0-0 noarch; urgency=low
+
+	* Numerous minor improvements
+
+  -- Martin VanWinkle (mvanwinkle@ias.edu)  Tue, 21 Dec 2021 12:13:01 -0500
+
 ias-package-shell 4.7.0-0 noarch; urgency=low
 
 	* Saving and loading project information
