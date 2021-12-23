@@ -5,7 +5,7 @@ require 'pp'
 
 executables = Dir['src/bin/*.rb']
 executables.each do | e |
-	e.gsub!(/^src\/bin\//, '')
+  e.gsub!(/^src\/bin\//, '')
 end
 
 
