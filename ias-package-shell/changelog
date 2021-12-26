@@ -1,3 +1,9 @@
+ias-package-shell 4.8.1-0 noarch; urgency=low
+
+	* Fixed whitespace in example rspec
+
+  -- Martin VanWinkle (mvanwinkle@ias.edu)  Sat, 25 Dec 2021 21:29:40 -0500
+
 ias-package-shell 4.8.0-0 noarch; urgency=low
 
 	* Numerous minor improvements
