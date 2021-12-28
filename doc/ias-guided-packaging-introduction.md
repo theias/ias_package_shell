@@ -4,8 +4,12 @@
 
 This document is meant to be a straight-forward presentation of creating a project and building a package from it.
 
-If you don't work at IAS, you will want to change your package names, as well as the variable
-that corresponds to BASE_DIR in your Makefile .
+If you don't work at IAS, you can modify the BASE_DIR variable by doing this when you build your packages:
+```
+BASE_DIR=/opt/example-org fakeroot make package-deb
+```
+
+Or, you can set BASE_DIR=/opt/example-org in base.gmk
 
 This document describes the "How" of the guided packaging process.
 
