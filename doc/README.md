@@ -10,10 +10,16 @@ To serve as a root document for the Guided Packaging documentation.
 # Sections
 
 * [Index - This Document](./README.md)
+
+# Basic Usage
+
 * [Building the Environment](./ias-guided-packaging-package-build-environment-setup.md)
 * [A Walkthrough](./ias-guided-packaging-introduction.md)
 * [The Release Process (Annotated)](./ias-guided-packaging-release-process-annotated.md)
 * [The Release Process (Brief)](./ias-guided-packaging-release-process-brief.md)
+
+# Rationale, and More-than-basic Usage
+
 * [Project Layout](./ias-guided-packaging-directory-allocations.md)
 * [Full Project Path Mappings](./ias-guided-packaging-full-project-path-mappings.md)
 * [Basic Infrastructure Inheritance / Library Model](./ias-guided-packaging-basic-inheritance-model.md)
