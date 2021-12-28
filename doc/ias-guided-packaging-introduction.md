@@ -17,28 +17,6 @@ The process documented here "should always work" given that you have chosen a un
 
 You will require a name for your project. In this example we use **my_first_ias_package** as the name.
 
-I suggest using a different project name. The format I've chosen for "more official" packages at IAS 
-is: **ias_(project_name)**.
-
-Examples:
-
-* ias_package_shell
-* ias_snmp_titan
-* ias_perl_script_infra
-
-In the following steps you will be asked to give a package name to the package template generator.
-
-Valid names:
-
-* Don't use spaces, dashes, or any other special character
-* Separate words with underscores
-
-## Packaging Host
-
-You will also need to log into a host that has the package template software on it.
-
-Please follow the instructions in README.md to get that set up.
-
 # Procedure
 
 ## Create the Package Template
@@ -74,10 +52,7 @@ Enter Response: 182822
 
 Your package template has been created.
 
-
-
 You're ready to start adding files.
-
 
 ## Develop
 Let's put a script in.
@@ -92,13 +67,6 @@ Put these contents in that file:
 ```
 #!/bin/bash
 echo 'Hello, world!'
-```
-
-Add the file: (svn / git)
-
-```
-svn add src/bin/a-script-file.sh
-svn commit -m 'Checking it in.'
 ```
 
 ## Package
