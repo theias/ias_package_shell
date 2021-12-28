@@ -115,9 +115,6 @@ See this:
 
 * [Subsequent Releases](./ias-guided-packaging-release-process-annotated.md)
 
-## Tagging
-
-
 ## Deploy to Production
 
 Copy the resulting package into the package repository.
