@@ -54,39 +54,35 @@ Please follow the instructions in README.md to get that set up.
 Run this:
 
 ```
-/opt/IAS/bin/ias-package-shell/ias_package_shell.pl
+ias_package_shell.pl
 ```
 
 You will be asked questions:
 
 ```
-/opt/IAS/bin/ias-package-shell/ias_package_shell.pl
-Project names must not begin with numbers.
-Project names must not contain white space or dashes.
-Example: some_project_name
-Required:
-Project name: my_first_ias_package
-Required:
-Short summary: This is the first package I've built at IAS.
-Wiki page: https://www.net.ias.edu
-Ticket URL: https://rt.ias.edu/Display.html?290290
+ias_package_shell.pl
+####################
+#   Project Name: 
+Contains only letters, numbers and underscores.  Required.
+Enter Response: my_first_ias_package
+####################
+#   Summary: 
+Short description of project.  Required.
+Enter Response: This is an example package.
+####################
+#   Wiki page: 
+External documentation.
+Enter Response: https://www.example.com/example_package/index.html
+####################
+#   Ticket: 
+Link to ticket, or ticket ID
+Enter Response: 182822
 
 ```
 
 Your package template has been created.
 
 
-## Check it into Revision Control
-
-```cd my_first_package```
-
-### SVN example
-```
-svn mkdir https://example.com/repos/applications/my_first_ias_package
-svn co https://example.com/repos/applications/my_first_ias_package .
-svn add *
-svn commit -m 'Checking in the package template.'
-```
 
 You're ready to start adding files.
 
