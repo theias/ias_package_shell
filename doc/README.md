@@ -9,7 +9,7 @@ To serve as a root document for the Guided Packaging documentation.
 
 # Sections
 
-* [Index - This Document](./index.md)
+* [Index - This Document](./README.md)
 * [Building the Environment](./ias-guided-packaging-package-build-environment-setup.md)
 * [A Walkthrough](./ias-guided-packaging-introduction.md)
 * [The Release Process (Annotated)](./ias-guided-packaging-release-process-annotated.md)
