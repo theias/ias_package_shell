@@ -32,7 +32,7 @@ proto_repo_2
 └── third_thing.sh
 ```
 
-Why not do something about it, and separate that stuff out.
+Why not do something about it, and separate that stuff out?
 
 Let's also say that you discovered that Bash isn't cutting it
 any more, and you decide to add a Python script with a library.
@@ -68,7 +68,7 @@ proto_repo_4
 ```
 
 Makefiles aren't necessarily "code" or something a user would run...
-So why not put the "source code" of the project, and put that under
+So why not separate the "source code" of the project, and put that under
 *src* , and leave the "project meta" files outside of src?
 
 ```
@@ -87,7 +87,7 @@ proto_repo_5
 ```
 
 Another step could be to associate the changelog with some artifact,
-*proto-repo-7* that could be deployed, but for the purposes of this
+*proto-repo-7*, that could be deployed, but for the purposes of this
 explanation it might be overkill:
 
 ```
