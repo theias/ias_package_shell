@@ -2,14 +2,6 @@
 
 ## Introduction / Purpose
 
-This document is meant to be a straight-forward presentation of creating a project and building a package from it.
-
-If you don't work at IAS, you can modify the BASE_DIR variable by doing this when you build your packages:
-```
-BASE_DIR=/opt/example-org fakeroot make package-deb
-```
-
-Or, you can set BASE_DIR=/opt/example-org in base.gmk
 
 This document describes the "How" of the guided packaging process.
 
@@ -241,6 +233,14 @@ Subsequent releases have different steps, and the process is described here:
 
 [Subsequent releases](./ias-guided-packaging-release-process-annotated.md)
 
+# Changing the Installation Base Directory
+
+If you don't work at IAS, you can modify the BASE_DIR variable by doing this when you build your packages:
+```
+BASE_DIR=/opt/example-org fakeroot make package-deb
+```
+
+Or, you can set BASE_DIR=/opt/example-org in base.gmk
 # Troubleshooting
 This system should work with a "standard" .rpmmacros  file.  Having NO rpmmacros file should always work.
 If you're having problems then please let me know.
