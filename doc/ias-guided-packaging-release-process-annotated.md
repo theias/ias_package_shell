@@ -2,6 +2,73 @@
 
 Make sure all of your changes have been committed.  Then follow these steps.
 
+### SVN
+This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
+
+#### Only Once
+
+If this is a new project, and a tag directory for it hasn't been created:
+
+svn mkdir https://svn.example.com//tags/applications/my_first_ias_package
+
+#### Making Tags
+
+```
+svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
+https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
+```
+
+### git
+
+For large, and busy projects, or just for practice, here's how you'd branch to make a release in git, and merge it back:
+
+```
+git
+# Get the most recent version of the tree.
+# be careful though that this is, in fact, what you want to tag
+git pull
+# Branch for a release
+git branch release-2017-12-05-a_mvanwinkle
+git checkout release-2017-12-05-a_mvanwinkle 
+# After editing the changelog add it, commit it
+git add ias-perl-script-infra/changelog
+git commit -m 'bumped changelog'
+# Tag and (optionally) sign the tag
+git tag -s -a 'v1.0.0-0' -m 'tagging for release'
+# Merge back with master
+git checkout master
+git merge release-2017-12-05-a_mvanwinkle 
+# Show the tag
+git tag
+# Push the release version
+push origin master
+# Push the tag
+git push origin v1.0.0-0
+```
+
+## Package the Tagged Version
+
+This process checks out the tagged version of your software and builds a package out of it.
+
+```
+mkdir ~/build
+cd ~/build
+# SVN:
+svn co https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
+# GIT:
+git clone ...
+cd my_first_package-1.0.0-0
+fakeroot make package-rpm
+```
+
+Copy the spec file under ./build/ to ./my-first-package/ , add it, and commit.
+
+```
+cp ./build/my-first-ias-package-1.0.0-0--pkginfo.spec ./my-first-package/
+# SVN , GIT
+svn add ./my-first-package/my-first-ias-package-1.0.0-0--pkginfo.spec
+svn commit
+```
 # The changelog file
 
 Edit the changelog file:
@@ -146,3 +213,12 @@ Once tagged, you can proceed with the rest of the deployment process, including 
   * deb ```fakeroot make package-deb```
 * Testing the package installs correctly
 * Importing the package into a package repository
+
+
+# Rules
+
+These are hard-and-fast rules to the system.  The "Why?" can be answered, but will be answered later.
+
+* Tags are never modified (unless you're adding the resultant spec file to them)
+* Tags are never deleted (unless they've never been deployed to production)
+* ./build/ directories are never checked in.  Don't check those in.
