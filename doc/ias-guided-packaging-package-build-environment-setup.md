@@ -12,7 +12,7 @@ sudo yum install rpmbuild make
 git clone (URL from above)
 cd ias_package_shell*
 fakeroot make package-rpm
-# Then install the RPM.
+# Then install the package.
 sudo yum localinstall -y (rpm)
 ```
 
@@ -22,7 +22,7 @@ sudo apt-get install gdebi build-essential
 git clone (URL from above)
 cd ias_package_shell*
 fakeroot make package-deb
-# Then install the RPM.
+# Then install the package.
 sudo gdebi install (deb package)
 ```
 
