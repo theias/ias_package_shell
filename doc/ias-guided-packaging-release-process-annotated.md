@@ -1,5 +1,11 @@
 # Guided Packaging - Release Process
 
+This is currently a hodgepodge of information about doing tagging
+and releasing with Git and SVN.  We were transitioning from SVN
+to Git when this documentation originally written, and documentation
+about specific revision control systems found their way into
+the package shell documentation.
+
 Make sure all of your changes have been committed.  Then follow these steps.
 
 ### SVN
