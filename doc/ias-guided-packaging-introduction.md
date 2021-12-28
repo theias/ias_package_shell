@@ -111,6 +111,13 @@ You can also run your shiny new script:
 
 # Bolting on a Revision Control Process
 
+A .gitiginore file has already been created for you.  You can translate that to whatever other repository system you might want to use.
+
+ias_package_shell.pl overlays the resulting project without interfering with the revision control system files.  You can 
+
+* create a repository with the same name and copy the files into it
+* check out a repository and have ias_package_shell.pl overlay the template.
+
 See this:
 
 * [Subsequent Releases](./ias-guided-packaging-release-process-annotated.md)
