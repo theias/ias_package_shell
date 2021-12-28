@@ -208,7 +208,7 @@ The last lines of output will contain the package that was generated.
 
 Supplemental documentation for this project can be found here:
 
-* [Supplemental Documentation](./doc/index.md)
+* [Supplemental Documentation](./doc/README.md)
 
 # Synopsis (a _very_ short example)
 
