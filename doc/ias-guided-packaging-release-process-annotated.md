@@ -80,11 +80,16 @@ Make sure all of your changes have been committed.  Then follow these steps.
 ### SVN
 This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
 
-#### Only Once
+If you're tagging things in SVN then chances are your tagging process should be fine.
 
-If this is a new project, and a tag directory for it hasn't been created:
+#### Only Once - If you're not tagging...
 
-svn mkdir https://svn.example.com//tags/applications/my_first_ias_package
+
+If you aren't doing tags in Subversion... you really should be.  This is just one way of making a place to tag things for this project:
+
+```
+svn mkdir https://svn.example.com/tags/applications/my_first_ias_package
+```
 
 #### Making Tags
 
