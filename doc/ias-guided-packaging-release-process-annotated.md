@@ -1,5 +1,13 @@
 # Subsequent Releases
 
+This process can be summaraized by:
+
+* Updating the changelog
+* Creating a tag in your version control system
+* Exporting the code at that tagged version to a (preferably) clean build system
+* Building the package
+* Importing the package into whatever package repo you use.	
+
 ## Package Version Number
 
 The first line of the changelog contains the current version of the package.
@@ -194,3 +202,7 @@ fakeroot make package-rpm
 # or
 fakeroot make package-deb
 ```
+
+# Next?
+
+Import this into your debian / rpm repository.
