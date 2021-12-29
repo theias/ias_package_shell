@@ -1,108 +1,8 @@
-# Guided Packaging - Release Process
-
-This is currently a hodgepodge of information about doing tagging
-and releasing with Git and SVN.  We were transitioning from SVN
-to Git when this documentation originally written, and documentation
-about specific revision control systems found their way into
-the package shell documentation.
-
-Make sure all of your changes have been committed.  Then follow these steps.
-
-### SVN
-This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
-
-#### Only Once
-
-If this is a new project, and a tag directory for it hasn't been created:
-
-svn mkdir https://svn.example.com//tags/applications/my_first_ias_package
-
-#### Making Tags
-
-```
-svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
-https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
-```
-
-### git
-
-For large, and busy projects, or just for practice, here's how you'd branch to make a release in git, and merge it back:
-
-```
-git
-# Get the most recent version of the tree.
-# be careful though that this is, in fact, what you want to tag
-git pull
-# Branch for a release
-git branch release-2017-12-05-a_mvanwinkle
-git checkout release-2017-12-05-a_mvanwinkle 
-# After editing the changelog add it, commit it
-git add ias-perl-script-infra/changelog
-git commit -m 'bumped changelog'
-# Tag and (optionally) sign the tag
-git tag -s -a 'v1.0.0-0' -m 'tagging for release'
-# Merge back with master
-git checkout master
-git merge release-2017-12-05-a_mvanwinkle 
-# Show the tag
-git tag
-# Push the release version
-push origin master
-# Push the tag
-git push origin v1.0.0-0
-```
-
-## Package the Tagged Version
-
-This process checks out the tagged version of your software and builds a package out of it.
-
-```
-mkdir ~/build
-cd ~/build
-# SVN:
-svn co https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
-# GIT:
-git clone ...
-cd my_first_package-1.0.0-0
-fakeroot make package-rpm
-```
-
-Copy the spec file under ./build/ to ./my-first-package/ , add it, and commit.
-
-```
-cp ./build/my-first-ias-package-1.0.0-0--pkginfo.spec ./my-first-package/
-# SVN , GIT
-svn add ./my-first-package/my-first-ias-package-1.0.0-0--pkginfo.spec
-svn commit
-```
-# The changelog file
-
-Edit the changelog file:
-
-```
-vi my-first-ias-package/changelog
-```
-As of now, its contents should look like this:
-
-```
-  1 my-first-ias-package 1.0.0-0 noarch; urgency=low
-  2 
-  3     * initial packaging stuff
-  4 
-  5  -- YOUR NAME HERE YOUR@EMAIL.HERE  Wed, 24 May 2017 13:59:41 -0400
-  6 
-```
-
-You will copy, paste, and change the following things to the top of the file.  An example of an updated changelog is at the end of this document.
-
-* **1.0.0-0** - Package Version Number
-* **YOUR NAME HERE** - Your Name
-* **YOUR@EMAIL.HERE** - Your Email Address
-* **Wed, 24 May 2017 13:59:41 -0400** - The "date" of the release.
+# Subsequent Releases
 
 ## Package Version Number
 
-The first line of the changelog must contain the current version of the package.
+The first line of the changelog contains the current version of the package.
 
 This versioning scheme is "generally" compatible with Semantic Versioning ( https://semver.org/ ) , with the exception that the "Release" number below is slightly different in spirit.
 
@@ -166,6 +66,111 @@ date -R
  12  -- Martin VanWinkle mvanwinkle@ias.edu  Wed, 24 May 2017 13:59:41 -0400
  13 
 ```
+
+# Guided Packaging - Release Process
+
+This is currently a hodgepodge of information about doing tagging
+and releasing with Git and SVN.  We were transitioning from SVN
+to Git when this documentation originally written, and documentation
+about specific revision control systems found their way into
+the package shell documentation.
+
+Make sure all of your changes have been committed.  Then follow these steps.
+
+### SVN
+This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
+
+#### Only Once
+
+If this is a new project, and a tag directory for it hasn't been created:
+
+svn mkdir https://svn.example.com//tags/applications/my_first_ias_package
+
+#### Making Tags
+
+```
+svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
+https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
+```
+
+### git
+
+For large, and busy projects, or just for practice, here's how you'd branch to make a release in git, and merge it back:
+
+```
+# Get the most recent version of the tree.
+# be careful though that this is, in fact, what you want to tag
+git pull
+# Branch for a release
+git branch release-2017-12-05-a_mvanwinkle
+git checkout release-2017-12-05-a_mvanwinkle 
+# After editing the changelog add it, commit it
+git add ias-perl-script-infra/changelog
+git commit -m 'bumped changelog'
+# Tag and (optionally) sign the tag
+git tag -s -a 'v1.0.0-0' -m 'tagging for release'
+# Merge back with master
+git checkout master
+git merge release-2017-12-05-a_mvanwinkle 
+# Show the tag
+git tag
+# Push the release version
+push origin master
+# Push the tag
+git push origin v1.0.0-0
+```
+
+## Package the Tagged Version
+
+This process checks out the tagged version of your software and builds a package out of it.
+
+I, personally, like to build things in ~/export/
+```
+mkdir ~/export
+cd ~/export
+```
+
+You will need to clone / export a clean copy of the repository
+at the tag you created.
+```
+# SVN:
+svn co https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
+# GIT:
+git clone ...
+```
+
+Ideally, if you have your build environment set up, this is all you
+should have to run:
+
+```
+fakeroot make package-rpm
+# or
+fakeroot make package-deb
+```
+# The changelog file
+
+Edit the changelog file:
+
+```
+vi my-first-ias-package/changelog
+```
+As of now, its contents should look like this:
+
+```
+  1 my-first-ias-package 1.0.0-0 noarch; urgency=low
+  2 
+  3     * initial packaging stuff
+  4 
+  5  -- YOUR NAME HERE YOUR@EMAIL.HERE  Wed, 24 May 2017 13:59:41 -0400
+  6 
+```
+
+You will copy, paste, and change the following things to the top of the file.  An example of an updated changelog is at the end of this document.
+
+* **1.0.0-0** - Package Version Number
+* **YOUR NAME HERE** - Your Name
+* **YOUR@EMAIL.HERE** - Your Email Address
+* **Wed, 24 May 2017 13:59:41 -0400** - The "date" of the release.
 
 # Build the Package (test)
 Go to your project directory (the one with the Makefile)
