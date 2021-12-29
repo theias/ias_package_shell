@@ -100,6 +100,13 @@ https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-
 
 ### git
 
+For small projects, I just:
+```
+git status # make sure it's clean
+git tag -a -s v1.1.0-0 -m 'Tagging for release'
+git push origin v1.0.0-0
+```
+
 For large, and busy projects, or just for practice, here's how you'd branch to make a release in git, and merge it back:
 
 ```
