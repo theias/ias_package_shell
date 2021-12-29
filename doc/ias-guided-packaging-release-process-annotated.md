@@ -113,7 +113,7 @@ These are hard-and-fast rules to the system.  The "Why?" can be answered, but wi
 ## SVN
 This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
 
-If you're tagging things in SVN then chances are your tagging process should be fine.
+If you're tagging things in SVN then chances are your tagging process should be fine, so figure out how to follow that.
 
 ### If you're not tagging...
 
@@ -132,6 +132,8 @@ https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-
 ```
 
 ## git
+
+Tagging in git is easy.  I use the *-s* flag to sign my tags (sometimes...)
 
 For small projects, I just:
 ```
