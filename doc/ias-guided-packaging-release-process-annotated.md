@@ -108,7 +108,7 @@ These are hard-and-fast rules to the system.  The "Why?" can be answered, but wi
 
 * Tags are never modified (unless you're adding the resultant spec file to them)
 * Tags are never deleted (unless they've never been deployed to production)
-* ./build/ directories are never checked in.  Don't check those in.
+* ./build/ directories are never checked in (at least, in this system).  Don't check those in.
 
 ## SVN
 This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
