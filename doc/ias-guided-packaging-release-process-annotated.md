@@ -33,15 +33,40 @@ The fields are described here:
 * If you modify things outside of /src/ and need to do a new release, then you update the Release number.
   * If your previous version was 1.0.0-0 , your current version is 1.0.0-1 .
 
-## Your Name
+## The changelog file
+
+Edit the changelog file:
+
+```
+vi my-first-ias-package/changelog
+```
+As of now, its contents should look like this:
+
+```
+  1 my-first-ias-package 1.0.0-0 noarch; urgency=low
+  2 
+  3     * initial packaging stuff
+  4 
+  5  -- YOUR NAME HERE YOUR@EMAIL.HERE  Wed, 24 May 2017 13:59:41 -0400
+  6 
+```
+
+You will copy, paste, and change the following things to the top of the file.  An example of an updated changelog is at the end of this document.
+
+* **1.0.0-0** - Package Version Number
+* **YOUR NAME HERE** - Your Name
+* **YOUR@EMAIL.HERE** - Your Email Address
+* **Wed, 24 May 2017 13:59:41 -0400** - The "date" of the release.
+
+### Your Name
 Self explanatory.  If you want credit (or responsibility) for this package, then by all means put your name in here.
 
 
-## Your Email Address
+### Your Email Address
 
 Self Explanatory.
 
-## Date of Release
+### Date of Release
 
 This is the date after which no changes to the tag / package will be made. There are few exceptions; mainly the automatically generated RPM spec file can be checked in after this date.
 
@@ -50,7 +75,7 @@ This date format can be obtained (on a GNU system) with:
 date -R
 ```
 
-## Updated changelog Example
+### Updated changelog Example
 ```
   1 my-first-ias-package 1.1.0-0 noarch; urgency=low
   2 
@@ -67,7 +92,7 @@ date -R
  13 
 ```
 
-# Guided Packaging - Release Process
+# Tagging - Release Process
 
 This is currently a hodgepodge of information about doing tagging
 and releasing with Git and SVN.  We were transitioning from SVN
@@ -77,12 +102,20 @@ the package shell documentation.
 
 Make sure all of your changes have been committed.  Then follow these steps.
 
-### SVN
+## Tag Rules
+
+These are hard-and-fast rules to the system.  The "Why?" can be answered, but will be answered later.
+
+* Tags are never modified (unless you're adding the resultant spec file to them)
+* Tags are never deleted (unless they've never been deployed to production)
+* ./build/ directories are never checked in.  Don't check those in.
+
+## SVN
 This is when we create a named copy of our software that corresponds to the release version specified (in our case, 1.0.0-0, on the first line of the my-first-ias-package/changelog).
 
 If you're tagging things in SVN then chances are your tagging process should be fine.
 
-#### If you're not tagging...
+### If you're not tagging...
 
 
 If you aren't doing tags in Subversion... you really should be.  This is just one way of making a place to tag things for this project.  You only (generally) have to do this once per project:
@@ -98,7 +131,7 @@ svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
 https://svn.example.com/tags/applications/my_first_ias_package/my_first_package-1.0.0-0
 ```
 
-### git
+## git
 
 For small projects, I just:
 ```
@@ -132,7 +165,7 @@ push origin master
 git push origin v1.0.0-0
 ```
 
-## Package the Tagged Version
+# Package the Tagged Version
 
 This process checks out the tagged version of your software and builds a package out of it.
 
@@ -159,30 +192,6 @@ fakeroot make package-rpm
 # or
 fakeroot make package-deb
 ```
-# The changelog file
-
-Edit the changelog file:
-
-```
-vi my-first-ias-package/changelog
-```
-As of now, its contents should look like this:
-
-```
-  1 my-first-ias-package 1.0.0-0 noarch; urgency=low
-  2 
-  3     * initial packaging stuff
-  4 
-  5  -- YOUR NAME HERE YOUR@EMAIL.HERE  Wed, 24 May 2017 13:59:41 -0400
-  6 
-```
-
-You will copy, paste, and change the following things to the top of the file.  An example of an updated changelog is at the end of this document.
-
-* **1.0.0-0** - Package Version Number
-* **YOUR NAME HERE** - Your Name
-* **YOUR@EMAIL.HERE** - Your Email Address
-* **Wed, 24 May 2017 13:59:41 -0400** - The "date" of the release.
 
 # Build the Package (test)
 Go to your project directory (the one with the Makefile)
@@ -194,54 +203,4 @@ fakeroot make package-rpm
 # Tagging for Release
 In our example, the newly released version is 1.1.0-0 , so that's what we use in our tagging command:
 
-## git
 
-```
-# Get the most recent version of the tree.
-# be careful though that this is, in fact, what you want to tag
-git pull
-# Branch for a release
-git branch release-2017-12-05-a_mvanwinkle
-git checkout release-2017-12-05-a_mvanwinkle 
-# After editing the changelog as above, add it, commit it
-git add ias-perl-script-infra/changelog
-git commit -m 'bumped changelog'
-# Tag and (optionally) sign the tag
-git tag -s -a 'v1.1.0-0' -m 'tagging for release'
-# Merge back with master
-get checkout master
-git merge release-2017-12-05-a_mvanwinkle 
-# Show the tag
-git tag
-# Push the release version
-push origin master
-# Push the tag
-git push origin v1.1.0-0
-```
-
-## svn
-
-```
-svn cp https://svn.ias.edu/repos/network/applications/my_first_ias_package \
-https://svn.ias.edu/repos/network/tags/applications/my_first_ias_package/my_first_package-1.1.0-0
-```
-
-# Post Process
-
-Once tagged, you can proceed with the rest of the deployment process, including (but not limited to):
-
-* Checking out / exporting the source tree at the tag.
-* Building the package
-  * RPM ```fakeroot make package-rpm```
-  * deb ```fakeroot make package-deb```
-* Testing the package installs correctly
-* Importing the package into a package repository
-
-
-# Rules
-
-These are hard-and-fast rules to the system.  The "Why?" can be answered, but will be answered later.
-
-* Tags are never modified (unless you're adding the resultant spec file to them)
-* Tags are never deleted (unless they've never been deployed to production)
-* ./build/ directories are never checked in.  Don't check those in.
