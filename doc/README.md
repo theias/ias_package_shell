@@ -18,6 +18,10 @@ To serve as a root document for the Guided Packaging documentation.
 * [The Release Process (Annotated)](./ias-guided-packaging-release-process-annotated.md)
 * [The Release Process (Brief)](./ias-guided-packaging-release-process-brief.md)
 
+# My Explanation of Things
+
+* [Version Control Systems](./vcs.md)
+* [Project Layout Evolution](./layout_explanations/README.md)
 # Rationale, and More-than-basic Usage
 
 * [Project Layout](./ias-guided-packaging-directory-allocations.md)
