@@ -82,16 +82,16 @@ This is when we create a named copy of our software that corresponds to the rele
 
 If you're tagging things in SVN then chances are your tagging process should be fine.
 
-#### Only Once - If you're not tagging...
+#### If you're not tagging...
 
 
-If you aren't doing tags in Subversion... you really should be.  This is just one way of making a place to tag things for this project:
+If you aren't doing tags in Subversion... you really should be.  This is just one way of making a place to tag things for this project.  You only (generally) have to do this once per project:
 
 ```
 svn mkdir https://svn.example.com/tags/applications/my_first_ias_package
 ```
 
-#### Making Tags
+Then you create the tag by using an *svn cp*:
 
 ```
 svn cp https://svn.example.com/trunk/applications/my_first_ias_package \
