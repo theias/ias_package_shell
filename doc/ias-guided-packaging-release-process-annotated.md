@@ -192,15 +192,3 @@ fakeroot make package-rpm
 # or
 fakeroot make package-deb
 ```
-
-# Build the Package (test)
-Go to your project directory (the one with the Makefile)
-
-```
-fakeroot make package-rpm
-```
-
-# Tagging for Release
-In our example, the newly released version is 1.1.0-0 , so that's what we use in our tagging command:
-
-
