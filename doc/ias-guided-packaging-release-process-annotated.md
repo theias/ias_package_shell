@@ -4,9 +4,9 @@ This process can be summaraized by:
 
 * Updating the changelog
 * Creating a tag in your version control system
-* Exporting the code at that tagged version to a (preferably) clean build system
+* Exporting (a clean) copy of the code code at that tagged version to a (preferably clean) build system
 * Building the package
-* Importing the package into whatever package repo you use.	
+* Importing the package into whatever package repo you use
 
 ## Package Version Number
 
