@@ -16,6 +16,7 @@ createrepo .
 Here's an example yum repo file
 
 * /etc/yum.repos.d/example.repo
+
 ```
 [example-noarch-rpms]
 baseurl=https://example.com/my-group/rpm/noarch/
@@ -27,6 +28,7 @@ failovermethod=priority
 
 If you want to have a (more) secure process, you should look into
 signing with:
+
 ```
 rpm --addsign something.rpm
 ```
@@ -43,3 +45,4 @@ Here's an example apt configu file
 ```
 deb [trusted=yes] https://example.com/my-group/deb/all/ /
 ```
+
