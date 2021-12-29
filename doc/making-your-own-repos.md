@@ -39,7 +39,7 @@ rpm --addsign something.rpm
 dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
 ```
 
-Here's an example apt configu file
+Here's an example apt config file
 * /etc/apt/sources.list.d/example.list
 
 ```
