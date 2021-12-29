@@ -124,6 +124,7 @@ See this:
 
 ## Deploy to Production
 
+(You imported this into a version control system, and tagged it, right?)
 Copy the resulting package into the package repository.
 
 Profit.
