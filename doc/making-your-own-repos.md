@@ -21,7 +21,7 @@ Here's an example yum repo file
 [example-noarch-rpms]
 baseurl=https://example.com/my-group/rpm/noarch/
 enabled=1
-gpgcheck=1
+# gpgcheck=1
 failovermethod=priority
 # gpgkey=https://example.com/my-group/rpm/noarch/pkgsign.asc
 ```
