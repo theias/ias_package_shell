@@ -24,6 +24,9 @@ GitHub funding.yml
 
 ## Project Reorganization
 
+* get rid of base.gmk (organize artifacts directory)
+* use ?= more often
+
 * Separate Java tests / template
 
 ## Templates
