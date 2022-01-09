@@ -1,8 +1,8 @@
 # --- You probably shouldn't need to edit this part.
 # This must come first
 artifact_makefile_path_first_word ?= $(strip $(dir $(firstword $(MAKEFILE_LIST))))
-artifact_makefile_path ?= $(shell realpath "$(artifact_makefile_path_first_word)" )
-package_shell_path ?= $(shell realpath "$(artifact_makefile_path)/../../package_shell")
+artifact_makefile_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path_first_word)" )
+package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/../../package_shell")
 
 # This is where you could start editing.
 

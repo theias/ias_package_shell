@@ -6,7 +6,8 @@ PROJECT_DIR ?= $(package_shell_path)/../
 # and run make from there.
 SCRATCH_AREA ?= $(SHELL_PWD)
 
-ARTIFACT_DIR ?= $(PROJECT_DIR)/artifacts/$(ARTIFACT_NAME)
+# ARTIFACT_DIR ?= $(PROJECT_DIR)/artifacts/$(ARTIFACT_NAME)
+ARTIFACT_DIR ?= $(artifact_makefile_path_first_word)
 
 CHANGELOG_FILE = $(ARTIFACT_DIR)/changelog
 RELEASE_VERSION := $(shell grep -v '^\s+$$' "$(CHANGELOG_FILE)" | head -n 1 | awk '{print $$2}')
