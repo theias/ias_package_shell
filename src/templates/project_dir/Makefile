@@ -21,3 +21,6 @@ package-rpm: $(package_shell_rpms)
 package-deb: $(package_shell_debs)
 %.deb: %
 	make -f $</package_shell.gmk package-deb
+
+clean:
+	-rm -rf build
