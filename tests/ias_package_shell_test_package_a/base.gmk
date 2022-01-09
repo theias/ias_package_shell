@@ -1,8 +1,0 @@
-# Advanced Usage
-# You don't need to edit this file unless you are an advanced user.
-
-ARTIFACT_NAME = ias-package-shell-test-package-a
-ARTIFACT_BASE_NAME = ias-package-shell-test-package-a
-
-# This is set here only for testing purposes.
-BASE_DIR=/opt/IAS

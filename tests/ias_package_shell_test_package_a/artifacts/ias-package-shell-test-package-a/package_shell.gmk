@@ -1,0 +1,40 @@
+# --- You probably shouldn't need to edit this part.
+# This must come first
+artifact_makefile_path_first_word ?= $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+artifact_makefile_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path_first_word)" )
+package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/../../package_shell")
+
+# This is where you could start editing.
+
+# If you don't work at IAS, you can uncomment this line
+# and change it:
+# BASE_DIR ?= /opt/IAS
+
+# This is typically what I use at IAS. 
+IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
+
+# Set to 1 to enable useful permission settings
+# No, you shouldn't use root as your automation user.
+# This package is for testing.
+USE_AUTOMATION_PERMISSIONS = 1
+AUTOMATION_USER = root
+AUTOMATION_GROUP = root
+
+# Symbolically link things in src/bin to /usr/bin
+# 
+symbolic_links-usr_bin = \
+   	ias_package_shell_test_package_a_hello.sh \
+	ias_package_shell_test_package_a_bye.sh
+# 	another_program.sh
+
+include $(IAS_SITE_CONFIG_FILE)
+include $(package_shell_path)/main.gmk
+include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
+
+.PHONY: artifact_debug
+artifact_debug::
+        # artifact_makefile_path: $(artifact_makefile_path)
+        # package_shell_path: $(package_shell_path)
+        # potential_artifact_name: $(potential_artifact_name)
+        # ARTIFACT_BASE_NAME: $(ARTIFACT_BASE_NAME)
+        # ARTIFACT_NAME: $(ARTIFACT_NAME)
