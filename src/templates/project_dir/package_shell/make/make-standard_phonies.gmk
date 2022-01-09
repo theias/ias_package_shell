@@ -3,7 +3,7 @@
 
 all: artifact_all
 
-clean: project_clean-standard artifact_clean
+clean: project_clean-standard 
 
 package_install-standard: \
 	package_install-conditional_additions-ALL \

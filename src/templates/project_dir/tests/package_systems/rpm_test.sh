@@ -2,9 +2,12 @@
 
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-test_dir=${test_dir:-$this_dir}
+test_dir=${test_dir:-"$this_dir/../"} 
 bin_dir=${bin_dir:-"$test_dir/../src/bin"}
 project_dir=${project_dir:-"$test_dir/../"}
+
+# echo "test_dir: $test_dir"
+# echo "bin_dir: $bin_dir"
 
 function debug_test_script
 {
@@ -15,5 +18,6 @@ function debug_test_script
 
 }
 
-debug_test_script
+# debug_test_script
 
+cd "$project_dir" && fakeroot make package-rpm || exit $?

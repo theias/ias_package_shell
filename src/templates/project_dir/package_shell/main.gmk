@@ -1,21 +1,17 @@
 .PHONY: debug-ALL
 debug-ALL:: debug-base-Makefile 
 
+# package_shell_path ?= $(strip $(dir $(lastword $(MAKEFILE_LIST))))
+# package_shell_main_makefile_path=$(strip $(dir $(lastword $(MAKEFILE_LIST))))
+PACKAGE_SHELL_INCLUDE_PATH=$(package_shell_path)/make
+
 include $(PACKAGE_SHELL_INCLUDE_PATH)/project-base_variables.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/make-standard_phonies.gmk
 
-ifneq ("$(wildcard $(ARTIFACT_DIR)/artifact_variables.gmk)","")
-	include $(ARTIFACT_DIR)/artifact_variables.gmk
-endif
-
-ifeq ($(PROJECT_DIRECTORIES_MAKE_FILE),)
-	PROJECT_DIRECTORIES_MAKE_FILE:=project_directories-full_project.gmk
-endif
+PROJECT_DIRECTORIES_MAKE_FILE ?= $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 ifeq ($(PROJECT_DIRECTORIES_ARE_DEFINED),)
-	include $(PACKAGE_SHELL_INCLUDE_PATH)/$(PROJECT_DIRECTORIES_MAKE_FILE)
-	
+ 	include $(PROJECT_DIRECTORIES_MAKE_FILE)
 endif
-
 
 include $(PACKAGE_SHELL_INCLUDE_PATH)/package_shell-additional.gmk
 include $(PACKAGE_SHELL_INCLUDE_PATH)/source-basic_tests.gmk
@@ -35,10 +31,9 @@ include $(PACKAGE_SHELL_INCLUDE_PATH)/lint-shellcheck.gmk
 
 .PHONY: debug-base-Makefile
 
-debug-base-Makefile:
+debug-base-Makefile::
 	# Makefile - debug variables
 	#   ARTIFACT_BASE_NAME: '$(ARTIFACT_BASE_NAME)'
 	#   ARTIFACT_NAME: '$(ARTIFACT_NAME)'
-	#   MAKEFILE_PATH: '$(MAKEFILE_PATH)'
+	#   package_shell_path: '$(package_shell_path)'
 	#   PACKAGE_SHELL_INCLUDE_PATH: '$(PACKAGE_SHELL_INCLUDE_PATH)'
-	#
