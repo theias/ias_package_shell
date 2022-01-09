@@ -1,0 +1,40 @@
+# This must come first
+artifact_makefile_path_first_word ?= $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+artifact_makefile_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path_first_word)" )
+package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/../../package_shell")
+
+# Because we're not using site-config, we need to specify somet things.
+
+potential_artifact_name := $(shell basename "$(artifact_makefile_path)")
+ARTIFACT_BASE_NAME ?= ias-package-shell-package-division-test
+ARTIFACT_NAME ?= $(potential_artifact_name)
+
+include $(package_shell_path)/main.gmk
+
+
+# Use the "Full Project" layout.
+include $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+
+
+# Here, we just want the libraries
+
+.PHONY: \
+	artifact_all \
+	artifact_test \
+	artifact_debug \
+	artifact_clean \
+	artifact_install \
+	artifact_install-post
+
+artifact_all:
+
+artifact_test:
+ 
+artifact_debug:
+
+artifact_clean:
+
+artifact_install: \
+	package_install-lib \
+
+artifact_install-post:

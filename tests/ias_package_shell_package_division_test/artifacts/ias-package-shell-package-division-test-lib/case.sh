@@ -1,1 +1,1 @@
-../../../src/templates/project_dir/[% project.package_name %]/case.sh
+../../../../src/templates/project_dir/artifacts/[% project.package_name %]/case.sh
