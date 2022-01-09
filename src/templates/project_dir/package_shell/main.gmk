@@ -1,6 +1,8 @@
 .PHONY: debug-ALL
 debug-ALL:: debug-base-Makefile 
 
+BASE_DIR ?= /opt/IAS
+
 # package_shell_path ?= $(strip $(dir $(lastword $(MAKEFILE_LIST))))
 # package_shell_main_makefile_path=$(strip $(dir $(lastword $(MAKEFILE_LIST))))
 PACKAGE_SHELL_INCLUDE_PATH=$(package_shell_path)/make
