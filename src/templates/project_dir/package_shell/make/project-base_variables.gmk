@@ -1,6 +1,6 @@
 SHELL_PWD = $(shell pwd)
 
-PROJECT_DIR ?= $(package_shell_path)/../
+PROJECT_DIR ?= $(shell realpath --no-symlinks '$(package_shell_path)/../')
 
 # (Ideally) this would allow you to cd to any directory
 # and run make from there.
