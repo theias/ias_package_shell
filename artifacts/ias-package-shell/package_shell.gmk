@@ -24,6 +24,7 @@ AUTOMATION_GROUP ?= iasnetauto
 PROJECT_DIRECTORIES_MAKEFILE ?= $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
 
 include $(package_shell_path)/main.gmk
+include $(PACKAGE_SHELL_INCLUDE_PATH)/artifact_variables-generic_artifact.gmk
 
 # This artifact needs more than the generic standard artifact stuff.
 
