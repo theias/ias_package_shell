@@ -10,7 +10,19 @@ symbolic_links-usr_bin = \
 # 	another_program.sh
 
 # Advanced usage below
-IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
+
+BASE_DIR ?= /opt/IAS
+
+potential_artifact_name := $(shell basename "$(artifact_makefile_path)")
+ARTIFACT_BASE_NAME ?= $(potential_artifact_name)
+ARTIFACT_NAME ?= $(potential_artifact_name)
+
+USE_AUTOMATION_PERMISSIONS ?= 0
+AUTOMATION_USER ?= iasnetauto
+AUTOMATION_GROUP ?= iasnetauto
+
+PROJECT_DIRECTORIES_MAKEFILE ?= $(PACKAGE_SHELL_INCLUDE_PATH)/project_directories-full_project.gmk
+
 include $(package_shell_path)/main.gmk
 
 # This artifact needs more than the generic standard artifact stuff.
@@ -23,3 +35,9 @@ artifact_install:: \
 	# package_install-code_repository_info_md_file
 
 artifact_release:: package_shell_basic_test-all
+
+artifact_debug::
+	# artifact_makefile_path_first_word: $(artifact_makefile_path_first_word)
+	# artifact_makefile_path: $(artifact_makefile_path)
+	# package_shell_path: $(package_shell_path)
+	# IAS_SITE_CONFIG_FILE: $(IAS_SITE_CONFIG_FILE)
