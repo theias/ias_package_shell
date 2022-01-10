@@ -44,6 +44,7 @@ ias_java_test_a:
 
 .PHONY: ias_package_shell_test_fresh_package
 ias_package_shell_test_fresh_package:
+	-rm -rf ias_package_shell_test_fresh_package
 	cat "$(MAKEFILE_PATH)/answers_ias_package_shell_test_fresh_package.txt" \
 	| ../src/bin/ias_package_shell.pl \
 	&& cd ias_package_shell_test_fresh_package \
