@@ -1,5 +1,7 @@
 # [% project.project_name %]
 
+[% project.summary %]
+
 Here is an introduction to this project.
 
 # License
