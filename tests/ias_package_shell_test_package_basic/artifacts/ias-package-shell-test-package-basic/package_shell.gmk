@@ -11,7 +11,7 @@ package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/
 # BASE_DIR ?= /opt/IAS
 
 # This is typically what I use at IAS. 
-IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
+IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1_test.gmk
 
 # Set to 1 to enable useful permission settings
 # No, you shouldn't use root as your automation user.
