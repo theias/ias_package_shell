@@ -12,13 +12,13 @@ debug_main_Makefile::
 	# package_shell_debs: $(package_shell_debs)
 
 .PHONY: package-rpm
-package-rpm: $(package_shell_rpms)
+package-rpm: clean $(package_shell_rpms)
 
 %.rpm: %
 	make -f $</package_shell.gmk package-rpm
 
 .PHONY: package-deb
-package-deb: $(package_shell_debs)
+package-deb: clean $(package_shell_debs)
 %.deb: %
 	make -f $</package_shell.gmk package-deb
 

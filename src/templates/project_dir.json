@@ -78,7 +78,7 @@
 		]
 	},
 	"save-data" : {
-		"project_control_data" : "[% project_name %]/[% package_name %]/project_control_data.json",
-		"project_info" : "[% project_name %]/[% package_name %]/project_info.json"
+		"project_control_data" : "[% project_name %]/artifacts/[% package_name %]/project_control_data.json",
+		"project_info" : "[% project_name %]/artifacts/[% package_name %]/project_info.json"
 	}
 }
