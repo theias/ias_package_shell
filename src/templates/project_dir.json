@@ -56,7 +56,7 @@
 			"description" : "File containing layout."
 		}
 	],
-	"post-create-run" : "cd [% project_name %]; make package_shell-project_post_create_cleanup",
+	"post-create-run" : "cd [% project_name %]; make -f package_shell/make/project_layout_1-post_create.gmk project_layout_1-post_create",
 	"transforms" : [
 		{
 			"name" : "package_name",
