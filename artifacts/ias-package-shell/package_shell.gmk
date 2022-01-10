@@ -1,0 +1,25 @@
+artifact_makefile_path_first_word ?= $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+artifact_makefile_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path_first_word)" )
+package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/../../package_shell")
+
+
+# Symbolically link things in src/bin to /usr/bin
+# 
+symbolic_links-usr_bin = \
+   	ias_package_shell.pl
+# 	another_program.sh
+
+# Advanced usage below
+IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
+include $(package_shell_path)/main.gmk
+
+# This artifact needs more than the generic standard artifact stuff.
+
+artifact_test::
+	cd $(PROJECT_DIR)/tests && make package_shell_all_tests
+
+artifact_install:: \
+	package_install-self_replication \
+	# package_install-code_repository_info_md_file
+
+artifact_release:: package_shell_basic_test-all
