@@ -11,7 +11,7 @@ lint_python_pylint_Makefile_path ?= $(strip $(dir $(firstword $(MAKEFILE_LIST)))
 ifneq ("$(wildcard src/*)","")
 	SRC_DIR ?= src
 else
-	SRC_DIR ?= $(lint_pythone_pylint_Makefile_path)/src
+	SRC_DIR ?= $(lint_python_pylint_Makefile_path)/src
 endif
 
 PYTHON3_LIB_DIR ?= $(SRC_DIR)/lib/python3
