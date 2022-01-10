@@ -13,7 +13,6 @@ ias_package_shell_package_division_test:
 	cd "$(MAKEFILE_PATH)/ias_package_shell_package_division_test" \
 	&& make -f artifacts/ias-package-shell-package-division-test/package_shell.gmk artifact_release \
 	&& fakeroot make package-deb \
-	&& make clean \
 	&& fakeroot make package-rpm 
 
 .PHONY: ias_package_shell_test_package_basic
@@ -21,7 +20,6 @@ ias_package_shell_test_package_basic:
 	cd "$(MAKEFILE_PATH)/ias_package_shell_test_package_basic" \
 	&& make -f artifacts/*/package_shell.gmk artifact_release \
 	&& fakeroot make package-deb \
-	&& make clean \
 	&& fakeroot make package-rpm \
 	&& make clean
 
@@ -30,7 +28,6 @@ ias_package_shell_test_package_a:
 	cd "$(MAKEFILE_PATH)/ias_package_shell_test_package_a" \
 	&& make -f artifacts/*/package_shell.gmk artifact_release \
 	&& fakeroot make package-deb \
-	&& make clean \
 	&& fakeroot make package-rpm \
 	&& make clean
 
@@ -52,5 +49,4 @@ ias_package_shell_test_fresh_package:
 	&& cd ias_package_shell_test_fresh_package \
 	&& make -f artifacts/*/package_shell.gmk artifact_release \
 	&& fakeroot make package-deb \
-	&& make clean \
 	&& fakeroot make package-rpm
