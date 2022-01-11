@@ -1,5 +1,5 @@
 # Build with "snapcraft" in the root of this directory.
-# Then, sudo snap install --devmode snaptest*.snap
+# Then, sudo snap install --devmode [% project.package_name %]_<version>_<arch>.snap
 
 name: [% project.package_name %]
 version: '0.1'
