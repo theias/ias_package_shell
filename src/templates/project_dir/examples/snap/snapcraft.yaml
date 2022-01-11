@@ -1,0 +1,23 @@
+# Build with "snapcraft" in the root of this directory.
+# Then, sudo snap install --devmode snaptest*.snap
+
+name: [% project.package_name %]
+version: '0.1'
+summary: [% project.summary %]
+description: |
+    Ticket URL: [% project.ticket %]
+    Wiki Page: [% project.wiki_page %]
+
+grade: stable
+confinement: devmode
+base: core18
+
+# apps:
+#     [% project.package_name %]_hello.sh:
+#         command: src/bin/[% project.package_name %]_hello.sh
+
+parts:
+    snaptest1:
+        plugin: dump
+        source: ./src
+
