@@ -8,6 +8,26 @@ GitHub funding.yml
 
 ### Project Control
 
+Variable targets for package installation, instead of hard-coded
+targets.
+
+```
+include blah.gmk
+targets ?= a b c
+all: $(targets)
+
+a:
+	echo 'a!'
+b:
+	echo 'b!'
+c:
+	echo 'c!'
+```
+
+```
+# blah.gmk
+targets ?= a c
+```
 
 ## Tests
 
@@ -24,7 +44,6 @@ GitHub funding.yml
 
 ## Project Reorganization
 
-* get rid of base.gmk (organize artifacts directory)
 * use ?= more often
 
 * Separate Java tests / template
