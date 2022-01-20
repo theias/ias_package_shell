@@ -24,7 +24,6 @@ IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
 #	'[% project.package_name %]_hello.sh \
 # 	another_program.sh
 
-# include $(IAS_SITE_CONFIG_FILE)
 include $(IAS_SITE_CONFIG_FILE)
 include $(package_shell_path)/main.gmk
 
