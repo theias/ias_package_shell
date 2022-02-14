@@ -21,7 +21,7 @@ IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
 # Symbolically link things in src/bin to /usr/bin
 # (you could also use the alternatives system)
 # symbolic_links-usr_bin = \
-#	'[% project.package_name %]_hello.sh \
+#	[% project.package_name %]_hello.sh \
 # 	another_program.sh
 
 include $(IAS_SITE_CONFIG_FILE)
