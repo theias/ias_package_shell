@@ -4,7 +4,7 @@
 
 Here is an introduction to this project.
 
-# License
+## License
 
 copyright (C) 2017 Author, Institution
 
