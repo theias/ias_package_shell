@@ -77,13 +77,11 @@ rpmspec:
 	fi
 
 
-	# /usr/bin
+	# SYSTEM_BIN_DIR
 
-	-for file in $$( find -P "$(ROOT_DIR)/usr/bin/" \( -type l -o -type f \) ); do \
+	-for file in $$( find -P "$(SYSTEM_BIN_INST_DIR)/" \( -type l -o -type f \) ); do \
 		echo "$$file" | sed -r "s|$(ROOT_DIR)||" >> "$(SPEC_FILE)" ; \
 	done
-
-	# end /usr/bin/
 
 	# /etc
 
