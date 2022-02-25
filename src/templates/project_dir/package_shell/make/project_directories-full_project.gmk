@@ -23,6 +23,8 @@ BIN_DIR ?= $(BIN_BASE_DIR)/$(ARTIFACT_BASE_NAME)
 BIN_INST_DIR ?= $(ROOT_DIR)/$(BIN_DIR)
 
 SYSTEM_BIN_DIR ?= /usr/bin
+# This assumes that the path above is an absolute path with no
+# '//'s in it.
 SYSTEM_BIN_UP_DIRS ?= $(shell realpath "$(SYSTEM_BIN_DIR)" | sed -e 's|[^/]||g' -e 's|/|../|g')
 SYSTEM_BIN_INST_DIR ?= $(ROOT_DIR)/$(SYSTEM_BIN_DIR)
 
