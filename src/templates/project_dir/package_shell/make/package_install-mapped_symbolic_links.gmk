@@ -1,5 +1,8 @@
 .PHONY: package_install-mapped_symbolic_links 
 
+system_bin_dir?=/usr/bin
+system_bin_up_dirs?=$(shell realpath "$(system_bin_dir)" | sed -e 's|[^/]||g' -e 's|/|../|g')
+
 package_install-mapped_symbolic_links: \
 	package_install-mapped_symbolic_links-usr_bin
 
@@ -10,9 +13,8 @@ package_install-mapped_symbolic_links-usr_bin:
 	for link_me in $(symbolic_links-usr_bin); do \
 		case $$link_me in \
 			*[![:space:]]*) \
-				mkdir -p "$(ROOT_DIR)/usr/bin" ; \
-				echo ln $(BIN_INST_DIR)/$$link_me $(ROOT_DIR)/usr/bin/$$link_me; \
-				ln -s "$(BIN_DIR)/$$link_me" "$(ROOT_DIR)/usr/bin/$$link_me"; \
+				mkdir -p "$(ROOT_DIR)/$(system_bin_dir)" ; \
+				ln -s "$(system_bin_up_dirs)/$(BIN_DIR)/$$link_me" "$(ROOT_DIR)/$(system_bin_dir)/$$link_me"; \
 			;; \
 			*) \
 				echo "ERROR: Can't symbolically link something that's all whitespace."; \
