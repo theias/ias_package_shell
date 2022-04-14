@@ -17,17 +17,18 @@
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-description_file="$script_dir/common/description"
-synopsis_file="$script_dir/common/synopsis"
+description_file=${description_file:-"$script_dir/common/description"}
+synopsis_file=${synopsis_file:-"$script_dir/common/synopsis"}
 
-changelog_file="$script_dir/changelog"
+changelog_file=${changelog_file:-"$script_dir/changelog"}
 
-artifact_name=$(echo "$script_dir"| awk -F'/' '{print $NF}')
-release_version=$( grep -v '^\s+$' "${changelog_file}" | head -n 1 | awk '{print $2}')
+artifact_name=${artifact_name:-$(basename "$script_dir")}
+default_release_version=$( grep -v '^\s+$' "${changelog_file}" | head -n 1 | awk '{print $2}')${release_version_append}
+release_version=${release_version:-$default_release_version}
 # shellcheck disable=SC2034
 arch=$( grep -v '^\s+$' "${changelog_file}" | head -n 1 | awk '{print $3}'|sed 's/;//')
-src_version=$( echo "$release_version" | awk -F '-' '{print $1}')
-pkg_version=$( echo "$release_version" | awk -F '-' '{print $2}')
+src_version=${src_version:-$( echo "$release_version" | awk -F '-' '{print $1}')}
+pkg_version=${pkg_version:-$( echo "$release_version" | cut -d'-' -f 2-)}
 
 DEB_package_fields=( \
 	"Architecture" \

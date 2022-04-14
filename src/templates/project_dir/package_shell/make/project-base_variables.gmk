@@ -10,10 +10,6 @@ SCRATCH_AREA ?= $(SHELL_PWD)
 ARTIFACT_DIR ?= $(artifact_makefile_path_first_word)
 
 CHANGELOG_FILE = $(ARTIFACT_DIR)/changelog
-RELEASE_VERSION := $(shell grep -v '^\s+$$' "$(CHANGELOG_FILE)" | head -n 1 | awk '{print $$2}')
-ARCH := $(shell grep -v '^\s+$$' "$(CHANGELOG_FILE)" | head -n 1 | awk '{print $$3}'|sed 's/;//')
-SRC_VERSION := $(shell echo '$(RELEASE_VERSION)' | awk -F '-' '{print $$1}')
-PKG_VERSION := $(shell echo '$(RELEASE_VERSION)' | awk -F '-' '{print $$2}')
 
 SRC_DIR ?= $(PROJECT_DIR)/src
 DROP_DIR ?= $(SCRATCH_AREA)/drop
@@ -31,12 +27,6 @@ debug-project-base_variables:
 	#   PROJECT_DIR: '$(PROJECT_DIR)'
 	#   ARTIFACT_DIR: '$(ARTIFACT_DIR)'
 	#   SCRATCH_AREA: '$(SCRATCH_AREA)'
-	#
-	#   CHANGELOG_FILE: '$(CHANGELOG_FILE)'
-	#   RELEASE_VERSION: '$(RELEASE_VERSION)'
-	#   ARCH: '$(ARCH)'
-	#   SRC_VERSION: '$(SRC_VERSION)'
-	#   PKG_VERSION: '$(PKG_VERSION)'
 	#
 	#   SRC_DIR: '$(SRC_DIR)'
 	#   DROP_DIR: '$(DROP_DIR)'
