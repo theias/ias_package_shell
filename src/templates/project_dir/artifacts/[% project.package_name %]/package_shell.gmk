@@ -14,9 +14,15 @@ package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/
 IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1.gmk
 
 # Set to 1 to enable useful permission settings
+# This creates input, output, and log directories
 # USE_AUTOMATION_PERMISSIONS ?= 0
+# The automation user is set as the owner for those
+# directories:
 # AUTOMATION_USER ?= iasnetauto
 # AUTOMATION_GROUP ?= iasnetauto
+# However, if you would like for other users to use them,
+# you can set the user/group to root, and enable the sticky bit:
+# DEFAULT_VAR_CHMOD ?= +t
 
 # Symbolically link things in src/bin to /usr/bin
 # (you could also use the alternatives system)
