@@ -21,6 +21,7 @@ import setuptools
 import os
 import glob
 
+
 SRC_DIR="src"
 LIB_DIR=os.path.join(
     SRC_DIR,
@@ -40,29 +41,32 @@ BIN_FILES = glob.glob(os.path.join(
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
-    name="[% project.package_name %]-YOUR-USERNAME-HERE", # Replace with your own username
-    version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://repo-url.example.com/pypa/sampleproject",
+setup_args = {
+    'name' : "[% project.package_name %]-YOUR-USERNAME-HERE", # Replace with your own username
+    'version' : "0.0.1",
+    'author' : "Example Author",
+    'author_email' : "author@example.com",
+    'description' : "A small example package",
+    'long_description' : long_description,
+    'long_description_content_type' : "text/markdown",
+    'url' : "https://repo-url.example.com/pypa/sampleproject",
 
-    # This is where you specify scripts
-    scripts=BIN_FILES,
-
-    # This finds your packages
-    packages=setuptools.find_namespace_packages(LIB_DIR),
-    package_dir={'': LIB_DIR},
-    classifiers=[
+    'classifiers' : [
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPL-3.0-only",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
-)
+    'python_requires' : '>=3.6',
+}
+
+if BIN_FILES:
+    setup_args['scripts'] = BIN_FILES
+
+if os.path.exists(LIB_DIR):
+    setup_args['packages'] = setuptools.find_namespace_packages(LIB_DIR)
+    setup_args['package_dir'] = {'': LIB_DIR}
+
+setuptools.setup( **setup_args)
 
 # Other things:
 # For entry points, see: https://packaging.python.org/specifications/entry-points/
