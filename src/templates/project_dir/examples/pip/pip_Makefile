@@ -1,3 +1,4 @@
+#!/usr/bin/make
 #\ # DESCRIPTION
 #\
 #\ Due to pep517 this got slightly complicated, so here's what you need
