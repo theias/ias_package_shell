@@ -63,10 +63,11 @@ pip_517:
 	python3 -m build
 
 .PHONY: pip_prep_517
-pip_prep_571:
+pip_prep_517:
 	python3 -m pip install build
 
 .PHONY: pip_prep_517_dnf
+pip_prep_517_dnf:
 	dnf install -y python3-pip python3-pep517
 
 .PHONY: pip_prep
