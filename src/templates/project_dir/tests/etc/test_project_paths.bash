@@ -23,6 +23,8 @@ project_root_etc_dir=${project_root_etc_dir:-"$project_dir/src/root_etc"}
 project_input_dir=${project_input_dir:-"$project_dir/src/input"}
 project_output_dir=${project_output_dir:-"$project_dir/src/output"}
 
+project_examples_dir=${project_examples_dir:-"$project_dir/examples"}
+
 function debug_test_project_paths
 {
 cat << EOF
@@ -40,5 +42,6 @@ cat << EOF
 # project_root_etc_dir $project_root_etc_dir
 # project_input_dir $project_input_dir
 # project_output_dir $project_output_dir
+# project_examples_dir $project_examples_dir
 EOF
 }
