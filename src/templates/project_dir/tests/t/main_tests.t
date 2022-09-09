@@ -2,15 +2,10 @@
 # vim: set filetype=sh :
 set -e
 
+# Bootstrap testing infrastructure
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
-test_dir=${test_dir:-"$this_dir/../"}
-test_lib_dir=${test_lib_dir:-"$test_dir/lib"}
-test_bin_dir=${test_bin_dir:-"$test_dir/bin"}
-test_etc_dir=${test_etc_dir:-"$test_dir/etc"}
-
-project_dir=${project_dir:-"$test_dir/../"}
-project_bin_dir=${project_bin_dir:-"$project_dir/src/bin"}
+my_etc_dir=${my_etc_dir:-"$this_dir/../etc"}
+. "$my_etc_dir/test_project_paths.bash"
 
 # Here we initialize our tests.
 . "$test_lib_dir/test-simple.bash" tests 5
