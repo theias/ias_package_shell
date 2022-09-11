@@ -11,6 +11,8 @@ test_dir=${test_dir:-"$test_etc_dir/../"}
 test_lib_dir=${test_lib_dir:-"$test_dir/lib"}
 test_bin_dir=${test_bin_dir:-"$test_dir/bin"}
 test_etc_dir=${test_etc_dir:-"$test_dir/etc"}
+test_data_dir=${test_data_dir:-"$test_dir/data"}
+
 test_t_dir=${test_t_dir:-"$test_dir/t"}
 
 project_dir=${project_dir:-"$test_dir/../"}
@@ -34,6 +36,7 @@ cat << EOF
 # test_lib_dir $test_lib_dir
 # test_bin_dir $test_bin_dir
 # test_etc_dir $test_etc_dir
+# test_data_dir $test_data_dir
 # test_t_dir $test_t_dir
 # project_dir $project_dir
 # project_bin_dir $project_bin_dir
