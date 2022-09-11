@@ -32,7 +32,7 @@ To that end, I will eventually be making testing templates that
 automatically work the following scenarios:
 
 * [TAP](https://testanything.org) whereby:
-	* Running "prove tests/" in the top level of the project
+	* Running "prove tests/t" in the top level of the project
 	should be sufficient for simple things and for the simple
 	examples provided.
 
