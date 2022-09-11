@@ -25,7 +25,8 @@ I do believe that large software package repositories should have
 a standard for how automated tests are defined, and run, etc.
 I believe that something as simple as "just making sure the program
 doesn't have syntax errors" should be sufficient for simple things
-that have no substantial risk of being deployed with bugs.
+that have no substantial risk of being deployed with bugs, or there
+is little risk to having been deployed with bugs.
 
 To that end, I will eventually be making testing templates that
 automatically work the following scenarios:
@@ -39,7 +40,7 @@ automatically work the following scenarios:
 
 IMO: Unless you know what you're doing ahead of time, you shouldn't
 be doing Test Driven Development, which means you're going to
-be writing tests after you write your project.
+be writing tests after you have already written a part of your project.
 
 When you test your program(s), you're going to be running the same command
 over and over again.
