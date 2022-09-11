@@ -10,7 +10,6 @@ test_etc_dir=${test_etc_dir:-$this_dir_conf}
 test_dir=${test_dir:-"$test_etc_dir/../"}
 test_lib_dir=${test_lib_dir:-"$test_dir/lib"}
 test_bin_dir=${test_bin_dir:-"$test_dir/bin"}
-test_etc_dir=${test_etc_dir:-"$test_dir/etc"}
 test_data_dir=${test_data_dir:-"$test_dir/data"}
 
 test_t_dir=${test_t_dir:-"$test_dir/t"}
