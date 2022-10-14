@@ -16,6 +16,12 @@
 ## Java
 /src/java/**/*.class
 
+## perltidy
+*.pm.ERR
+*.pm.tdy
+*.pl.ERR
+*.pl.tdy
+
 ## Rakudo / Perl6
 /src/**/.precomp
 
