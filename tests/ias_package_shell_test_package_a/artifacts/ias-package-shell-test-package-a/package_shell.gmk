@@ -8,7 +8,9 @@ package_shell_path ?= $(shell realpath --no-symlinks "$(artifact_makefile_path)/
 
 # If you don't work at IAS, you can uncomment this line
 # and change it:
-# BASE_DIR ?= /opt/IAS
+# [% IF 1==1 %][%"\nBASE_DIR ?= " %][% project.BASE_DIR OR '/opt/IAS' %][% "\n" %][% ELSE %]
+BASE_DIR ?= /opt/IAS
+# [% END %]
 
 # This is typically what I use at IAS. 
 IAS_SITE_CONFIG_FILE ?= $(package_shell_path)/site_config/IASv1_test.gmk

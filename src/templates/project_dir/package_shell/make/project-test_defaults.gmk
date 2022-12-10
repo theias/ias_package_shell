@@ -1,4 +1,7 @@
-BASE_DIR = /opt/IAS
+# [% IF 1==1 %][%"\nBASE_DIR ?= " %][% project.BASE_DIR OR '/opt/IAS' %][% "\n" %][% ELSE %]
+BASE_DIR ?= /opt/IAS
+# [% END %]
+
 PROJECT_DIRECTORIES_MAKE_FILE=project_directories-full_project.gmk
 
 # For testing basic package building, we don't

@@ -22,7 +22,7 @@ The installation and removal must be done by scripts.
 update-alternatives --install \
 	/usr/bin/[% project.package_name %]_hello \
 	[% project.package_name %]_hello \
-	/opt/IAS/bin/[% project.package_name %]/[% project.package_name %]_hello.sh 50
+	[% project.BASE_DIR %]/bin/[% project.package_name %]/[% project.package_name %]_hello.sh 50
 ```
 
 * For RPMs, put this in *RPM/install_scripts/preun*
@@ -31,5 +31,5 @@ update-alternatives --install \
 ```
 update-alternatives --remove \
 	[% project.package_name %]_hello \
-	/opt/IAS/bin/[% project.package_name %]/[% project.package_name %]_hello.sh
+	[% project.BASE_DIR %]/bin/[% project.package_name %]/[% project.package_name %]_hello.sh
 ```

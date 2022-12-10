@@ -1,7 +1,8 @@
 .PHONY: debug-ALL
 debug-ALL:: debug-base-Makefile 
 
-BASE_DIR ?= /opt/IAS
+# [% IF 1==1 %][%"\nBASE_DIR ?= " %][% project.BASE_DIR OR '/opt/IAS' %][% "\n" %][% ELSE %]
+BASE_DIR ?= /opt/IAS # [% END %]
 
 # package_shell_path ?= $(strip $(dir $(lastword $(MAKEFILE_LIST))))
 # package_shell_main_makefile_path=$(strip $(dir $(lastword $(MAKEFILE_LIST))))
