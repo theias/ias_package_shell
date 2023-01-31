@@ -3,12 +3,14 @@
 # This file sets up path variables that are to be used
 # with tests.
 
-this_dir_conf="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-test_etc_dir=${test_etc_dir:-$this_dir_conf}
+rp_test_dir=$( realpath "$this_dir/../../../.." )
+test_dir=${test_dir:-"$rp_test_dir"}
 
-test_dir=${test_dir:-"$test_etc_dir/../"}
+test_etc_dir=${test_etc_dir:-"$test_dir/etc"}
 test_lib_dir=${test_lib_dir:-"$test_dir/lib"}
+test_vendor_lib_dir=${test_vendor_dir:-"$test_dir/vendor_lib"}
 test_bin_dir=${test_bin_dir:-"$test_dir/bin"}
 test_data_dir=${test_data_dir:-"$test_dir/data"}
 
@@ -33,6 +35,7 @@ cat << EOF
 # test_etc_dir $test_etc_dir
 # test_dir $test_dir
 # test_lib_dir $test_lib_dir
+# test_vendor_lib_dir $test_vendor_lib_dir
 # test_bin_dir $test_bin_dir
 # test_etc_dir $test_etc_dir
 # test_data_dir $test_data_dir
