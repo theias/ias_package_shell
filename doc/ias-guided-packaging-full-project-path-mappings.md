@@ -1,3 +1,29 @@
+# Full Project Paths
+
+There are currently 2 layouts that are chosen from automatically
+by the libraries:
+
+* src
+* installed
+
+There is soon to be another, "exports".
+
+This refers to a future standard containing the exports layout; at this time
+if a library doesn't implement it, it's just not implemented.
+
+## "exports" layout
+
+
+
+## "src" layout
+
+This is intended to be used when the source code of the program is located
+in the "src" dir of the project, b
+
+## "installed" layout
+
+# Complicated stuff that I could have probably phrased better below
+
 # Guided Packaging - "Full Project" Path Mappings
 
 In order to disambiguate directories in the project's repository vs. the installation

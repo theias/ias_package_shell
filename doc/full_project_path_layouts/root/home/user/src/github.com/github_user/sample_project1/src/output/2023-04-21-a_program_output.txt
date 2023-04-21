@@ -1,0 +1,7 @@
+Fri 21 Apr 2023 09:32:56 AM EDT
+I am a_program.sh
+Hello
+I was run with:
+	../input/a_file.txt
+Here are the contents of ../input/a_file.txt
+This is a file.
