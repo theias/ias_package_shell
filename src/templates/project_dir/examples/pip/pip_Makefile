@@ -58,19 +58,25 @@ PIP_MAKEFILE = $(firstword $(MAKEFILE_LIST))
 python_unittests:
 	$(PIP_MAKEFILE_PATH)/tests/python_unittest/test_some_script.py
 
+.PHONY: pip
+pip: pip_517
+
+.PHONY: pip_prep
+pip_prep: pip_prep_517
+
 .PHONY: pip_517
 pip_517:
 	python3 -m build
 
 .PHONY: pip_prep_517
 pip_prep_517:
-	python3 -m pip install build
+	python3 -m pip install --upgrade build
 
 .PHONY: pip_prep_517_dnf
 pip_prep_517_dnf:
 	dnf install -y python3-pip python3-pep517
 
-.PHONY: pip_prep
+.PHONY: setup_py__pip_prep
 pip_prep:
 	python3 -m pip install --user --upgrade setuptools wheel testresources
 
@@ -78,13 +84,13 @@ pip_prep:
 pip_prep_yum:
 	yum install -y python3-pip
 
-.PHONY: pip
-pip:
+.PHONY: setup_py_build_pip
+setup_py__build_pip:
 	python3 setup.py sdist bdist_wheel
 
 .PHONY: pip_install
 pip_install:
-	python3 -m pip install .
+	python3 -m pip install --user .
 
 .PHONY: pip_examine
 pip_examine:
