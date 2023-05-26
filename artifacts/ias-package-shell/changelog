@@ -1,3 +1,9 @@
+ias-package-shell 5.1.1-0 noarch; urgency=low
+
+	* Pip build examples do 517
+
+ -- Martin VanWinkle (mvanwinkle@ias.edu)  Fri, 26 May 2023 13:41:42 -0400
+
 ias-package-shell 5.1.0-0 noarch; urgency=low
 
 	* More ability to override Make variables
