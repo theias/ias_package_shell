@@ -18,5 +18,5 @@ PYTHON3_LIB_DIR ?= $(SRC_DIR)/lib/python3
 
 .PHONY: lint_python_pylint
 lint_python_pylint:
-	cd "$(PYTHON3_LIB_DIR)" && pylint ../../bin/*.py *
+	cd "$(PYTHON3_LIB_DIR)" && pylint ../../bin/*.py
 
