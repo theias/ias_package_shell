@@ -13,6 +13,7 @@ test_lib_dir=${test_lib_dir:-"$test_dir/lib"}
 test_vendor_lib_dir=${test_vendor_dir:-"$test_dir/vendor_lib"}
 test_bin_dir=${test_bin_dir:-"$test_dir/bin"}
 test_data_dir=${test_data_dir:-"$test_dir/data"}
+test_output_dir=${test_output_dir:-"$test_dir/output"}
 
 test_t_dir=${test_t_dir:-"$test_dir/t"}
 
@@ -31,7 +32,6 @@ project_examples_dir=${project_examples_dir:-"$project_dir/examples"}
 function debug_test_project_paths
 {
 cat << EOF
-# this_dir_conf $this_dir_conf
 # test_etc_dir $test_etc_dir
 # test_dir $test_dir
 # test_lib_dir $test_lib_dir
@@ -39,7 +39,10 @@ cat << EOF
 # test_bin_dir $test_bin_dir
 # test_etc_dir $test_etc_dir
 # test_data_dir $test_data_dir
+# test_output_dir $test_output_dir
+
 # test_t_dir $test_t_dir
+
 # project_dir $project_dir
 # project_bin_dir $project_bin_dir
 # project_lib_dir $project_lib_dir
