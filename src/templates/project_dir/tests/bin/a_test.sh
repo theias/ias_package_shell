@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Bootstrap testing infrastructure
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
