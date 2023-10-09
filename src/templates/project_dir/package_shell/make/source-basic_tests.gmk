@@ -18,27 +18,27 @@ package_shell_basic_test-syntax-perl::
 	# Running Perl Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.pl' \
-	-print0 | xargs --null -n1 -i perl -c '{}' 
+	-print0 | xargs --null -i perl -c '{}' 
 	
 
 package_shell_basic_test-syntax-bash::
 	# Running Bash Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.sh' \
-	-print0 | xargs --null -n1 -i bash -n '{}'
+	-print0 | xargs --null -i bash -n '{}'
 	
 
 package_shell_basic_test-syntax-python3::
 	# Running Python Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.py' \
-	-print0 | xargs --null -n1 -i python3 -m py_compile '{}'
+	-print0 | xargs --null -i python3 -m py_compile '{}'
 
 package_shell_basic_test-syntax-ruby::
 	# Running Ruby Tests
 	find "$(SRC_DIR)/bin" -type f \
 		-name '*.rb' \
-	-print0 | xargs --null -n1 -i ruby -c '{}'
+	-print0 | xargs --null -i ruby -c '{}'
 
 package_shell_basic_test-syntax-php::
 	# PHP, when running syntax checks on files doesn't check
@@ -48,7 +48,7 @@ package_shell_basic_test-syntax-php::
 
 	find "$(SRC_DIR)/" -type f \
 		-name '*.php' \
-	-print0 | xargs --null -n1 -i php -n -l '{}'
+	-print0 | xargs --null -i php -n -l '{}'
 
 package_shell_basic_test-doc::
 	# Testing documentation
