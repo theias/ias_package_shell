@@ -23,5 +23,5 @@ my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
 
 . "$test_simple_bash" tests 1
 
-ok "$test_bin_dir/a_test.sh" 'A test should run.'
+ok "$test_bin_dir/test_[% project.package_name %].sh" '[% project.package_name %] should run.'
 
