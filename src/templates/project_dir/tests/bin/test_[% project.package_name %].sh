@@ -13,6 +13,6 @@ my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
 # debug_test_project_paths
 
 # Your tests begin here.  Here's an example.
-# Load the project's bash_lib.sh
+
 "$project_bin_dir/[% project.package_name %].sh"
 
