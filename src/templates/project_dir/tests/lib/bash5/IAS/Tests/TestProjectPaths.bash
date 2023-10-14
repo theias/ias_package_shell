@@ -35,6 +35,8 @@ project_examples_dir=${project_examples_dir:-"$project_dir/examples"}
 
 function debug_test_project_paths
 {
+# This must follow a specific format because other languages might use
+# these values to set up things.
 cat << EOF
 # test_etc_dir $test_etc_dir
 # test_dir $test_dir
