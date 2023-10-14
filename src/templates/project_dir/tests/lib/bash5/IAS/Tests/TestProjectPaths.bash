@@ -17,15 +17,19 @@ test_output_dir=${test_output_dir:-"$test_dir/output"}
 
 test_t_dir=${test_t_dir:-"$test_dir/t"}
 
-project_dir=${project_dir:-"$test_dir/../"}
-project_bin_dir=${project_bin_dir:-"$project_dir/src/bin"}
-project_lib_dir=${project_lib_dir:-"$project_dir/src/lib"}
-project_etc_dir=${project_etc_dir:-"$project_dir/src/etc"}
+project_dir=${project_dir:-"$test_dir/.."}
+project_src_dir=${project_src_dir:-"$project_dir/src"}
+project_bin_dir=${project_bin_dir:-"$project_src_dir/bin"}
+project_lib_dir=${project_lib_dir:-"$project_src_dir/lib"}
+project_etc_dir=${project_etc_dir:-"$project_src_dir/etc"}
 
-project_root_etc_dir=${project_root_etc_dir:-"$project_dir/src/root_etc"}
+project_root_etc_dir=${project_root_etc_dir:-"$project_src_dir/root_etc"}
 
-project_input_dir=${project_input_dir:-"$project_dir/src/input"}
-project_output_dir=${project_output_dir:-"$project_dir/src/output"}
+project_web_dir=${project_web_dir:-"$project_src_dir/web"}
+project_cgi_bin_dir=${project_cgi_bin_dir:-"$project_src_dir/cgi-bin"}
+
+project_input_dir=${project_input_dir:-"$project_src_dir/input"}
+project_output_dir=${project_output_dir:-"$project_src_dir/output"}
 
 project_examples_dir=${project_examples_dir:-"$project_dir/examples"}
 
@@ -44,10 +48,13 @@ cat << EOF
 # test_t_dir $test_t_dir
 
 # project_dir $project_dir
+# project_src_dir $project_src_dir
 # project_bin_dir $project_bin_dir
 # project_lib_dir $project_lib_dir
 # project_etc_dir $project_etc_dir
 # project_root_etc_dir $project_root_etc_dir
+# project_web_dir $project_web_dir
+# project_cgi_bin_dir $project_cgi_bin_dir
 # project_input_dir $project_input_dir
 # project_output_dir $project_output_dir
 # project_examples_dir $project_examples_dir
