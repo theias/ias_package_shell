@@ -5,20 +5,14 @@ corresponds to /src/web .
 
 The apache server configuations contain examples for how to configure that.
 
-If you would like to expose only a portion of your project directory on a
-web server (NOTE:  This is not good practice entirely), then you do the
-following:
-
-In the project_root/.htaccess :
+## Ubuntu
 
 ```
-Order deny,allow
-Deny from all
+a2enmod cgid
 ```
 
-In project_root/src/web/.htaccess :
-```
-Order allow,deny
-Allow from all
-```
+And set AllowOverride to "all" for the directory you're going to do this in.
 
+Copy the .htaccess files where they need to go.
+
+Profit.
