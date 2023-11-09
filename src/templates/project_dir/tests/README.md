@@ -1,54 +1,39 @@
 # Tests
 
-## Forward
+This project contains working examples for:
 
-Your project is governed by your philosophy.
+* program wrappers ( test_[% project.package_name %].sh )
+* showing what testing variables are available ( dump_test_vars.sh )
 
-I haven't put much philosophical ramblings into project templates
-for certain reasons; but the main reason is that building systems
-that "just work", "do the right thing", and "require as little
-work as possible" should speak for themselves.
+## Workflow
 
-Tests break that "fourth wall", and require balance in order to
-not encumber the programmer.
+It is very common for programmers to run their programs repeatedly.
+Wrappers allow for:
 
-I believe this layout allows for tests of arbitrary complexity
-ranging from very simple to "if you need something else, at
-least you're not starting from a nightmare."
+* Consistency 
+	* It (should be) easier to run your programs under the same conditions
+when you run them with a wrapper.
+	* It (should be) easy to identify which wrapping scripts were
+used for development.
 
-Not all "projects" require a rigid and thorough testing infrastructure.
-But, the idea behind all of this "Full Project" template stuff
-is that you should be able to create a simple project, and "grow"
-without experiencing growing pains.
+### Stage 1: Using Wrappers to run your tests
 
-I do believe that large software package repositories should have
-a standard for how automated tests are defined, and run, etc.
-I believe that something as simple as "just making sure the program
-doesn't have syntax errors" should be sufficient for simple things
-that have no substantial risk of being deployed with bugs, or there
-is little risk to having been deployed with bugs.
+* Start writing your program.
+* Configure (and/or) rename test_[% project.package_name %].sh to run your program
+under the main use case
+* Run test_[% project.package_name %].sh to test the use case.
 
-To that end, I will eventually be making testing templates that
-automatically work the following scenarios:
+When you need to test other scenarios, you can copy test_[% project.package_name %].sh
+to something else in the tests/bin dir.
 
-* [TAP](https://testanything.org) whereby:
-	* Running "prove tests/t" in the top level of the project
-	should be sufficient for simple things and for the simple
-	examples provided.
+Make sure these scripts (for example) create a proper environment for
+the tests to run.
 
-## Test Creating Workflow
+### Stage 2: Use the Test Anything Protocol
 
-IMO: Unless you know what you're doing ahead of time, you shouldn't
-be doing Test Driven Development, which means you're going to
-be writing tests after you have already written a part of your project.
+* The tests/t directory contains a main_tests.t program.
+* Add (some of / as many as you want) tests from Stage 1.
 
-When you test your program(s), you're going to be running the same command
-over and over again.
-
-Save that as a script under tests/bin .
-
-If you decide that you want to use something more rigid (like TAP), then
-make a tests/t file that calls your script under tests/bin .
 
 ## Testing Directory Layout
 

@@ -6,7 +6,7 @@ set -e
 this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
 . "$my_lib_dir/bash5/IAS/Tests/Bootstrap.bash"
-. "$test_etc_dir/test_config.bash"
+. "$test_etc_dir/test_anything_protocol_config.bash"
 # End bootstrap
 
 # This is an example from the test-simple.bash
@@ -21,7 +21,7 @@ my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
 # ok true 'true is ok'
 # ok '! false' '! false is true'
 
-. "$test_simple_bash" tests 1
+. "$test_anything_protocol_bash" tests 1
 
 ok "$test_bin_dir/test_[% project.package_name %].sh" '[% project.package_name %] should run.'
 
