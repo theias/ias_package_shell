@@ -9,12 +9,12 @@ set -e
 all_arguments=( "$@" )
 
 # Bootstrap testing infrastructure
-this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
+test_bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+my_lib_dir=${my_lib_dir:-"$test_bin_dir/../lib"}
 
 . "$my_lib_dir/bash5/IAS/Tests/Bootstrap.bash"
 . "$test_etc_dir/test_config.bash"
-. "$this_dir/bashlib.bash"
+. "$test_bin_dir/bashlib.bash"
 
 # End bootstrap
 
