@@ -8,6 +8,10 @@
 # This allows you to pipe things to a program, or run a program
 # with arguments.
 
+# Sometimes set -e is a good thing.
+# Sometimes, though, it's not a good thing.
+# Here, what we're doing is simple.
+
 set -e
 all_arguments=( "$@" )
 
