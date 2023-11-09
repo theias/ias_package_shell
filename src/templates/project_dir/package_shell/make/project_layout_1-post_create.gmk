@@ -1,5 +1,24 @@
 .PHONY: project_layout_1-post_create
 
+# A philosophy this project has been governed by is that
+# the permissions of files (not ownership...) should be
+# retained when deploying a template.
+#
+# These templates should be copied from a place where
+# the user running the program doesn't have the ability
+# to alter the files.  
+#
+# This file was necessary because File::Copy::Recursive
+# would complain about not being able to set certain
+# permissions (ownership) on files that were being copied.
+#
+# This was fixed in File::Copy::Recursive some time ago,
+# but it might not have made it to the package repositories
+# for the popular distributions (yet)
+#
+# Here, we mostly just set things that should be executable
+# to be executable.
+
 project_layout_1-post_create:
 	chmod +x spell_check.sh
 	chmod +x artifacts/*/case.sh
