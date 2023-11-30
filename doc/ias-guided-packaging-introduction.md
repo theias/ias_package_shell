@@ -11,15 +11,15 @@ The question "Why" can always be answered, but it is outside of the scope of thi
 
 The process documented here "should always work" given that you have chosen a unique package name.
 
-# Requirements
+## Requirements
 
-## Project Name
+### Project Name
 
 You will require a name for your project. In this example we use **my_first_ias_package** as the name.
 
-# Procedure
+## Procedure
 
-## Create the Package Template
+### Create the Package Template
 
 Run this:
 
@@ -54,7 +54,7 @@ Your package template has been created.
 
 You're ready to start adding files.
 
-## Develop
+### Develop
 Let's put a script in.
 
 ```
@@ -109,7 +109,7 @@ You can also run your shiny new script:
 /opt/IAS/bin/my-first-ias-package/a-script-file.sh
 ```
 
-# Bolting on a Revision Control Process
+## Bolting on a Revision Control Process
 
 A .gitiginore file has already been created for you.  You can translate that to whatever other repository system you might want to use.
 
@@ -130,7 +130,7 @@ Copy the resulting package into the package repository.
 Profit.
 
 
-# Next Steps
+## Next Steps
 
 What you have learned to do is good for initial releases.
 
