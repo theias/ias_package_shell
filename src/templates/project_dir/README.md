@@ -24,7 +24,7 @@ See
 
 ## Description
 
-* some_script.sh - does something.
+* ```src/bin/[% project.package_name %]_hello.sh``` - does something
 
 # Supplemental Documentation
 
