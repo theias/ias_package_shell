@@ -57,6 +57,7 @@ setup_args = {
         "Operating System :: OS Independent",
     ],
     'python_requires' : '>=3.6',
+    # 'install_requires' : [ ],
 }
 
 if BIN_FILES:
