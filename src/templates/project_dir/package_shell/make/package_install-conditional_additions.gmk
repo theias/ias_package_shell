@@ -149,6 +149,11 @@ ifneq ("$(wildcard $(SRC_DIR_ROOT_ETC)/*)","")
 	cp -r "$(SRC_DIR_ROOT_ETC)" "$(ROOT_DIR)/etc"
 endif
 
+ifneq ("$(wildcard $(ROOT_DIR)/etc/cron.d/*)","")
+	# setting "correct" permissions on cron files
+	chmod g-w "$(ROOT_DIR)/etc/cron.d/"*
+endif
+
 .PHONY: package_install-example_permissions
 package_install-example_permissions::
 	-find "$(DOC_INST_DIR)" -type d -exec chmod 755 {} \;
