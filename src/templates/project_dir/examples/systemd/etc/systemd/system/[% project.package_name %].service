@@ -1,0 +1,11 @@
+[Unit]
+Description=[% project.summary %]
+
+[Service]
+Type=oneshot
+ExecStart=[% project.BASE_DIR %]/bin/[% project.package_name %]/[% project.package_name %].sh
+# Environment=""
+
+[Install]
+WantedBy=multi-user.target
+

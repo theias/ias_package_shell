@@ -1,0 +1,9 @@
+[Unit]
+Description=[% project.summary %]
+
+[Timer]
+Unit=[% project.package_name %].service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target
