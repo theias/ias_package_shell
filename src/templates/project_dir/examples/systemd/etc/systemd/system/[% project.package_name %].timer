@@ -1,3 +1,7 @@
+# Enable and run this with:
+#   systemctl enable [% project.package_name %].timer
+#   systemctl start [% project.package_name %].timer
+
 [Unit]
 Description=[% project.summary %]
 
