@@ -9,16 +9,16 @@ my_lib_dir=${my_lib_dir:-"$this_dir/../lib"}
 # End bootstrap
 
 # This is an example from the test-simple.bash
-# git repo
-# . "$test_lib_dir/test-simple.bash" tests 5
+# git repo:
+#     . "$test_lib_dir/test-simple.bash" tests 5
 #
-# ok 0 '0 is true (other numbers are false.)'
-# answer="yes"
-# ok [ $answer == yes ]   'The answer is yes!'
-# ok [[ $answer =~ ^y ]]  'The answer begins with y'
+#     ok 0 '0 is true (other numbers are false.)'
+#     answer="yes"
+#     ok [ $answer == yes ]   'The answer is yes!'
+#     ok [[ $answer =~ ^y ]]  'The answer begins with y'
 #
-# ok true 'true is ok'
-# ok '! false' '! false is true'
+#     ok true 'true is ok'
+#     ok '! false' '! false is true'
 
 . "$test_anything_protocol_bash" tests 1 || exit 1
 
