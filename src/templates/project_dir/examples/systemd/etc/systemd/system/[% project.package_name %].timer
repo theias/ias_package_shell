@@ -7,7 +7,21 @@ Description=[% project.summary %]
 
 [Timer]
 Unit=[% project.package_name %].service
-OnCalendar=*-*-* *:*:00
+
+# ## Schedule style, Similar to cron
+#
+# Run every minute (useful for debugging)
+# OnCalendar=*-*-* *:*:00
+#
+# Every 15 minutes:
+# OnCalendar=*:0/15
+#
+# Every day at 07:00:
+# OnCalendar=*-*-* 07:00:00
+#
+# ## Start after boot and run perodically:
+# OnBootSec=10min
+# OnUnitActiveSec=15min
 
 [Install]
 WantedBy=timers.target
