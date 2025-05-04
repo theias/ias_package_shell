@@ -1,3 +1,9 @@
+ias-package-shell 5.3.2-0 noarch; urgency=low
+
+	* src/bin subdirectories can have mapped symbolic links now
+
+ -- Martin VanWinkle (mvanwinkle@ias.edu) Sun, 04 May 2025 11:34:36 -0400
+
 ias-package-shell 5.3.1-0 noarch; urgency=low
 
 	* Better paths for mapped symbolic links
