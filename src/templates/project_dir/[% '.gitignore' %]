@@ -6,6 +6,8 @@
 
 ## Transient files
 
+/var
+
 /src/input
 /src/output
 /src/log
