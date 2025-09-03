@@ -10,6 +10,7 @@
 /src/output
 /src/log
 /drop
+venv
 
 # Programming Languages
 
