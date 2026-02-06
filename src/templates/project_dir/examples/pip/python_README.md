@@ -31,6 +31,6 @@ Upgrading as described worked at the time of this writing.
 ### Installing it for your user
 
 ```bash
-python3 -m pip install --user
+python3 -m pip install --user .
 ```
 

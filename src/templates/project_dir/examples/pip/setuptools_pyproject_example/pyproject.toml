@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "[% project.project_name %]"
+version = "0.1.0"
+
+[tool.setuptools]
+
+package-dir = {"" = "src/lib/python3"}
+script-files = ["src/bin/[% project.package_name %].py"]
+
+# [project.scripts]
+
+# [% project.package_name %] = "ias.python_test:say_hello"
