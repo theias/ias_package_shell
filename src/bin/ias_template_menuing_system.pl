@@ -50,21 +50,43 @@ sub load_template_data
 			next load_base_template_path;
 		}
 
-		my $dir_names = {};
+		my $package_templates = {};
 		my $dir_entry;
 		package_template_dir_entry: while (defined($dir_entry = $dir->read()))
 		{
 			next package_template_dir_entry
 				if ($dir_entry eq '.' || $dir_entry eq '..' );
 
-			$dir_names->{$dir_entry} = {};
+			my $package_path = join('/', $template_path, $dir_entry);
+			$package_templates->{$dir_entry} = $self->load_templates_from_package(
+				$package_path,
+			);
 		}
 
-		$template_path_data->{$template_path} = $dir_names;
+		$template_path_data->{$template_path} = $package_templates;
 
 		print Dumper($template_path_data),$/;
 	}
 
+}
+
+sub load_templates_from_package
+{
+	my ($self, $package_path) = @_;
+
+	my $dir = new IO::Dir($package_path);
+
+	my $dir_hash;
+	my $dir_entry;
+	package_dir_entry: while (defined($dir_entry = $dir->read()))
+	{
+		next package_dir_entry
+			if ($dir_entry eq '.' || $dir_entry eq '..');
+
+		$dir_hash->{$dir_entry} = {};
+
+
+	}
 }
 
 package main;
