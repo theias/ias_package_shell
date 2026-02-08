@@ -28,6 +28,8 @@ sub run
 {
 	my ($self) = @_;
 
+	$self->load_template_data();
+
 }
 
 sub load_template_data
@@ -35,16 +37,32 @@ sub load_template_data
 	my ($self) = @_;
 
 	my $template_data = {};
-
+	print "here\n";
 	my @template_paths = split(':', $TEMPLATE_PATHS);
 
-	load_template_path: foreach my $template_path (@template_paths)
+	my $template_path_data = {};
+	load_base_template_path: foreach my $template_path (@template_paths)
 	{
-		tie %dir, 'IO::Dir', $template_path;
+		my $dir = IO::Dir->new($template_path);
+		if (! $dir )
+		{
+			warn "Unable to open template path $template_path : $!\n";
+			next load_base_template_path;
+		}
 
-		my $info = {
-			'base_template_path' => $template_path,
-			'package' => $
+		my $dir_names = {};
+		my $dir_entry;
+		package_template_dir_entry: while (defined($dir_entry = $dir->read()))
+		{
+			next package_template_dir_entry
+				if ($dir_entry eq '.' || $dir_entry eq '..' );
+
+			$dir_names->{$dir_entry} = {};
+		}
+
+		$template_path_data->{$template_path} = $dir_names;
+
+		print Dumper($template_path_data),$/;
 	}
 
 }
