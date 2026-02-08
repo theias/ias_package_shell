@@ -1,4 +1,8 @@
 {
+	"meta" : {
+		"name" : "Full Scriptiong Project",
+		"description" : "Standardized directory layout, automatic packaging for many systems, many examples."
+	},
 	"prompts" : [
 		{
 			"name" : "project_name",
