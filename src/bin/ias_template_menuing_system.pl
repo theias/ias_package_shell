@@ -104,16 +104,24 @@ sub load_templates_from_template_container
 	my ($self, $params) = @_;
 
 	print Dumper($params),$/;
-	return;
 	my $dir = new IO::Dir($params->{'template_container_path'});
 
 	my $dir_hash;
 	my $dir_entry;
-	package_dir_entry: while (defined($dir_entry = $dir->read()))
+	template_container_entry : while (defined($dir_entry = $dir->read()))
 	{
-		next package_dir_entry
+		next template_container_entry
 			if ($dir_entry eq '.' || $dir_entry eq '..');
 
+		next template_container_entry
+			if ( $dir_entry !~ m/\.json$/);
+
+		# print "Dir entry: $dir_entry\n";
+		my $entry_basename = basename($dir_entry);
+		my $entry_canonical_name = $entry_basename;
+		$entry_canonical_name =~ s/\.json$//;
+
+		print "Entry canonical name: $entry_canonical_name\n";
 
 	}
 }
