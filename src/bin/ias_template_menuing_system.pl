@@ -48,14 +48,14 @@ sub load_template_data
 			next load_base_template_path;
 		}
 
-		print "Template path: $template_path\n";
+		# print "Template path: $template_path\n";
 
 		my $template_path_parent = dirname($template_path);
 		my $template_path_parent_basename = basename($template_path_parent);
-		print "Template path parent: $template_path_parent\n";
+		# print "Template path parent: $template_path_parent\n";
 		if ($template_path_parent_basename eq 'src')
 		{
-			print "It's in src.\n";
+			# print "It's in src.\n";
 			my $template_container = basename(dirname($template_path_parent));
 			
 			my $params = {
