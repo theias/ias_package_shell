@@ -34,7 +34,7 @@ my_lib_dir=${my_lib_dir:-"$test_bin_dir/../lib"}
 test_command=( \
 	"$project_bin_dir/[% project.package_name %].sh" \
 	# Put your arguments here:
-	arg1,
+	arg1
 	arg2
 )
 
